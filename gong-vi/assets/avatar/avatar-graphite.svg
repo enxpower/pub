@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gong Tiejing avatar">
+  <title>Gong Tiejing — Avatar</title>
+  <rect width="512" height="512" fill="#1C2024"/>
+  <g transform="translate(256,262)">
+    <path d="M 88,-120 A 152,152 0 1 0 104,120" stroke="#FDFCFA" stroke-width="52" fill="none" stroke-linecap="round"/>
+    <path d="M 120,24 L -32,24" stroke="#FDFCFA" stroke-width="52" fill="none" stroke-linecap="round"/>
+    <path d="M 40,-48 L 40,88" stroke="#FDFCFA" stroke-width="34" fill="none" stroke-linecap="round"/>
+    <circle cx="40" cy="24" r="34" fill="#1C2024"/>
+    <circle cx="40" cy="24" r="34" fill="none" stroke="#FDFCFA" stroke-width="8"/>
+  </g>
+</svg>
