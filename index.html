@@ -1,1 +1,219 @@
-__INDEX_PLACEHOLDER__
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gong Tiejing — Personal</title>
+<meta name="description" content="Personal publications by Gong Tiejing — visual identity, travel, writing, and projects.">
+<meta property="og:title" content="Gong Tiejing — Personal">
+<meta property="og:description" content="Personal publications — visual identity, travel, writing, projects.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enxpower.com/">
+<meta property="og:image" content="https://enxpower.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gong Tiejing — Personal">
+<meta name="twitter:image" content="https://enxpower.com/og-image.png">
+<link rel="canonical" href="https://enxpower.com/">
+<link rel="icon" type="image/svg+xml" href="gong-vi/assets/favicon.svg">
+<link rel="apple-touch-icon" href="gong-vi/assets/favicon.svg">
+<style>
+:root{
+  --g:#1C2024;--g2:#2A2F35;--paper:#FDFCFA;--paper2:#F3F1ED;
+  --silver:#9AA3AB;--silver2:#C2C9CF;--hair:#E2DFDA;--ink:#3A4046;
+  --cu:#A8602F;--cu-hi:#C77B45;
+  --serif:'Spectral','Georgia',serif;
+  --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--g);font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;
+  display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+
+.nav{display:flex;align-items:center;gap:20px;padding:18px 32px;
+  background:rgba(28,32,36,0.94);backdrop-filter:blur(10px);
+  position:sticky;top:0;z-index:40;}
+.nav-mark{width:28px;height:28px;flex-shrink:0}
+.nav-mark svg{width:100%;height:100%}
+.nav-name{font-family:var(--serif);font-size:1.05rem;color:#FDFCFA}
+.nav-sub{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--cu-hi);margin-left:auto}
+
+.hero{background:var(--g);color:#FDFCFA;padding:72px 32px 80px;
+  position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.05;
+  background-image:linear-gradient(var(--silver) 1px,transparent 1px),
+    linear-gradient(90deg,var(--silver) 1px,transparent 1px);
+  background-size:56px 56px;}
+.hero-inner{position:relative;max-width:900px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cu-hi);border:1px solid rgba(199,123,69,.35);border-radius:30px;
+  padding:6px 14px;margin-bottom:26px;}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--cu-hi)}
+.hero-h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);
+  font-weight:500;margin-bottom:8px;letter-spacing:.01em}
+.hero-role{font-family:var(--mono);font-size:.8rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--cu-hi);margin-bottom:20px}
+.hero-sub{color:var(--silver2);max-width:52ch;font-size:1rem;line-height:1.65}
+
+.main{max-width:900px;margin:0 auto;padding:64px 32px;flex:1}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:28px;
+  padding-bottom:14px;border-bottom:1px solid var(--hair);}
+.sec-no{font-family:var(--mono);font-size:.78rem;color:var(--cu-hi);letter-spacing:.1em}
+.sec-head h2{font-family:var(--serif);font-size:1.5rem;font-weight:500}
+.sec-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--silver);margin-left:auto}
+
+.pub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:18px;margin-bottom:64px}
+.pub-card{border:1px solid var(--hair);border-radius:8px;overflow:hidden;
+  background:var(--paper);transition:border-color .15s,box-shadow .15s;
+  display:flex;flex-direction:column;}
+.pub-card:hover{border-color:var(--cu);box-shadow:0 4px 18px rgba(168,96,47,.1)}
+.pub-card-thumb{height:140px;background:var(--g);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.pub-card-thumb.light{background:var(--paper2)}
+.pub-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column;gap:8px}
+.pub-card-type{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--cu-hi)}
+.pub-card-title{font-family:var(--serif);font-size:1.18rem;font-weight:500;
+  color:var(--g);line-height:1.25}
+.pub-card-desc{font-size:.86rem;color:var(--ink);line-height:1.6;flex:1}
+.pub-card-meta{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+.pub-card-date{font-family:var(--mono);font-size:.68rem;color:var(--silver)}
+.pub-card-link{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+  color:var(--cu);border-bottom:1px solid transparent;transition:border-color .15s}
+.pub-card:hover .pub-card-link{border-color:var(--cu)}
+.pub-card.soon{opacity:.55;pointer-events:none}
+.pub-card.soon .pub-card-thumb{background:var(--paper2)}
+.soon-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--silver);position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center}
+
+.footer{background:var(--g);color:var(--silver);padding:40px 32px;font-size:.82rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-name{font-family:var(--serif);font-size:1rem;color:#FDFCFA}
+.footer-meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--cu-hi)}
+
+@media(max-width:600px){
+  .nav{padding:14px 20px}.hero{padding:52px 20px 60px}.main{padding:48px 20px}
+  .pub-grid{grid-template-columns:1fr}
+  .footer{padding:30px 20px;flex-direction:column;gap:10px}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-mark" aria-hidden="true">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(32,32.5)">
+        <path d="M 11,-15 A 19,19 0 1 0 13,15" stroke="#FDFCFA" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+        <path d="M 15,3 L -4,3" stroke="#FDFCFA" stroke-width="6.5" fill="none" stroke-linecap="round"/>
+        <path d="M 5,-6 L 5,11" stroke="#FDFCFA" stroke-width="4.2" fill="none" stroke-linecap="round"/>
+        <circle cx="5" cy="3" r="3" fill="#FDFCFA"/>
+      </g>
+    </svg>
+  </div>
+  <span class="nav-name">Gong Tiejing</span>
+  <span class="nav-sub">Personal</span>
+</header>
+
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span>ENXPOWER.COM</div>
+    <h1 class="hero-h1">Gong Tiejing</h1>
+    <p class="hero-role">Personal publications</p>
+    <p class="hero-sub">Visual identity, travel notes, writing, and occasional projects. Not corporate — just personal.</p>
+  </div>
+</section>
+
+<main class="main">
+  <div class="sec-head">
+    <span class="sec-no">01</span>
+    <h2>Publications</h2>
+    <span class="sec-tag">ALL POSTS</span>
+  </div>
+
+  <div class="pub-grid">
+    <a class="pub-card" href="/gong-vi/">
+      <div class="pub-card-thumb">
+        <svg viewBox="0 0 400 400" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cu" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#C77B45"/>
+              <stop offset="0.5" stop-color="#A8602F"/>
+              <stop offset="1" stop-color="#8A4A23"/>
+            </linearGradient>
+            <path id="t" d="M 200,200 m -148,0 a 148,148 0 1 1 296,0"/>
+          </defs>
+          <circle cx="200" cy="200" r="190" stroke="url(#cu)" stroke-width="2" fill="none"/>
+          <circle cx="200" cy="200" r="178" stroke="url(#cu)" stroke-width="6" fill="none"/>
+          <text font-family="Georgia,serif" font-size="29" letter-spacing="9" fill="url(#cu)" text-anchor="middle">
+            <textPath href="#t" startOffset="50%">GONG TIEJING</textPath>
+          </text>
+          <g fill="url(#cu)">
+            <circle cx="200" cy="384" r="4.5"/>
+            <circle cx="146" cy="377" r="4.5"/>
+            <circle cx="254" cy="377" r="4.5"/>
+          </g>
+          <g transform="translate(200,202)">
+            <path d="M 70,-52 A 92,92 0 1 0 78,52" stroke="url(#cu)" stroke-width="24" fill="none" stroke-linecap="round"/>
+            <path d="M 84,12 L 28,12" stroke="url(#cu)" stroke-width="24" fill="none" stroke-linecap="round"/>
+            <path d="M 56,-18 L 56,42" stroke="url(#cu)" stroke-width="15" fill="none" stroke-linecap="round"/>
+            <circle cx="56" cy="12" r="14" fill="#1C2024"/>
+            <circle cx="56" cy="12" r="14" fill="none" stroke="url(#cu)" stroke-width="3.5"/>
+            <circle cx="56" cy="12" r="4.5" fill="url(#cu)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="pub-card-body">
+        <span class="pub-card-type">Visual Identity</span>
+        <span class="pub-card-title">Personal VI System</span>
+        <span class="pub-card-desc">A modern steel-seal identity. One letter G, one rivet — graphite, copper, made to be carried from favicon to pressed-copper card.</span>
+        <div class="pub-card-meta">
+          <span class="pub-card-date">June 2026</span>
+          <span class="pub-card-link">View →</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="pub-card soon">
+      <div class="pub-card-thumb light">
+        <span class="soon-label">Coming Soon</span>
+      </div>
+      <div class="pub-card-body">
+        <span class="pub-card-type">Travel</span>
+        <span class="pub-card-title">London 2026</span>
+        <span class="pub-card-desc">Notes from London — architecture, food, and a few observations on a city in transition.</span>
+        <div class="pub-card-meta">
+          <span class="pub-card-date">—</span>
+          <span class="pub-card-link">Coming →</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <div class="footer-name">Gong Tiejing</div>
+    <div class="footer-meta">ENXPOWER.COM · PERSONAL</div>
+  </div>
+  <div style="font-family:var(--mono);font-size:.66rem;color:var(--silver);text-align:right">
+    铁 · 靖 — iron that holds steady under load.
+  </div>
+</footer>
+
+</body>
+</html>
