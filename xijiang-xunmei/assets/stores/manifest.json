@@ -1,0 +1,687 @@
+[
+  {
+    "store": 1,
+    "slug": "tree-shade-tea-break",
+    "slides": [
+      23,
+      24
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-01-tree-shade-tea-break-proposal-01.jpg",
+        "slide": 23,
+        "source": "ppt/media/image102.png",
+        "width": 1029,
+        "height": 674,
+        "bytes": 134628
+      },
+      {
+        "file": "assets/stores/store-01-tree-shade-tea-break-proposal-02.jpg",
+        "slide": 24,
+        "source": "ppt/media/image103.png",
+        "width": 623,
+        "height": 674,
+        "bytes": 87772
+      },
+      {
+        "file": "assets/stores/store-01-tree-shade-tea-break-proposal-03.jpg",
+        "slide": 24,
+        "source": "ppt/media/image106.jpeg",
+        "width": 356,
+        "height": 333,
+        "bytes": 21908
+      },
+      {
+        "file": "assets/stores/store-01-tree-shade-tea-break-proposal-04.jpg",
+        "slide": 24,
+        "source": "ppt/media/image107.jpeg",
+        "width": 356,
+        "height": 333,
+        "bytes": 23228
+      }
+    ]
+  },
+  {
+    "store": 2,
+    "slug": "mountain-tea-room",
+    "slides": [
+      25
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-02-mountain-tea-room-proposal-01.jpg",
+        "slide": 25,
+        "source": "ppt/media/image108.jpeg",
+        "width": 781,
+        "height": 511,
+        "bytes": 100695
+      },
+      {
+        "file": "assets/stores/store-02-mountain-tea-room-proposal-02.jpg",
+        "slide": 25,
+        "source": "ppt/media/image109.jpeg",
+        "width": 780,
+        "height": 450,
+        "bytes": 87684
+      },
+      {
+        "file": "assets/stores/store-02-mountain-tea-room-proposal-03.jpg",
+        "slide": 25,
+        "source": "ppt/media/image110.jpeg",
+        "width": 327,
+        "height": 437,
+        "bytes": 30869
+      },
+      {
+        "file": "assets/stores/store-02-mountain-tea-room-proposal-04.jpg",
+        "slide": 25,
+        "source": "ppt/media/image111.jpeg",
+        "width": 297,
+        "height": 433,
+        "bytes": 22626
+      },
+      {
+        "file": "assets/stores/store-02-mountain-tea-room-proposal-05.jpg",
+        "slide": 25,
+        "source": "ppt/media/image112.jpeg",
+        "width": 329,
+        "height": 433,
+        "bytes": 29651
+      }
+    ]
+  },
+  {
+    "store": 3,
+    "slug": "spirit-of-all-things",
+    "slides": [
+      26,
+      27,
+      28
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-01.jpg",
+        "slide": 26,
+        "source": "ppt/media/image113.jpeg",
+        "width": 691,
+        "height": 461,
+        "bytes": 72405
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-02.jpg",
+        "slide": 26,
+        "source": "ppt/media/image114.png",
+        "width": 691,
+        "height": 443,
+        "bytes": 79533
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-03.jpg",
+        "slide": 27,
+        "source": "ppt/media/image115.jpeg",
+        "width": 428,
+        "height": 428,
+        "bytes": 39612
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-04.jpg",
+        "slide": 27,
+        "source": "ppt/media/image116.jpeg",
+        "width": 368,
+        "height": 368,
+        "bytes": 20561
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-05.jpg",
+        "slide": 27,
+        "source": "ppt/media/image117.jpeg",
+        "width": 368,
+        "height": 368,
+        "bytes": 18952
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-06.jpg",
+        "slide": 27,
+        "source": "ppt/media/image118.jpeg",
+        "width": 368,
+        "height": 368,
+        "bytes": 22425
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-07.jpg",
+        "slide": 27,
+        "source": "ppt/media/image119.jpeg",
+        "width": 368,
+        "height": 368,
+        "bytes": 31174
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-08.jpg",
+        "slide": 27,
+        "source": "ppt/media/image120.jpeg",
+        "width": 368,
+        "height": 368,
+        "bytes": 15449
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-09.jpg",
+        "slide": 27,
+        "source": "ppt/media/image121.jpeg",
+        "width": 456,
+        "height": 428,
+        "bytes": 60868
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-10.jpg",
+        "slide": 27,
+        "source": "ppt/media/image122.jpeg",
+        "width": 428,
+        "height": 428,
+        "bytes": 46053
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-11.jpg",
+        "slide": 27,
+        "source": "ppt/media/image123.jpeg",
+        "width": 428,
+        "height": 428,
+        "bytes": 45455
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-12.jpg",
+        "slide": 28,
+        "source": "ppt/media/image127.jpeg",
+        "width": 404,
+        "height": 419,
+        "bytes": 68999
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-13.jpg",
+        "slide": 28,
+        "source": "ppt/media/image128.jpeg",
+        "width": 403,
+        "height": 419,
+        "bytes": 63421
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-14.jpg",
+        "slide": 28,
+        "source": "ppt/media/image129.jpeg",
+        "width": 393,
+        "height": 393,
+        "bytes": 64571
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-15.jpg",
+        "slide": 28,
+        "source": "ppt/media/image130.jpeg",
+        "width": 644,
+        "height": 800,
+        "bytes": 118436
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-16.jpg",
+        "slide": 28,
+        "source": "ppt/media/image131.jpeg",
+        "width": 406,
+        "height": 394,
+        "bytes": 58135
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-17.jpg",
+        "slide": 28,
+        "source": "ppt/media/image132.jpeg",
+        "width": 326,
+        "height": 393,
+        "bytes": 20910
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-18.jpg",
+        "slide": 28,
+        "source": "ppt/media/image133.jpeg",
+        "width": 431,
+        "height": 486,
+        "bytes": 26106
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-19.jpg",
+        "slide": 28,
+        "source": "ppt/media/image134.jpeg",
+        "width": 326,
+        "height": 394,
+        "bytes": 43105
+      },
+      {
+        "file": "assets/stores/store-03-spirit-of-all-things-proposal-20.jpg",
+        "slide": 28,
+        "source": "ppt/media/image135.jpeg",
+        "width": 384,
+        "height": 495,
+        "bytes": 40620
+      }
+    ]
+  },
+  {
+    "store": 4,
+    "slug": "seed-dark-light",
+    "slides": [
+      29
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-04-seed-dark-light-proposal-01.jpg",
+        "slide": 29,
+        "source": "ppt/media/image136.jpeg",
+        "width": 808,
+        "height": 537,
+        "bytes": 104128
+      },
+      {
+        "file": "assets/stores/store-04-seed-dark-light-proposal-02.jpg",
+        "slide": 29,
+        "source": "ppt/media/image137.jpeg",
+        "width": 345,
+        "height": 345,
+        "bytes": 30978
+      },
+      {
+        "file": "assets/stores/store-04-seed-dark-light-proposal-03.jpg",
+        "slide": 29,
+        "source": "ppt/media/image138.jpeg",
+        "width": 412,
+        "height": 346,
+        "bytes": 25616
+      },
+      {
+        "file": "assets/stores/store-04-seed-dark-light-proposal-04.jpg",
+        "slide": 29,
+        "source": "ppt/media/image139.jpeg",
+        "width": 371,
+        "height": 340,
+        "bytes": 28740
+      },
+      {
+        "file": "assets/stores/store-04-seed-dark-light-proposal-05.jpg",
+        "slide": 29,
+        "source": "ppt/media/image140.jpeg",
+        "width": 515,
+        "height": 493,
+        "bytes": 46354
+      }
+    ]
+  },
+  {
+    "store": 5,
+    "slug": "cloud-coffee",
+    "slides": [
+      30
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-05-cloud-coffee-proposal-01.jpg",
+        "slide": 30,
+        "source": "ppt/media/image141.jpeg",
+        "width": 784,
+        "height": 523,
+        "bytes": 68084
+      },
+      {
+        "file": "assets/stores/store-05-cloud-coffee-proposal-02.jpg",
+        "slide": 30,
+        "source": "ppt/media/image142.jpeg",
+        "width": 385,
+        "height": 394,
+        "bytes": 34733
+      },
+      {
+        "file": "assets/stores/store-05-cloud-coffee-proposal-03.jpg",
+        "slide": 30,
+        "source": "ppt/media/image143.jpeg",
+        "width": 377,
+        "height": 387,
+        "bytes": 29718
+      },
+      {
+        "file": "assets/stores/store-05-cloud-coffee-proposal-04.jpg",
+        "slide": 30,
+        "source": "ppt/media/image144.jpeg",
+        "width": 400,
+        "height": 410,
+        "bytes": 25280
+      },
+      {
+        "file": "assets/stores/store-05-cloud-coffee-proposal-05.jpg",
+        "slide": 30,
+        "source": "ppt/media/image145.jpeg",
+        "width": 354,
+        "height": 386,
+        "bytes": 30572
+      },
+      {
+        "file": "assets/stores/store-05-cloud-coffee-proposal-06.jpg",
+        "slide": 30,
+        "source": "ppt/media/image146.jpeg",
+        "width": 410,
+        "height": 391,
+        "bytes": 37175
+      }
+    ]
+  },
+  {
+    "store": 6,
+    "slug": "miao-family-tea",
+    "slides": [
+      31
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-06-miao-family-tea-proposal-01.jpg",
+        "slide": 31,
+        "source": "ppt/media/image147.jpeg",
+        "width": 596,
+        "height": 396,
+        "bytes": 58085
+      },
+      {
+        "file": "assets/stores/store-06-miao-family-tea-proposal-02.jpg",
+        "slide": 31,
+        "source": "ppt/media/image148.jpeg",
+        "width": 596,
+        "height": 396,
+        "bytes": 58700
+      },
+      {
+        "file": "assets/stores/store-06-miao-family-tea-proposal-03.jpg",
+        "slide": 31,
+        "source": "ppt/media/image149.jpeg",
+        "width": 382,
+        "height": 486,
+        "bytes": 27675
+      },
+      {
+        "file": "assets/stores/store-06-miao-family-tea-proposal-04.jpg",
+        "slide": 31,
+        "source": "ppt/media/image150.jpeg",
+        "width": 509,
+        "height": 486,
+        "bytes": 38343
+      },
+      {
+        "file": "assets/stores/store-06-miao-family-tea-proposal-05.jpg",
+        "slide": 31,
+        "source": "ppt/media/image133.jpeg",
+        "width": 431,
+        "height": 486,
+        "bytes": 26106
+      }
+    ]
+  },
+  {
+    "store": 7,
+    "slug": "heritage-workshop",
+    "slides": [
+      32
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-01.jpg",
+        "slide": 32,
+        "source": "ppt/media/image151.png",
+        "width": 508,
+        "height": 309,
+        "bytes": 37449
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-02.jpg",
+        "slide": 32,
+        "source": "ppt/media/image152.jpeg",
+        "width": 245,
+        "height": 285,
+        "bytes": 24025
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-03.jpg",
+        "slide": 32,
+        "source": "ppt/media/image153.jpeg",
+        "width": 304,
+        "height": 303,
+        "bytes": 35434
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-04.jpg",
+        "slide": 32,
+        "source": "ppt/media/image154.jpeg",
+        "width": 303,
+        "height": 303,
+        "bytes": 33736
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-05.jpg",
+        "slide": 32,
+        "source": "ppt/media/image155.jpeg",
+        "width": 296,
+        "height": 285,
+        "bytes": 33715
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-06.jpg",
+        "slide": 32,
+        "source": "ppt/media/image156.jpeg",
+        "width": 484,
+        "height": 579,
+        "bytes": 66053
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-07.jpg",
+        "slide": 32,
+        "source": "ppt/media/image157.jpeg",
+        "width": 306,
+        "height": 285,
+        "bytes": 32456
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-08.jpg",
+        "slide": 32,
+        "source": "ppt/media/image158.jpeg",
+        "width": 245,
+        "height": 285,
+        "bytes": 12888
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-09.jpg",
+        "slide": 32,
+        "source": "ppt/media/image159.jpeg",
+        "width": 441,
+        "height": 574,
+        "bytes": 41398
+      },
+      {
+        "file": "assets/stores/store-07-heritage-workshop-proposal-10.jpg",
+        "slide": 32,
+        "source": "ppt/media/image160.jpeg",
+        "width": 767,
+        "height": 1400,
+        "bytes": 303106
+      }
+    ]
+  },
+  {
+    "store": 8,
+    "slug": "butterfly-spring-honey",
+    "slides": [
+      33
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-08-butterfly-spring-honey-proposal-01.jpg",
+        "slide": 33,
+        "source": "ppt/media/image161.jpeg",
+        "width": 611,
+        "height": 406,
+        "bytes": 58648
+      },
+      {
+        "file": "assets/stores/store-08-butterfly-spring-honey-proposal-02.jpg",
+        "slide": 33,
+        "source": "ppt/media/image162.jpeg",
+        "width": 340,
+        "height": 492,
+        "bytes": 35997
+      },
+      {
+        "file": "assets/stores/store-08-butterfly-spring-honey-proposal-03.jpg",
+        "slide": 33,
+        "source": "ppt/media/image163.jpeg",
+        "width": 434,
+        "height": 500,
+        "bytes": 32374
+      },
+      {
+        "file": "assets/stores/store-08-butterfly-spring-honey-proposal-04.jpg",
+        "slide": 33,
+        "source": "ppt/media/image135.jpeg",
+        "width": 384,
+        "height": 495,
+        "bytes": 40620
+      },
+      {
+        "file": "assets/stores/store-08-butterfly-spring-honey-proposal-05.jpg",
+        "slide": 33,
+        "source": "ppt/media/image164.jpeg",
+        "width": 625,
+        "height": 498,
+        "bytes": 36851
+      },
+      {
+        "file": "assets/stores/store-08-butterfly-spring-honey-proposal-06.jpg",
+        "slide": 33,
+        "source": "ppt/media/image165.jpeg",
+        "width": 339,
+        "height": 409,
+        "bytes": 21401
+      }
+    ]
+  },
+  {
+    "store": 9,
+    "slug": "miao-vision-phantom",
+    "slides": [
+      34
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-09-miao-vision-phantom-proposal-01.jpg",
+        "slide": 34,
+        "source": "ppt/media/image166.jpeg",
+        "width": 573,
+        "height": 382,
+        "bytes": 45417
+      },
+      {
+        "file": "assets/stores/store-09-miao-vision-phantom-proposal-02.jpg",
+        "slide": 34,
+        "source": "ppt/media/image167.jpeg",
+        "width": 445,
+        "height": 535,
+        "bytes": 37086
+      },
+      {
+        "file": "assets/stores/store-09-miao-vision-phantom-proposal-03.jpg",
+        "slide": 34,
+        "source": "ppt/media/image168.jpeg",
+        "width": 395,
+        "height": 527,
+        "bytes": 25829
+      },
+      {
+        "file": "assets/stores/store-09-miao-vision-phantom-proposal-04.jpg",
+        "slide": 34,
+        "source": "ppt/media/image169.jpeg",
+        "width": 518,
+        "height": 549,
+        "bytes": 22544
+      },
+      {
+        "file": "assets/stores/store-09-miao-vision-phantom-proposal-05.jpg",
+        "slide": 34,
+        "source": "ppt/media/image170.jpeg",
+        "width": 412,
+        "height": 412,
+        "bytes": 40494
+      },
+      {
+        "file": "assets/stores/store-09-miao-vision-phantom-proposal-06.jpg",
+        "slide": 34,
+        "source": "ppt/media/image171.jpeg",
+        "width": 298,
+        "height": 528,
+        "bytes": 34411
+      },
+      {
+        "file": "assets/stores/store-09-miao-vision-phantom-proposal-07.jpg",
+        "slide": 34,
+        "source": "ppt/media/image172.jpeg",
+        "width": 266,
+        "height": 527,
+        "bytes": 11878
+      }
+    ]
+  },
+  {
+    "store": 10,
+    "slug": "poetic-lamp-kitchen",
+    "slides": [
+      35
+    ],
+    "images": [
+      {
+        "file": "assets/stores/store-10-poetic-lamp-kitchen-proposal-01.jpg",
+        "slide": 35,
+        "source": "ppt/media/image173.jpeg",
+        "width": 609,
+        "height": 404,
+        "bytes": 53956
+      },
+      {
+        "file": "assets/stores/store-10-poetic-lamp-kitchen-proposal-02.jpg",
+        "slide": 35,
+        "source": "ppt/media/image174.jpeg",
+        "width": 350,
+        "height": 467,
+        "bytes": 36303
+      },
+      {
+        "file": "assets/stores/store-10-poetic-lamp-kitchen-proposal-03.jpg",
+        "slide": 35,
+        "source": "ppt/media/image175.jpeg",
+        "width": 357,
+        "height": 477,
+        "bytes": 37604
+      },
+      {
+        "file": "assets/stores/store-10-poetic-lamp-kitchen-proposal-04.jpg",
+        "slide": 35,
+        "source": "ppt/media/image176.jpeg",
+        "width": 393,
+        "height": 480,
+        "bytes": 29946
+      },
+      {
+        "file": "assets/stores/store-10-poetic-lamp-kitchen-proposal-05.jpg",
+        "slide": 35,
+        "source": "ppt/media/image177.jpeg",
+        "width": 274,
+        "height": 479,
+        "bytes": 28581
+      },
+      {
+        "file": "assets/stores/store-10-poetic-lamp-kitchen-proposal-06.jpg",
+        "slide": 35,
+        "source": "ppt/media/image178.jpeg",
+        "width": 359,
+        "height": 472,
+        "bytes": 41196
+      }
+    ]
+  }
+]

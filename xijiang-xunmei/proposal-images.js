@@ -1,1 +1,289 @@
-(()=>{const SPRITE='data:image/jpeg;base64,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[...truncated...]',';function apply(){const m=document.querySelector('.proposal-modal.open');if(!m)return;const card=document.querySelector('.proposal-card:focus')||document.activeElement;let i=0;if(card&&card.dataset&&card.dataset.store)i=+card.dataset.store;const v=m.querySelector('.proposal-visual');if(v){v.style.backgroundImage=`linear-gradient(145deg,rgba(28,32,36,.32),rgba(28,32,36,.60)),url(${SPRITE})`;v.style.backgroundSize='100% 1000%';v.style.backgroundPosition=`center ${i*100/9}%`;v.style.backgroundRepeat='no-repeat';}let s=m.querySelector('.proposal-source-image');if(!s){s=document.createElement('section');s.className='proposal-section proposal-source-image';s.innerHTML='<div class="proposal-head"><small>ORIGINAL VISUAL</small><h3>原方案空间与产品视觉</h3></div><div class="proposal-source-frame"></div>';const controls=m.querySelector('.proposal-controls');controls?.before(s);}const f=s.querySelector('.proposal-source-frame');f.style.backgroundImage=`url(${SPRITE})`;f.style.backgroundSize='100% 1000%';f.style.backgroundPosition=`center ${i*100/9}%`;f.style.backgroundRepeat='no-repeat';f.style.aspectRatio='16/9';f.style.border='1px solid var(--hair)';f.style.boxShadow='0 18px 50px rgba(28,32,36,.12)';}document.addEventListener('click',e=>{if(e.target.closest('.proposal-card,.proposal-btn'))setTimeout(apply,60)});document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')setTimeout(apply,60)});new MutationObserver(apply).observe(document.body,{subtree:true,attributes:true,attributeFilter:['class']});})();
+(() => {
+  const base = 'assets/stores/';
+  const imageSets = [
+    ['tree-shade-tea-break', 4],
+    ['mountain-tea-room', 5],
+    ['spirit-of-all-things', 20],
+    ['seed-dark-light', 5],
+    ['cloud-coffee', 6],
+    ['miao-family-tea', 5],
+    ['heritage-workshop', 10],
+    ['butterfly-spring-honey', 6],
+    ['miao-vision-phantom', 7],
+    ['poetic-lamp-kitchen', 6],
+  ];
+
+  const imagesFor = (storeNo, slug, count) =>
+    Array.from({ length: count }, (_, i) =>
+      `${base}store-${String(storeNo).padStart(2, '0')}-${slug}-proposal-${String(i + 1).padStart(2, '0')}.jpg`
+    );
+
+  const stores = [
+    {
+      n: '01',
+      name: '树影茶歇站',
+      area: '21.60㎡',
+      positioning: '启程补给 · 地标首购 · 第一打卡点',
+      demand: '游客刚进入栈道，最先出现的是体力、天气和拍照准备需求。这个点位需要用低决策门槛商品快速完成首购，并建立“寻美栈道”的第一处记忆。',
+      products: ['雷山银球风味茶', '西江苗家风味冰浆', '能量补给食品', '苗寨地标冰箱贴', '防雨御寒装备', '自拍杆与滤镜'],
+      features: ['不同高度的苗族银冠墙，适配家庭、情侣和亲子游客打卡', '雷山银球专属杯身和银球装饰带，强化第一杯饮品识别', '以西江全景、银帽大门、项圈广场、铜鼓广场、风雨桥开发地标冰箱贴'],
+      value: '以刚需补给带动首站交易，以可拍、可带走的小商品建立栈道消费开端。',
+      strategy: '优先保证出品速度、天气应急商品和小额文创陈列效率，把它作为全线客流转化的起点。',
+    },
+    {
+      n: '02',
+      name: '深山茶室',
+      area: '9㎡',
+      positioning: '登高静坐 · 贵州抹茶 · 山景茶歇',
+      demand: '游客完成第一段登高后需要短暂停留、恢复体力和安静观景。小体量空间不适合复杂菜单，适合用少量高识别产品承接情绪消费。',
+      products: ['贵州抹茶风味茶饮', '苗家唯美茶点', '抹茶生活方式产品', '千户苗寨全景小夜灯'],
+      features: ['空间表达强调静谧、留白和自然材质', '设置面向苗寨的核心观景座位', '包装采用低饱和苗岭色系，突出深山茶室气质'],
+      value: '用景观和安静氛围形成溢价，在小面积中完成高质量茶歇转化。',
+      strategy: '控制SKU数量，以预制度高、视觉稳定的茶饮和点心为主，减少后场压力。',
+    },
+    {
+      n: '03',
+      name: '万物有灵',
+      area: '54㎡',
+      positioning: '旗舰文创 · 非遗生活化 · 限定首发',
+      demand: '这里承担全线旗舰文创店角色，游客期待更完整的西江限定商品、非遗转译产品和可集中购买的伴手礼。',
+      products: ['地标冰箱贴与透卡', '银饰、刺绣、蜡染', '贵州茶、苗医药、苗寨零食', '护手霜、香氛等日化', '苗族风格时尚单品', '黄小西西江限定系列'],
+      features: ['建立统一的西江限定产品视觉系统', '把非遗从陈列品转译为日常可用的生活方式商品', '设置限定首发、联名发布和直播展示区'],
+      value: '成为全线品牌旗舰、爆款首发地和高客单文创消费中心。',
+      strategy: '按“入门小件、核心限定、高客单联名、线上复购”组织货架，让空间同时服务现场销售和内容电商。',
+    },
+    {
+      n: '04',
+      name: '种子暗光',
+      area: '33.66㎡',
+      positioning: '苗族神话 · 暗光咖啡 · 祈福记忆',
+      demand: '栈道中段需要一个强记忆、强传播的情绪空间。苗族神话、种子和祈福意象能把咖啡消费升级为可讲述的沉浸体验。',
+      products: ['苗家特色风味咖啡', '暗黑系限定包装', '苗家特色甜品', '苗疆种子祈福盲盒'],
+      features: ['暗光、局部照明和神话纹样形成可识别氛围', '祈福盲盒和互动装置提供参与感', '适合短视频拍摄的低照度视觉场景'],
+      value: '承担文化沉浸、夜游记忆和主题零售三重价值。',
+      strategy: '用少量强主题产品和稳定灯光氛围建立传播点，避免过重装置影响运营维护。',
+    },
+    {
+      n: '05',
+      name: '云上咖啡',
+      area: '41.20㎡',
+      positioning: '全景窗口 · 日咖夜酒 · 高峰夜游',
+      demand: '高位全景是全线稀缺资源，游客需要长时间停留、拍摄和社交分享。日咖夜酒能覆盖白天观景和夜间停留两个场景。',
+      products: ['贵州冠军咖啡限定特调', '苗寨全景限定咖啡', '西江限定鸡尾酒', '贵州精酿', '原创蜡染甜品'],
+      features: ['面向苗寨设置最佳全景座席', '白天咖啡、夜间酒饮双场景切换', '以高品质主理人联名提升空间调性'],
+      value: '依靠景观溢价和夜间消费提高客单，延长游客在高点停留时间。',
+      strategy: '把窗口座位、外摆秩序、饮品出片率和夜间灯光作为核心运营指标。',
+    },
+    {
+      n: '06',
+      name: '苗家的茶',
+      area: '24.04㎡',
+      positioning: '药食同源 · 草本饮品 · 在地生活',
+      demand: '游客对“苗家草本”和地方生活方式有好奇，但需要以日常饮品和伴手礼方式理解，避免医疗化表达。',
+      products: ['百草苗茶', '刺梨折耳根草本饮', '益肝草凉茶', '藤茶', '木姜子青草饮', '青橄榄润喉饮', '苗疆草本日化'],
+      features: ['在地居民参与传统配方整理与讲述', '设置草本原料展示和知识说明', '突出文化、风味和日常饮用体验'],
+      value: '把在地知识转化为高频茶饮和可复购伴手礼。',
+      strategy: '建立合规的产品命名和话术体系，优先选择稳定、易标准化的草本饮品。',
+    },
+    {
+      n: '07',
+      name: '非遗工坊',
+      area: '10.89㎡',
+      positioning: '银饰刺绣蜡染 · 手作体验 · 共创销售',
+      demand: '游客不只想看非遗，也希望知道如何制作、由谁制作、如何把技艺带回日常生活。',
+      products: ['银饰体验与小件产品', '刺绣体验与生活用品', '蜡染体验与时尚单品', '非遗共创限定系列'],
+      features: ['可视化手作台和小型体验课程', '优先与西江本地居民和手艺人合作', '制作过程本身成为内容和销售场景'],
+      value: '提升非遗活化、社区收益、体验转化和内容生产能力。',
+      strategy: '采用预约体验加即买小件的组合，确保小面积空间也能稳定承接参与和销售。',
+    },
+    {
+      n: '08',
+      name: '蝶泉蜜语',
+      area: '10.89㎡',
+      positioning: '蜂蜜食品 · 蜂蜡日化 · 伴手礼',
+      demand: '蜂蜜产品天然适合作为轻体验和伴手礼，但需要统一的故事、包装和品鉴方式来提高识别度。',
+      products: ['蜂蜜主题饮品', '蜂胶糖与一口蜂胶', '盒装蜂产品', '蜂蜜唇膏', '蜂蜜香皂', '蜂蜜护手霜', '蜂蜡产品'],
+      features: ['以蝶与蜂巢形成统一识别系统', '设置蜂蜜品鉴和产品故事展示', '兼顾即时饮用和离店伴手礼两类消费'],
+      value: '连接雷山蜂产业，形成轻体量、高复购的特色零售节点。',
+      strategy: '以标准化小包装和组合礼盒提高连带率，用试吃试饮降低购买门槛。',
+    },
+    {
+      n: '09',
+      name: '苗境幻影',
+      area: '10.89㎡',
+      positioning: '苗疆美学 · 山系户外 · 青年时尚',
+      demand: '年轻游客需要更轻、更时尚、更适合拍照和日常使用的苗族美学商品，而不是传统纪念品。',
+      products: ['苗族风格包袋', '眼镜与魔术巾', '肤感衣与皮肤衣', '山系配饰', '咖啡渣、板蓝根渣等再生材料产品'],
+      features: ['以苗疆纹样建立当代时尚语言', '强调轻量、易穿、易拍、易带走', '形成青年化、户外化和环保化产品矩阵'],
+      value: '连接年轻客群、时尚传播、高毛利配饰和可持续叙事。',
+      strategy: '用小批量上新和限定色控制库存风险，把穿搭内容作为主要传播方式。',
+    },
+    {
+      n: '10',
+      name: '诗句的灯小厨',
+      area: '31.68㎡',
+      positioning: '风景收尾 · 轻餐慢酒 · 夜间停留',
+      demand: '终点需要把整条栈道体验收束成一次可坐下来的风景消费，轻餐、慢酒和夜景能自然延长停留。',
+      products: ['黑毛猪与小黄牛汉堡', '苗寨沙拉', '苗寨腊味拼盘', '行匠精酿', '抹茶精酿', '苗寨米酒', '苗寨限定特调'],
+      features: ['以窗景和外摆组织终点停留', '菜单强调当地食材的现代化表达', '灯光、诗句和夜景形成夜间记忆'],
+      value: '以餐饮客单和夜游延时完成全线商业叙事闭环。',
+      strategy: '控制菜单复杂度，强化本地食材和夜间氛围，让终点成为可复购的慢停留空间。',
+    },
+  ].map((store, index) => ({
+    ...store,
+    images: imagesFor(index + 1, imageSets[index][0], imageSets[index][1]),
+  }));
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .proposal-modal{background:rgba(17,20,22,.76);backdrop-filter:blur(12px)}
+    .proposal-modal.open{display:block}
+    .proposal-nav{height:70px}
+    .proposal-wrap{max-width:1180px;padding:34px 22px 72px}
+    .proposal-document{background:var(--paper);box-shadow:0 24px 80px rgba(0,0,0,.28);min-height:calc(100svh - 120px)}
+    .proposal-hero{grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);min-height:560px}
+    .proposal-visual{background:none}
+    .proposal-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .proposal-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,20,22,.08),rgba(17,20,22,.72))}
+    .proposal-visual-in{z-index:2}
+    .proposal-summary{gap:22px}
+    .proposal-summary dl{display:grid;gap:16px;margin-top:6px}
+    .proposal-summary dt{color:var(--cu2);font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase}
+    .proposal-summary dd{font:15px/1.85 var(--serif);color:#d9dee1}
+    .proposal-section{padding:58px 42px}
+    .proposal-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .proposal-image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .proposal-image{margin:0;background:#202428;overflow:hidden;min-width:0}
+    .proposal-image:first-child{grid-column:span 2;grid-row:span 2}
+    .proposal-image img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
+    .proposal-image:first-child img{aspect-ratio:16/10}
+    .proposal-image figcaption{padding:9px 11px;color:#667078;background:#fff;font:10px var(--mono);letter-spacing:.08em}
+    .proposal-controls{padding:28px 42px 42px}
+    .proposal-btn{min-width:120px}
+    @media(max-width:860px){
+      .proposal-wrap{padding:16px 12px 54px}
+      .proposal-document{min-height:calc(100svh - 86px)}
+      .proposal-hero{grid-template-columns:1fr;min-height:0}
+      .proposal-visual{min-height:54svh}
+      .proposal-summary{padding:30px 24px}
+      .proposal-section{padding:38px 22px}
+      .proposal-grid.two,.proposal-image-grid{grid-template-columns:1fr}
+      .proposal-image:first-child{grid-column:auto;grid-row:auto}
+      .proposal-controls{padding:18px 22px 28px}
+    }
+  `;
+  document.head.appendChild(style);
+
+  const modal = document.getElementById('storeProposal');
+  const content = document.getElementById('proposalContent');
+  const navNo = document.getElementById('proposalNavNo');
+  const navName = document.getElementById('proposalNavName');
+  const close = modal && modal.querySelector('.proposal-close');
+  if (!modal || !content || !navNo || !navName || !close) return;
+
+  let current = 0;
+  let lastTrigger = null;
+  const esc = (value) => String(value).replace(/[&<>"]/g, (match) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[match]));
+  const listCards = (items, label) => items.map((item, index) => `
+    <div class="proposal-item">
+      <b>${String(index + 1).padStart(2, '0')} · ${label}</b>
+      <p>${esc(item)}</p>
+    </div>
+  `).join('');
+
+  function render(index) {
+    current = (index + stores.length) % stores.length;
+    const store = stores[current];
+    navNo.textContent = `${store.n} / 10 · STORE PROPOSAL`;
+    navName.textContent = store.name;
+    content.innerHTML = `
+      <article class="proposal-document" role="document">
+        <section class="proposal-hero">
+          <div class="proposal-visual">
+            <img src="${store.images[0]}" alt="${esc(store.name)}策划主视觉" loading="eager">
+            <div class="proposal-visual-in">
+              <span class="proposal-kicker">${store.n} · XUNMEI STORE</span>
+              <h2>${store.name}</h2>
+              <span class="proposal-area">${store.area}</span>
+            </div>
+          </div>
+          <div class="proposal-summary">
+            <h3>${esc(store.positioning)}</h3>
+            <dl>
+              <div><dt>Demand Insight</dt><dd>${esc(store.demand)}</dd></div>
+              <div><dt>Commercial Value</dt><dd>${esc(store.value)}</dd></div>
+              <div><dt>Strategy</dt><dd>${esc(store.strategy)}</dd></div>
+            </dl>
+          </div>
+        </section>
+        <section class="proposal-section">
+          <div class="proposal-head"><small>01 · PRODUCT PLANNING</small><h3>产品规划</h3></div>
+          <div class="proposal-grid">${listCards(store.products, '产品')}</div>
+        </section>
+        <section class="proposal-section">
+          <div class="proposal-head"><small>02 · FEATURE PLANNING</small><h3>特色策划</h3></div>
+          <div class="proposal-grid two">${listCards(store.features, '重点')}</div>
+        </section>
+        <section class="proposal-section">
+          <div class="proposal-head"><small>03 · POWERPOINT PROPOSAL IMAGES</small><h3>原方案图片</h3></div>
+          <div class="proposal-image-grid">
+            ${store.images.map((src, imageIndex) => `
+              <figure class="proposal-image">
+                <img src="${src}" alt="${esc(store.name)} PowerPoint提案图片 ${imageIndex + 1}" loading="${imageIndex ? 'lazy' : 'eager'}">
+                <figcaption>SLIDE ASSET · ${String(imageIndex + 1).padStart(2, '0')}</figcaption>
+              </figure>
+            `).join('')}
+          </div>
+        </section>
+        <div class="proposal-controls">
+          <button class="proposal-btn" type="button" data-dir="-1">← 上一家</button>
+          <button class="proposal-btn" type="button" data-dir="1">下一家 →</button>
+        </div>
+      </article>
+    `;
+    content.querySelectorAll('[data-dir]').forEach((button) => {
+      button.addEventListener('click', () => {
+        render(current + Number(button.dataset.dir));
+        modal.scrollTo({ top: 0, behavior: 'smooth' });
+        close.focus();
+      });
+    });
+  }
+
+  function openProposal(card) {
+    lastTrigger = card;
+    render(Number(card.dataset.store));
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('proposal-lock');
+    close.focus();
+  }
+
+  function closeProposal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('proposal-lock');
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  document.querySelectorAll('.proposal-card').forEach((card) => {
+    card.onclick = () => openProposal(card);
+    card.onkeydown = (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProposal(card);
+      }
+    };
+  });
+
+  close.onclick = closeProposal;
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeProposal();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (!modal.classList.contains('open')) return;
+    if (event.key === 'Escape') closeProposal();
+    if (event.key === 'ArrowLeft') render(current - 1);
+    if (event.key === 'ArrowRight') render(current + 1);
+  });
+})();
