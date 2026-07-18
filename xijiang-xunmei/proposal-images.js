@@ -136,40 +136,98 @@
 
   const style = document.createElement('style');
   style.textContent = `
-    .proposal-modal{background:rgba(17,20,22,.76);backdrop-filter:blur(12px)}
+    body{font-kerning:normal;text-rendering:optimizeLegibility}
+    .section{padding-top:112px;padding-bottom:112px}
+    .wrap{max-width:1180px}
+    .head{grid-template-columns:160px minmax(0,1fr);gap:58px;margin-bottom:58px}
+    .no,.principle .n,.pc small,.exp small,.phase small{font-size:10px;letter-spacing:.18em;font-weight:500}
+    .title h2{font-weight:500;line-height:1.22;letter-spacing:.02em}
+    .title p,.statement p,.finance-copy p{line-height:2;color:#586168}
+    .statement,.principle,.ops,.finance-copy,.gov-card,.stop{border-color:rgba(160,150,140,.32)}
+    .principle,.ops,.gov-card,.finance-copy{box-shadow:0 12px 34px rgba(28,32,36,.035)}
+    .principle{padding:32px 26px;min-height:248px;border-top-width:1px}
+    .principle h3,.ops h3,.gov-card h3{font-weight:500}
+    .tag{border-color:rgba(168,96,47,.26);background:rgba(255,255,255,.36)}
+    .route{gap:34px}
+    .map{border-color:rgba(255,255,255,.08);box-shadow:0 22px 60px rgba(28,32,36,.08)}
+    .stop{padding:20px 18px}
+    .stop b{font-weight:500;line-height:1.35}
+    .stop p{line-height:1.78;color:#626b72}
+    .proposal-card{padding-right:86px;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background-color .28s ease}
+    .proposal-card:after{content:"查看详情";right:18px;top:18px;color:rgba(168,96,47,.86);letter-spacing:.12em}
+    .proposal-card:before{width:26px;height:26px;right:18px;bottom:18px;border-color:rgba(168,96,47,.24);font-size:12px}
+    .proposal-card:hover,.proposal-card:focus-visible{transform:translateY(-2px);border-color:rgba(168,96,47,.34);box-shadow:0 10px 28px rgba(28,32,36,.075);background:#fff}
+    .proposal-card:hover:before,.proposal-card:focus-visible:before{background:var(--cu);border-color:var(--cu);color:#fff;transform:rotate(45deg)}
+    .portfolio,.ops-grid,.gov,.principles{gap:18px}
+    .pc,.phase{box-shadow:0 18px 48px rgba(0,0,0,.08)}
+    .pc-body{padding:28px}
+    .pc h3,.phase h3{font-weight:500}
+    .scenario{gap:14px}
+    .srow{border-color:rgba(160,150,140,.32);box-shadow:0 12px 30px rgba(28,32,36,.03)}
+    .cta{padding-top:118px;padding-bottom:118px}
+    .proposal-modal{background:rgba(17,20,22,.68);backdrop-filter:blur(10px)}
     .proposal-modal.open{display:block}
-    .proposal-nav{height:70px}
-    .proposal-wrap{max-width:1180px;padding:34px 22px 72px}
-    .proposal-document{background:var(--paper);box-shadow:0 24px 80px rgba(0,0,0,.28);min-height:calc(100svh - 120px)}
-    .proposal-hero{grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);min-height:560px}
+    .proposal-nav{height:76px;padding:0 32px;background:rgba(28,32,36,.92);border-bottom:1px solid rgba(255,255,255,.08)}
+    .proposal-nav b{font-weight:500;letter-spacing:.06em}
+    .proposal-nav small{letter-spacing:.16em}
+    .proposal-close{transition:background-color .22s ease,color .22s ease,border-color .22s ease}
+    .proposal-wrap{max-width:1160px;padding:38px 24px 78px}
+    .proposal-document{background:var(--paper);box-shadow:0 28px 90px rgba(0,0,0,.24);min-height:calc(100svh - 130px)}
+    .proposal-hero{grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);min-height:620px;background:#202428}
     .proposal-visual{background:none}
-    .proposal-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .proposal-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,20,22,.08),rgba(17,20,22,.72))}
-    .proposal-visual-in{z-index:2}
-    .proposal-summary{gap:22px}
-    .proposal-summary dl{display:grid;gap:16px;margin-top:6px}
-    .proposal-summary dt{color:var(--cu2);font:10px var(--mono);letter-spacing:.16em;text-transform:uppercase}
-    .proposal-summary dd{font:15px/1.85 var(--serif);color:#d9dee1}
-    .proposal-section{padding:58px 42px}
+    .proposal-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.01)}
+    .proposal-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,20,22,.04) 35%,rgba(17,20,22,.68))}
+    .proposal-visual-in{z-index:2;left:48px;right:44px;bottom:48px}
+    .proposal-visual h2{font-size:clamp(46px,6.2vw,78px);line-height:1.08;letter-spacing:.04em;margin:16px 0 18px}
+    .proposal-kicker{letter-spacing:.2em}
+    .proposal-area{border-color:rgba(255,255,255,.34);background:rgba(17,20,22,.18)}
+    .proposal-summary{gap:28px;padding:64px 52px;background:#24292e}
+    .proposal-summary h3{font-size:30px;line-height:1.55;font-weight:500;letter-spacing:.02em}
+    .proposal-summary dl{display:grid;gap:22px;margin-top:4px}
+    .proposal-summary dt{color:var(--cu2);font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase}
+    .proposal-summary dd{font:15px/1.95 var(--serif);color:#d6dcdf}
+    .proposal-section{padding:66px 52px;border-bottom-color:rgba(160,150,140,.25)}
     .proposal-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .proposal-image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-    .proposal-image{margin:0;background:#202428;overflow:hidden;min-width:0}
+    .proposal-head{grid-template-columns:150px minmax(0,1fr);gap:34px;margin-bottom:32px}
+    .proposal-head small{font-size:10px;letter-spacing:.18em;font-weight:500}
+    .proposal-head h3{font-size:clamp(28px,3.5vw,46px);line-height:1.25;letter-spacing:.02em}
+    .proposal-item{padding:26px 24px;min-height:150px;border-color:rgba(160,150,140,.28);border-top-width:1px;box-shadow:0 10px 28px rgba(28,32,36,.025)}
+    .proposal-item b{font-weight:500}
+    .proposal-item p{line-height:1.9;color:#5f6970}
+    .proposal-image-section{padding-top:18px}
+    .proposal-image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .proposal-image{margin:0;background:#f7f4ef;overflow:hidden;min-width:0;border:1px solid rgba(160,150,140,.22)}
     .proposal-image:first-child{grid-column:span 2;grid-row:span 2}
-    .proposal-image img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
+    .proposal-image img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:contain;background:#f7f4ef;transition:transform .45s ease}
     .proposal-image:first-child img{aspect-ratio:16/10}
-    .proposal-image figcaption{padding:9px 11px;color:#667078;background:#fff;font:10px var(--mono);letter-spacing:.08em}
-    .proposal-controls{padding:28px 42px 42px}
+    .proposal-image:hover img{transform:scale(1.025)}
+    .proposal-image figcaption{display:none}
+    .proposal-controls{padding:30px 52px 50px}
     .proposal-btn{min-width:120px}
+    .proposal-btn{border-color:rgba(160,150,140,.32);transition:border-color .22s ease,color .22s ease,background-color .22s ease}
     @media(max-width:860px){
+      .section{padding-top:78px;padding-bottom:78px}
+      .head{gap:18px;margin-bottom:42px}
+      .title p{font-size:16px;line-height:1.9}
+      .proposal-card{padding-right:74px}
       .proposal-wrap{padding:16px 12px 54px}
       .proposal-document{min-height:calc(100svh - 86px)}
       .proposal-hero{grid-template-columns:1fr;min-height:0}
-      .proposal-visual{min-height:54svh}
-      .proposal-summary{padding:30px 24px}
-      .proposal-section{padding:38px 22px}
+      .proposal-visual{min-height:58svh}
+      .proposal-visual-in{left:28px;right:26px;bottom:34px}
+      .proposal-summary{padding:34px 26px}
+      .proposal-summary h3{font-size:25px}
+      .proposal-section{padding:42px 24px}
+      .proposal-head{grid-template-columns:1fr;gap:12px}
       .proposal-grid.two,.proposal-image-grid{grid-template-columns:1fr}
       .proposal-image:first-child{grid-column:auto;grid-row:auto}
-      .proposal-controls{padding:18px 22px 28px}
+      .proposal-image img,.proposal-image:first-child img{aspect-ratio:auto;max-height:none}
+      .proposal-controls{padding:20px 24px 32px}
+    }
+    @media(max-width:700px){
+      .principle,.ops,.gov-card,.finance-copy{box-shadow:none}
+      .proposal-visual h2{font-size:42px}
+      .proposal-image-grid{gap:14px}
     }
   `;
   document.head.appendChild(style);
@@ -224,13 +282,12 @@
           <div class="proposal-head"><small>02 · FEATURE PLANNING</small><h3>特色策划</h3></div>
           <div class="proposal-grid two">${listCards(store.features, '重点')}</div>
         </section>
-        <section class="proposal-section">
-          <div class="proposal-head"><small>03 · POWERPOINT PROPOSAL IMAGES</small><h3>原方案图片</h3></div>
+        <section class="proposal-section proposal-image-section">
           <div class="proposal-image-grid">
             ${store.images.map((src, imageIndex) => `
               <figure class="proposal-image">
-                <img src="${src}" alt="${esc(store.name)} PowerPoint提案图片 ${imageIndex + 1}" loading="${imageIndex ? 'lazy' : 'eager'}">
-                <figcaption>SLIDE ASSET · ${String(imageIndex + 1).padStart(2, '0')}</figcaption>
+                <img src="${src}" alt="${esc(store.name)}策划参考图片 ${imageIndex + 1}" loading="${imageIndex ? 'lazy' : 'eager'}">
+                <figcaption>${esc(store.name)} · ${String(imageIndex + 1).padStart(2, '0')}</figcaption>
               </figure>
             `).join('')}
           </div>
@@ -256,6 +313,7 @@
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('proposal-lock');
+    modal.scrollTo({ top: 0 });
     close.focus();
   }
 
