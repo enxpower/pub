@@ -1,0 +1,44 @@
+name: One-time Xijiang title copy update
+
+on:
+  push:
+    paths:
+      - .github/workflows/one-time-xijiang-copy-replace.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-copy:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Replace 世界级 with 文创
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('xijiang-xunmei/index.html')
+          text = path.read_text(encoding='utf-8')
+          original = text
+
+          text = text.replace('世界级文旅商业运营体系', '文创商业运营体系')
+          text = text.replace('世界级商业运营总体方案', '文创商业运营总体方案')
+          text = text.replace('世界级', '文创')
+
+          if text == original:
+              raise SystemExit('No matching copy found; refusing to create a no-op commit.')
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit copy-only change and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/one-time-xijiang-copy-replace.yml
+          git add xijiang-xunmei/index.html
+          git commit -m "docs: replace Xijiang world-class wording with cultural creative"
+          git push
