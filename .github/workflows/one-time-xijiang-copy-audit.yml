@@ -1,0 +1,89 @@
+name: One-time Xijiang copy audit
+
+on:
+  push:
+    paths:
+      - .github/workflows/one-time-xijiang-copy-audit.yml
+
+permissions:
+  contents: write
+
+jobs:
+  audit-copy:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract client-facing copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import re
+
+          root = Path('xijiang-xunmei')
+          html = (root / 'index.html').read_text(encoding='utf-8')
+          js = (root / 'proposal-images.js').read_text(encoding='utf-8')
+
+          class VisibleTextParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.skip = 0
+                  self.texts = []
+                  self.meta = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag in {'style', 'script'}:
+                      self.skip += 1
+                  if tag == 'meta' and attrs.get('content'):
+                      name = attrs.get('name') or attrs.get('property') or 'meta'
+                      self.meta.append(f'{name}: {attrs["content"]}')
+              def handle_endtag(self, tag):
+                  if tag in {'style', 'script'} and self.skip:
+                      self.skip -= 1
+              def handle_data(self, data):
+                  if not self.skip:
+                      s = re.sub(r'\s+', ' ', data).strip()
+                      if s:
+                          self.texts.append(s)
+
+          p = VisibleTextParser()
+          p.feed(html)
+
+          report = []
+          report.append('=== META ===')
+          report.extend(p.meta)
+          report.append('')
+          report.append('=== INDEX VISIBLE TEXT ===')
+          report.extend(p.texts)
+
+          report.append('')
+          report.append('=== STORE PROPOSAL COPY ===')
+          stores_block = js.split('const stores = [', 1)[1].split('].map((store, index)', 1)[0]
+          for key in ['name', 'area', 'positioning', 'demand', 'value', 'strategy']:
+              for m in re.finditer(rf"\b{key}:\s*'((?:\\'|[^'])*)'", stores_block):
+                  report.append(f'{key}: {m.group(1)}')
+          for key in ['products', 'features']:
+              for m in re.finditer(rf"\b{key}:\s*\[(.*?)\]", stores_block, re.S):
+                  vals = re.findall(r"'((?:\\'|[^'])*)'", m.group(1))
+                  report.append(f'{key}: ' + ' | '.join(vals))
+
+          report.append('')
+          report.append('=== CLIENT-FACING RENDER LABELS ===')
+          for literal in re.findall(r"['\"]([^'\"\n]{2,80})['\"]", js):
+              if any(token in literal for token in ['产品规划','特色策划','上一家','下一家','打开导航菜单','策划主视觉','策划参考图片','Demand Insight','Commercial Value','Strategy','XUNMEI STORE']):
+                  report.append(literal)
+
+          out = root / '_copy-audit.txt'
+          out.write_text('\n'.join(report) + '\n', encoding='utf-8')
+          PY
+
+      - name: Commit report and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/one-time-xijiang-copy-audit.yml
+          git add xijiang-xunmei/_copy-audit.txt
+          git commit -m "chore: add temporary Xijiang copy audit report"
+          git push
