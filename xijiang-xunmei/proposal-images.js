@@ -168,8 +168,10 @@
     .proposal-modal{background:rgba(17,20,22,.68);backdrop-filter:blur(10px)}
     .proposal-modal.open{display:block}
     .proposal-nav{height:76px;padding:0 32px;background:rgba(28,32,36,.92);border-bottom:1px solid rgba(255,255,255,.08)}
+    .proposal-nav>div{display:flex;align-items:baseline;gap:16px;min-width:0}
     .proposal-nav b{font-weight:500;letter-spacing:.06em}
-    .proposal-nav small{letter-spacing:.16em;color:rgba(199,123,69,.9)}
+    .proposal-nav small{flex:0 0 auto;letter-spacing:.16em;color:rgba(199,123,69,.9)}
+    .proposal-nav b{min-width:0;overflow-wrap:anywhere}
     .proposal-close{transition:background-color .22s ease,color .22s ease,border-color .22s ease}
     .proposal-wrap{max-width:1160px;padding:38px 24px 78px}
     .proposal-document{background:var(--paper);box-shadow:0 28px 90px rgba(0,0,0,.24);min-height:calc(100svh - 130px)}
@@ -228,6 +230,11 @@
       .proposal-controls{padding:20px 24px 32px}
     }
     @media(max-width:700px){
+      .navbox{z-index:1100}
+      .menu{position:relative;z-index:2;display:grid;place-items:center;width:44px;height:44px;margin-left:auto;cursor:pointer;pointer-events:auto}
+      .links{z-index:1;pointer-events:none}
+      .links.open{pointer-events:auto}
+      body.menu-lock{overflow:hidden}
       .principle,.ops,.gov-card,.finance-copy{box-shadow:none}
       .proposal-visual h2{font-size:42px}
       .proposal-image-grid{gap:14px}
@@ -274,6 +281,13 @@
       .cta p{font-size:16px;line-height:1.82}
       footer{padding:30px 22px}
       .foot{gap:16px}
+      .proposal-nav{padding:0 16px;gap:12px}
+      .proposal-nav>div{gap:12px;align-items:center}
+      .proposal-nav small{font-size:9px;letter-spacing:.12em}
+      .proposal-nav b{font-size:16px;line-height:1.3;letter-spacing:.04em}
+      .proposal-grid{gap:11px}
+      .proposal-item{min-height:0;padding:18px 18px;background:rgba(255,255,255,.78)}
+      .proposal-item b{font-size:17px;line-height:1.55}
     }
   `;
   document.head.appendChild(style);
@@ -284,6 +298,42 @@
   const navName = document.getElementById('proposalNavName');
   const close = modal && modal.querySelector('.proposal-close');
   if (!modal || !content || !navNo || !navName || !close) return;
+
+  const menuButton = document.querySelector('.menu');
+  const links = document.getElementById('links');
+  if (menuButton && links) {
+    menuButton.type = 'button';
+    menuButton.setAttribute('aria-label', menuButton.getAttribute('aria-label') || '打开导航菜单');
+    menuButton.setAttribute('aria-controls', 'links');
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.onclick = null;
+
+    const setMenu = (open) => {
+      links.classList.toggle('open', open);
+      menuButton.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('menu-lock', open);
+    };
+
+    menuButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setMenu(!links.classList.contains('open'));
+    });
+    links.addEventListener('click', (event) => {
+      const link = event.target.closest('a');
+      if (link) setMenu(false);
+    });
+    document.addEventListener('click', (event) => {
+      if (!links.classList.contains('open')) return;
+      if (event.target.closest('.navbox')) return;
+      setMenu(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && links.classList.contains('open')) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
+  }
 
   let current = 0;
   let lastTrigger = null;
