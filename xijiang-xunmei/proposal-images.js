@@ -169,7 +169,7 @@
     .proposal-modal.open{display:block}
     .proposal-nav{height:76px;padding:0 32px;background:rgba(28,32,36,.92);border-bottom:1px solid rgba(255,255,255,.08)}
     .proposal-nav b{font-weight:500;letter-spacing:.06em}
-    .proposal-nav small{letter-spacing:.16em}
+    .proposal-nav small{letter-spacing:.16em;color:rgba(199,123,69,.9)}
     .proposal-close{transition:background-color .22s ease,color .22s ease,border-color .22s ease}
     .proposal-wrap{max-width:1160px;padding:38px 24px 78px}
     .proposal-document{background:var(--paper);box-shadow:0 28px 90px rgba(0,0,0,.24);min-height:calc(100svh - 130px)}
@@ -187,19 +187,22 @@
     .proposal-summary dt{color:var(--cu2);font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase}
     .proposal-summary dd{font:15px/1.95 var(--serif);color:#d6dcdf}
     .proposal-section{padding:66px 52px;border-bottom-color:rgba(160,150,140,.25)}
+    .proposal-grid{gap:16px}
     .proposal-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
     .proposal-head{grid-template-columns:150px minmax(0,1fr);gap:34px;margin-bottom:32px}
     .proposal-head small{font-size:10px;letter-spacing:.18em;font-weight:500}
     .proposal-head h3{font-size:clamp(28px,3.5vw,46px);line-height:1.25;letter-spacing:.02em}
-    .proposal-item{padding:26px 24px;min-height:150px;border-color:rgba(160,150,140,.28);border-top-width:1px;box-shadow:0 10px 28px rgba(28,32,36,.025)}
-    .proposal-item b{font-weight:500}
+    .proposal-item{padding:28px 26px;min-height:128px;border:1px solid rgba(160,150,140,.22);border-top-color:rgba(168,96,47,.18);box-shadow:none;background:rgba(255,255,255,.72)}
+    .proposal-item b{display:block;font:500 18px/1.85 var(--serif);letter-spacing:.01em;color:#30363b}
     .proposal-item p{line-height:1.9;color:#5f6970}
-    .proposal-image-section{padding-top:18px}
-    .proposal-image-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .proposal-image{margin:0;background:#f7f4ef;overflow:hidden;min-width:0;border:1px solid rgba(160,150,140,.22)}
-    .proposal-image:first-child{grid-column:span 2;grid-row:span 2}
-    .proposal-image img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:contain;background:#f7f4ef;transition:transform .45s ease}
-    .proposal-image:first-child img{aspect-ratio:16/10}
+    .proposal-image-section{padding-top:24px}
+    .proposal-image-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;align-items:start}
+    .proposal-image{grid-column:span 2;margin:0;background:#f7f4ef;overflow:hidden;min-width:0;border:1px solid rgba(160,150,140,.18)}
+    .proposal-image:nth-child(5n+2),.proposal-image:nth-child(7n+5){grid-column:span 3}
+    .proposal-image:nth-child(6n+4){grid-column:span 4}
+    .proposal-image img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#f7f4ef;transition:transform .45s ease}
+    .proposal-image:nth-child(5n+2) img,.proposal-image:nth-child(7n+5) img{aspect-ratio:5/4}
+    .proposal-image:nth-child(6n+4) img{aspect-ratio:16/10}
     .proposal-image:hover img{transform:scale(1.025)}
     .proposal-image figcaption{display:none}
     .proposal-controls{padding:30px 52px 50px}
@@ -220,8 +223,8 @@
       .proposal-section{padding:42px 24px}
       .proposal-head{grid-template-columns:1fr;gap:12px}
       .proposal-grid.two,.proposal-image-grid{grid-template-columns:1fr}
-      .proposal-image:first-child{grid-column:auto;grid-row:auto}
-      .proposal-image img,.proposal-image:first-child img{aspect-ratio:auto;max-height:none}
+      .proposal-image,.proposal-image:nth-child(5n+2),.proposal-image:nth-child(7n+5),.proposal-image:nth-child(6n+4){grid-column:auto}
+      .proposal-image img,.proposal-image:nth-child(5n+2) img,.proposal-image:nth-child(7n+5) img,.proposal-image:nth-child(6n+4) img{aspect-ratio:auto;max-height:none}
       .proposal-controls{padding:20px 24px 32px}
     }
     @media(max-width:700px){
@@ -242,17 +245,16 @@
   let current = 0;
   let lastTrigger = null;
   const esc = (value) => String(value).replace(/[&<>"]/g, (match) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[match]));
-  const listCards = (items, label) => items.map((item, index) => `
+  const listCards = (items) => items.map((item) => `
     <div class="proposal-item">
-      <b>${String(index + 1).padStart(2, '0')} · ${label}</b>
-      <p>${esc(item)}</p>
+      <b>${esc(item)}</b>
     </div>
   `).join('');
 
   function render(index) {
     current = (index + stores.length) % stores.length;
     const store = stores[current];
-    navNo.textContent = `${store.n} / 10 · STORE PROPOSAL`;
+    navNo.textContent = `${store.n} / 10`;
     navName.textContent = store.name;
     content.innerHTML = `
       <article class="proposal-document" role="document">
