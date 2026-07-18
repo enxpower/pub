@@ -232,6 +232,49 @@
       .proposal-visual h2{font-size:42px}
       .proposal-image-grid{gap:14px}
     }
+    @media(max-width:767px){
+      .section{padding:64px 22px}
+      .wrap{max-width:100%}
+      .head{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:30px}
+      .no{padding-top:0;font-size:10px;line-height:1.4;letter-spacing:.16em}
+      .title h2{font-size:clamp(32px,9vw,44px);line-height:1.16;letter-spacing:.01em;text-wrap:balance}
+      .title p{margin-top:16px;font-size:16px;line-height:1.82;max-width:none}
+      .split,.route,.finance{grid-template-columns:1fr;gap:20px}
+      .principles,.portfolio,.ops-grid,.gov,.roadmap,.route-list{grid-template-columns:1fr;gap:12px}
+      .statement{padding:26px 22px}
+      .statement blockquote{font-size:clamp(24px,7vw,34px);line-height:1.38}
+      .statement p{font-size:15px;line-height:1.82}
+      .vision-art{min-height:340px;padding:26px}
+      .vtext b{font-size:25px;line-height:1.35}
+      .vpoints{left:26px;right:26px;bottom:24px}
+      .principle,.ops,.gov-card,.phase,.finance-copy{padding:23px 21px;min-height:0}
+      .principle h3,.ops h3,.gov-card h3,.phase h3{font-size:21px;line-height:1.35;margin:14px 0 10px}
+      .principle p,.ops p,.gov-card p,.phase p,.phase ul{font-size:14px;line-height:1.78}
+      .map{min-height:410px;padding:20px}
+      .stop{padding:17px 16px}
+      .stop b{font-size:16px}
+      .stop p{font-size:12px;line-height:1.65}
+      .pc-body{padding:22px}
+      .pc h3{font-size:22px;line-height:1.35}
+      .pc p,.pc ul{font-size:13px;line-height:1.75}
+      .experience{grid-template-columns:1fr;grid-auto-rows:auto;gap:12px}
+      .exp:nth-child(n){grid-column:1;grid-row:auto}
+      .exp{min-height:168px;padding:22px}
+      .exp b{font-size:22px;line-height:1.35;margin-top:14px}
+      .exp p{font-size:13px;line-height:1.7}
+      .ico{width:34px;height:34px;font-size:12px}
+      .finance-copy h3{font-size:26px;line-height:1.32}
+      .finance-copy p{font-size:15px;line-height:1.82}
+      .srow{grid-template-columns:1fr;gap:9px;padding:16px}
+      .srow strong{text-align:left;font-size:19px}
+      .note{font-size:12px;line-height:1.7}
+      .phase{min-height:0}
+      .cta{padding:72px 22px}
+      .cta h2{font-size:clamp(34px,9vw,44px);line-height:1.18}
+      .cta p{font-size:16px;line-height:1.82}
+      footer{padding:30px 22px}
+      .foot{gap:16px}
+    }
   `;
   document.head.appendChild(style);
 
