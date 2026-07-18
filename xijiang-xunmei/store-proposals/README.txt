@@ -1,0 +1,1 @@
+Store proposal images rendered from the original client PPT, slides 23–35. Image assets are added in the next commit.
