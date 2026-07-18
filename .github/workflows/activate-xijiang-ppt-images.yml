@@ -1,0 +1,33 @@
+name: Activate Xijiang PPT Images
+on:
+  push:
+    paths:
+      - '.github/workflows/activate-xijiang-ppt-images.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  activate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attach original PPT visuals
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('xijiang-xunmei/index.html')
+          s=p.read_text(encoding='utf-8')
+          old='<script src="proposal-images.js?v=20260718-3"></script>'
+          tags='<script src="proposal-sprite.js?v=20260718-4"></script><script src="proposal-images.js?v=20260718-4"></script>'
+          s=s.replace(old,'')
+          if tags not in s:
+              s=s.replace('</body>',tags+'</body>')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit activation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add xijiang-xunmei/index.html
+          git diff --cached --quiet || git commit -m "Activate original PPT images in ten store proposals"
+          git push
