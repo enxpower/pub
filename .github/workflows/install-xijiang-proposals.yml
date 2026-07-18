@@ -1,0 +1,66 @@
+name: Install Xijiang Store Proposals
+
+on:
+  push:
+    paths:
+      - '.github/workflows/install-xijiang-proposals.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build interactive store proposals
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, re
+          p=Path('xijiang-xunmei/index.html')
+          s=p.read_text(encoding='utf-8')
+          mark='data-xijiang-proposal-ready'
+          if mark in s:
+              print('already installed')
+              raise SystemExit(0)
+          stores=[
+          {'n':'01','name':'树影茶歇站','area':'21.60㎡','role':'启程补给 · 地标首购 · 第一打卡点','insight':'位于寻美栈道第一站，承接游客进入栈道后的即时补给、天气装备与第一处拍照记忆。','products':['雷山银球风味茶','西江苗家风味冰浆','能量补给食品','苗寨地标冰箱贴','防雨御寒装备','自拍杆与滤镜'],'design':['打造不同高度的苗族银冠墙，满足不同身高游客互动打卡','雷山银球专属杯身识别与银球装饰带','开发西江全景、银帽大门、项圈广场、铜鼓广场、风雨桥等地标冰箱贴'],'value':['低门槛首购','天气刚需','首站打卡','地标商品']},
+          {'n':'02','name':'深山茶室','area':'9㎡','role':'登高静坐 · 贵州抹茶 · 山景茶歇','insight':'以小体量高氛围空间承接登高后的休憩需求，让茶歇与山景成为同一个消费场景。','products':['贵州抹茶风味茶饮','苗家唯美茶点','抹茶生活方式产品','千户苗寨全景小夜灯'],'design':['以静谧、留白和自然材质强化深山茶室气质','设置面向苗寨的最佳观景座位','产品包装采用低饱和苗岭色系'],'value':['高景观溢价','短时高转化','轻量运营','情绪消费']},
+          {'n':'03','name':'万物有灵','area':'54㎡','role':'旗舰文创 · 非遗生活化 · 限定首发','insight':'承担寻美栈道旗舰文创店角色，集中展示西江地标、非遗工艺、在地特产与原创限定产品。','products':['地标冰箱贴与透卡','银饰、刺绣、蜡染','贵州茶、苗医药、苗寨零食','护手霜、香氛等日化','苗族风格时尚单品','黄小西西江限定系列'],'design':['建立统一的西江限定产品视觉系统','以非遗时尚化、生活化为主要开发方向','设置限定首发、联名发布与直播展示区'],'value':['品牌旗舰','爆款首发','高客单文创','IP资产沉淀']},
+          {'n':'04','name':'种子暗光','area':'33.66㎡','role':'苗族神话 · 暗光咖啡 · 祈福记忆','insight':'以苗族神话、种子与祈福意象构建暗光沉浸空间，形成栈道中段具有强记忆点的文化咖啡馆。','products':['苗家特色风味咖啡','暗黑系限定包装','苗家特色甜品','苗疆种子祈福盲盒'],'design':['以暗光、局部照明和神话纹样构建夜间氛围','设置祈福盲盒与互动装置','形成适合短视频传播的强视觉场景'],'value':['夜游记忆','文化沉浸','社交传播','主题零售']},
+          {'n':'05','name':'云上咖啡','area':'41.20㎡','role':'全景窗口 · 日咖夜酒 · 高峰夜游','insight':'依托高位全景窗口打造日咖夜酒场景，以贵州冠军咖啡、限定特调和夜景延长游客停留。','products':['贵州冠军咖啡限定特调','苗寨全景限定咖啡','西江限定鸡尾酒','贵州精酿','原创蜡染甜品'],'design':['面向苗寨设置最佳全景座席','白天咖啡、夜间酒饮双场景切换','以高品质主理人联名提升空间调性'],'value':['景观溢价','夜间消费','高峰停留','主理人联名']},
+          {'n':'06','name':'苗家的茶','area':'24.04㎡','role':'药食同源 · 草本饮品 · 在地生活','insight':'以苗家传统草本配方和药食同源理念，构建具有在地知识与日常生活温度的茶饮空间。','products':['百草苗茶','刺梨折耳根草本饮','益肝草凉茶','藤茶','木姜子青草饮','青橄榄润喉饮','苗疆草本日化'],'design':['传统配方由在地居民参与整理与讲述','建立草本原料展示与知识说明','产品表达避免医疗化，突出文化与日常饮用体验'],'value':['在地知识','社区参与','健康茶饮','伴手礼延伸']},
+          {'n':'07','name':'非遗工坊','area':'10.89㎡','role':'银饰刺绣蜡染 · 手作体验 · 共创销售','insight':'将银饰、刺绣、蜡染从静态陈列升级为可观看、可参与、可购买的非遗体验节点。','products':['银饰体验与小件产品','刺绣体验与生活用品','蜡染体验与时尚单品','非遗共创限定系列'],'design':['建立可视化手作台与小型体验课程','优先与西江本地居民和手艺人合作','让制作过程本身成为内容与销售场景'],'value':['非遗活化','社区收益','体验转化','内容生产']},
+          {'n':'08','name':'蝶泉蜜语','area':'10.89㎡','role':'蜂蜜食品 · 蜂蜡日化 · 伴手礼','insight':'依托雷山县蜂产业基础，打造从饮品、食品到日化的蜂蜜主题轻零售空间。','products':['蜂蜜主题饮品','蜂胶糖与一口蜂胶','盒装蜂产品','蜂蜜唇膏','蜂蜜香皂','蜂蜜护手霜','蜂蜡产品'],'design':['以蝶与蜂巢形成统一识别系统','设置蜂蜜品鉴与产品故事展示','兼顾即时饮用和离店伴手礼两类消费'],'value':['产业联动','高复购产品','轻体量运营','伴手礼转化']},
+          {'n':'09','name':'苗境幻影','area':'10.89㎡','role':'苗疆美学 · 山系户外 · 青年时尚','insight':'将苗族纹样与山系户外生活方式结合，形成面向年轻游客的轻时尚零售节点。','products':['苗族风格包袋','眼镜与魔术巾','肤感衣与皮肤衣','山系配饰','咖啡渣、板蓝根渣等再生材料产品'],'design':['以苗疆纹样建立当代时尚语言','强调轻量、易穿、易拍、易带走','形成青年化、户外化和环保化产品矩阵'],'value':['年轻客群','时尚传播','高毛利配饰','可持续叙事']},
+          {'n':'10','name':'诗句的灯小厨','area':'31.68㎡','role':'风景收尾 · 轻餐慢酒 · 夜间停留','insight':'作为寻美栈道终点餐饮空间，以俯瞰苗寨的景观、轻餐与慢酒完成整条消费叙事的收尾。','products':['黑毛猪与小黄牛汉堡','苗寨沙拉','苗寨腊味拼盘','行匠精酿','抹茶精酿','苗寨米酒','苗寨限定特调'],'design':['以窗景和外摆组织终点停留','菜单强调当地食材的现代化表达','通过灯光、诗句和夜景形成夜间记忆'],'value':['终点停留','餐饮客单','夜游延时','完整体验收束']}
+          ]
+          idx=0
+          def card(m):
+              nonlocal_idx=None
+              global idx
+              if idx>=10:return m.group(0)
+              st=stores[idx];idx+=1
+              return f'<div class="stop proposal-card" role="button" tabindex="0" data-store="{idx-1}" aria-label="查看{st["name"]}完整策划案">'
+          s=re.sub(r'<div class="stop">',card,s,count=10)
+          css='''
+          .proposal-card{position:relative;cursor:pointer;padding-right:92px;transition:.25s ease;overflow:hidden}.proposal-card:after{content:"查看策划案";position:absolute;right:16px;top:16px;color:var(--cu);font:9px var(--mono);letter-spacing:.08em}.proposal-card:before{content:"↗";position:absolute;right:18px;bottom:15px;width:28px;height:28px;border:1px solid #d7c8bc;border-radius:50%;display:grid;place-items:center;color:var(--cu);transition:.25s}.proposal-card:hover,.proposal-card:focus-visible{transform:translateY(-3px);border-color:#cdb7a6;box-shadow:0 14px 34px rgba(28,32,36,.09);outline:none}.proposal-card:hover:before,.proposal-card:focus-visible:before{background:var(--cu);color:#fff;transform:rotate(45deg)}
+          .proposal-modal{position:fixed;inset:0;z-index:1200;display:none;background:#fdfcfa;color:var(--g);overflow:auto}.proposal-modal.open{display:block}.proposal-nav{position:sticky;top:0;z-index:5;height:72px;display:flex;align-items:center;gap:18px;padding:0 28px;background:rgba(28,32,36,.96);color:#fff;backdrop-filter:blur(15px)}.proposal-nav b{font:500 17px var(--serif);letter-spacing:.08em}.proposal-nav small{color:var(--cu2);font:9px var(--mono);letter-spacing:.14em}.proposal-close{margin-left:auto;width:42px;height:42px;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:none;color:#fff;font-size:24px;cursor:pointer}.proposal-close:hover{background:#fff;color:#1c2024}.proposal-wrap{max-width:1240px;margin:auto;padding:64px 26px 80px}.proposal-hero{display:grid;grid-template-columns:1.15fr .85fr;min-height:520px;background:#1c2024;color:#fff}.proposal-visual{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(51,75,61,.92),rgba(28,32,36,.96)),url('og-image.jpg') center/cover}.proposal-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px}.proposal-visual-in{position:absolute;inset:auto 42px 40px}.proposal-kicker{color:var(--cu2);font:10px var(--mono);letter-spacing:.18em}.proposal-visual h2{font:500 clamp(46px,7vw,88px)/1.02 var(--serif);margin:18px 0}.proposal-area{display:inline-block;border:1px solid rgba(255,255,255,.3);padding:8px 12px;font:11px var(--mono);letter-spacing:.1em}.proposal-summary{padding:48px 42px;display:flex;flex-direction:column;justify-content:center;background:#252a2f}.proposal-summary h3{font:500 28px/1.45 var(--serif);color:#fff}.proposal-summary p{font:15px/1.95 var(--serif);color:#c4cacf;margin-top:24px}.proposal-section{padding:70px 0;border-bottom:1px solid var(--hair)}.proposal-head{display:grid;grid-template-columns:180px 1fr;gap:38px;margin-bottom:34px}.proposal-head small{color:var(--cu);font:10px var(--mono);letter-spacing:.16em}.proposal-head h3{font:500 clamp(30px,4vw,52px)/1.2 var(--serif)}.proposal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.proposal-item{border-top:2px solid var(--cu);background:#fff;padding:24px;border:1px solid var(--hair);border-top-color:var(--cu);min-height:145px}.proposal-item b{font:600 17px var(--serif)}.proposal-item p{font-size:13px;line-height:1.8;color:#687178;margin-top:10px}.proposal-value{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#d7d1ca}.proposal-value div{background:#1c2024;color:#fff;padding:28px 22px}.proposal-value small{color:var(--cu2);font:9px var(--mono)}.proposal-value b{display:block;font:500 20px var(--serif);margin-top:13px}.proposal-controls{display:flex;justify-content:space-between;gap:12px;padding-top:40px}.proposal-btn{border:1px solid var(--hair);background:#fff;padding:13px 18px;cursor:pointer;font:13px var(--serif)}.proposal-btn:hover{border-color:var(--cu);color:var(--cu)}body.proposal-lock{overflow:hidden}
+          @media(max-width:760px){.proposal-card{padding-right:76px}.proposal-nav{padding:0 16px}.proposal-wrap{padding:28px 16px 50px}.proposal-hero{grid-template-columns:1fr;min-height:0}.proposal-visual{min-height:440px}.proposal-summary{padding:32px 24px}.proposal-head{grid-template-columns:1fr;gap:12px}.proposal-grid{grid-template-columns:1fr}.proposal-value{grid-template-columns:1fr 1fr}.proposal-controls{position:sticky;bottom:0;background:rgba(253,252,250,.95);padding:12px 0}}
+          '''
+          s=s.replace('</style>',css+'</style>',1)
+          modal='''<div class="proposal-modal" id="storeProposal" aria-hidden="true" data-xijiang-proposal-ready><div class="proposal-nav"><div><small id="proposalNavNo"></small><b id="proposalNavName"></b></div><button class="proposal-close" type="button" aria-label="关闭策划案">×</button></div><div class="proposal-wrap" id="proposalContent"></div></div>'''
+          data=json.dumps(stores,ensure_ascii=False)
+          js='''<script>(()=>{const stores=__DATA__,modal=document.getElementById('storeProposal'),content=document.getElementById('proposalContent'),navNo=document.getElementById('proposalNavNo'),navName=document.getElementById('proposalNavName'),close=modal.querySelector('.proposal-close');let current=0,last=null;const esc=x=>String(x).replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));function render(i){current=(i+stores.length)%stores.length;const d=stores[current];navNo.textContent=d.n+' / 10 · STORE PROPOSAL';navName.textContent=d.name;const cards=(arr,lab)=>arr.map((x,j)=>`<div class="proposal-item"><b>${String(j+1).padStart(2,'0')} · ${lab}</b><p>${esc(x)}</p></div>`).join('');content.innerHTML=`<section class="proposal-hero"><div class="proposal-visual"><div class="proposal-visual-in"><span class="proposal-kicker">${d.n} · XUNMEI STORE</span><h2>${d.name}</h2><span class="proposal-area">${d.area}</span></div></div><div class="proposal-summary"><h3>${d.role}</h3><p>${d.insight}</p></div></section><section class="proposal-section"><div class="proposal-head"><small>01 · PRODUCT PLAN</small><h3>产品体系</h3></div><div class="proposal-grid">${cards(d.products,'产品')}</div></section><section class="proposal-section"><div class="proposal-head"><small>02 · EXPERIENCE DESIGN</small><h3>特色设计与体验策划</h3></div><div class="proposal-grid">${cards(d.design,'设计')}</div></section><section class="proposal-section"><div class="proposal-head"><small>03 · COMMERCIAL ROLE</small><h3>在完整消费叙事中的价值</h3></div><div class="proposal-value">${d.value.map((x,j)=>`<div><small>0${j+1}</small><b>${esc(x)}</b></div>`).join('')}</div></section><div class="proposal-controls"><button class="proposal-btn" data-dir="-1">← 上一家</button><button class="proposal-btn" data-dir="1">下一家 →</button></div>`;content.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>{render(current+Number(b.dataset.dir));modal.scrollTo({top:0,behavior:'smooth'})})}function open(card){last=card;render(Number(card.dataset.store));modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('proposal-lock');close.focus()}function shut(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('proposal-lock');if(last)last.focus()}document.querySelectorAll('.proposal-card').forEach(c=>{c.onclick=()=>open(c);c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(c)}}});close.onclick=shut;document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))shut()})})();</script>'''.replace('__DATA__',data)
+          s=s.replace('</body>',modal+js+'</body>',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit live proposal experience
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add xijiang-xunmei/index.html
+          git diff --cached --quiet || git commit -m "Add ten interactive Xijiang store proposals"
+          git push
