@@ -1,0 +1,52 @@
+name: Fix Xijiang Proposal Cards
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-xijiang-proposal-cards.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make ten route cards interactive
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('xijiang-xunmei/index.html')
+          s = p.read_text(encoding='utf-8')
+
+          # Remove any stale proposal-card markers first, then patch the actual
+          # route cards, which include the reveal class in the source HTML.
+          pattern = r'<div class="stop reveal">'
+          count = 0
+
+          def repl(match):
+              global count
+              if count >= 10:
+                  return match.group(0)
+              i = count
+              count += 1
+              return f'<div class="stop reveal proposal-card" role="button" tabindex="0" data-store="{i}" aria-label="查看第{i+1}家店完整策划案">'
+
+          s, n = re.subn(pattern, repl, s, count=10)
+          if n != 10:
+              raise SystemExit(f'Expected 10 route cards, patched {n}')
+
+          p.write_text(s, encoding='utf-8')
+          print('Patched 10 interactive proposal cards')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add xijiang-xunmei/index.html
+          git diff --cached --quiet || git commit -m "Fix ten Xijiang proposal card click targets"
+          git push
