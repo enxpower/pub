@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华夏和 Huaxiahe — 品牌视觉识别手册</title>
+<meta name="description" content="华夏和品牌视觉识别系统 — 东方高端生活方式品牌。品牌故事、标志系统、色彩体系、字体规范、包装系统完整呈现。">
+<meta property="og:title" content="华夏和 Huaxiahe — 品牌视觉识别手册">
+<meta property="og:description" content="东方高端生活方式品牌。视觉识别完整规范。">
+<meta property="og:image" content="https://enxpower.com/huaxiahe/vi/assets/og-image.png">
+<meta property="og:url" content="https://enxpower.com/huaxiahe/vi/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --gold-light:   #CEC9BE;
+  --gold-warm:    #B5A480;
+  --gold:         #9A7F4E;
+  --gold-deep:    #7A6238;
+  --amber:        #614A25;
+  --amber-dark:   #4A3318;
+  --ink:          #1A1612;
+  --charcoal:     #2C2318;
+  --stone:        #453C30;       /* primary body text — high contrast */
+  --stone-light:  #6B5F50;       /* secondary text / labels */
+  --linen:        #EAE4D6;
+  --warm-white:   #F3EFE6;
+  --cream:        #E4DDD0;
+  --parchment:    #DDD5C2;
+
+  --en: 'Cormorant Garamond', Georgia, serif;
+  --zh: 'Noto Serif SC', 'STSong', serif;
+  --mono: 'Courier New', monospace;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body {
+  background: var(--warm-white);
+  color: var(--ink);
+  font-family: var(--en);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   LANGUAGE SWITCH
+   ============================================================ */
+body.zh [data-en] { display:none !important; }
+body.zh [data-zh] { display:block; }
+body.en [data-zh] { display:none !important; }
+body.en [data-en] { display:block; }
+[data-zh], [data-en] { display:none; }
+
+/* inline elements */
+body.zh span[data-en], body.zh a[data-en] { display:none !important; }
+body.zh span[data-zh], body.zh a[data-zh] { display:inline; }
+body.en span[data-en], body.en a[data-en] { display:inline; }
+body.en span[data-zh], body.en a[data-zh] { display:none !important; }
+span[data-zh], span[data-en], a[data-zh], a[data-en] { display:none; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  padding: 20px 48px;
+  display: flex; align-items:center; justify-content:space-between;
+  transition: all 0.4s var(--ease);
+}
+/* Always show a subtle background so links are legible on white hero */
+.nav {
+  background: rgba(243,239,230,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(120,90,40,0.25);
+}
+.nav.scrolled {
+  background: rgba(243,239,230,0.99);
+  border-bottom-color: rgba(120,90,40,0.4);
+}
+.nav-logo {
+  display:flex; align-items:center; gap:12px; text-decoration:none;
+}
+.nav-logo-mark {
+  width:32px; height:32px;
+  /* Force visible on light bg — use amber tint filter */
+  filter: sepia(1) saturate(1.2) brightness(0.6) hue-rotate(-10deg);
+}
+.nav-logo-text {
+  font-family: var(--zh);
+  font-size:15px; font-weight:500;
+  letter-spacing:0.18em;
+  color: var(--amber);
+}
+.nav-right {
+  display:flex; align-items:center; gap:32px;
+}
+.nav-links {
+  display:flex; gap:28px; list-style:none;
+}
+.nav-links a {
+  font-size:11px; font-weight:400;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color: var(--stone);           /* darkened — now legible */
+  text-decoration:none;
+  transition: color 0.3s var(--ease);
+}
+.nav-links a:hover { color: var(--amber); }
+
+/* Language toggle */
+.lang-toggle {
+  display:flex; gap:0; border:1px solid rgba(120,90,40,0.5); border-radius:2px;
+  overflow:hidden;
+}
+.lang-btn {
+  padding: 5px 12px;
+  font-size:10px; letter-spacing:0.18em;
+  font-family: var(--en);
+  background:transparent; border:none; cursor:pointer;
+  color: var(--stone);
+  transition: all 0.25s var(--ease);
+}
+.lang-btn.active {
+  background: var(--amber);
+  color: var(--warm-white);
+}
+.lang-btn:hover:not(.active) {
+  background: rgba(110,82,30,0.22);
+  color: var(--amber);
+}
+
+.nav-hamburger {
+  display:none; flex-direction:column; gap:5px;
+  cursor:pointer; padding:4px;
+}
+.nav-hamburger span {
+  display:block; width:22px; height:1.5px;
+  background:var(--amber);
+  transition: all 0.3s var(--ease);
+}
+
+/* ============================================================
+   HERO  — CONTRAST FIXED
+   ============================================================ */
+.hero {
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center;
+  padding: 100px 24px 72px;
+  background: var(--warm-white);
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 35%, rgba(180,155,115,0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 25% at 15% 85%, rgba(154,127,78,0.12) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-eyebrow {
+  font-size:10px; font-weight:400;
+  letter-spacing:0.4em; text-transform:uppercase;
+  color: var(--amber);             /* deep amber eyebrow */
+  margin-bottom:48px;
+  opacity:0; transform:translateY(10px);
+  animation: fadeUp 0.9s var(--ease) 0.3s forwards;
+}
+.hero-logo-wrap {
+  width:180px; height:180px;
+  margin:0 auto 40px;
+  opacity:0; transform:scale(0.94);
+  animation: scaleIn 1.3s var(--ease) 0.5s forwards;
+}
+.hero-logo-wrap img {
+  width:100%; height:100%; object-fit:contain;
+  /* Darken gradient logo so it reads on white background */
+  filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg);
+}
+.hero-brand-zh {
+  font-family: var(--zh);
+  font-size: clamp(44px, 8vw, 82px);
+  font-weight:300; letter-spacing:0.28em;
+  color: var(--amber);             /* deep amber — high contrast */
+  line-height:1; margin-bottom:16px;
+  opacity:0; transform:translateY(14px);
+  animation: fadeUp 0.9s var(--ease) 0.85s forwards;
+}
+.hero-brand-en {
+  font-family: var(--en);
+  font-size: clamp(12px, 1.8vw, 16px);
+  font-weight:400; letter-spacing:0.55em; text-transform:uppercase;
+  color: var(--stone);             /* solid stone */
+  margin-bottom:52px;
+  opacity:0; transform:translateY(10px);
+  animation: fadeUp 0.9s var(--ease) 1.05s forwards;
+}
+.hero-tagline {
+  font-size: clamp(15px, 2.2vw, 20px);
+  font-weight:300; font-style:italic;
+  color: var(--stone);             /* WAS var(--stone) but opacity 0.6 — fixed */
+  max-width:500px; line-height:1.8;
+  opacity:0; transform:translateY(10px);
+  animation: fadeUp 0.9s var(--ease) 1.2s forwards;
+}
+.hero-tagline-zh {
+  font-family: var(--zh);
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-weight:300;
+  color: var(--stone);
+  max-width:480px; line-height:2;
+  opacity:0; transform:translateY(10px);
+  animation: fadeUp 0.9s var(--ease) 1.2s forwards;
+  letter-spacing:0.06em;
+}
+.hero-divider {
+  width:1px; height:60px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 52px auto 0;
+  opacity:0;
+  animation: fadeIn 1s var(--ease) 1.7s forwards;
+}
+
+@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+@keyframes scaleIn { to { opacity:1; transform:scale(1); } }
+@keyframes fadeIn { to { opacity:1; } }
+
+/* ============================================================
+   SHARED SECTION STYLES
+   ============================================================ */
+.section {
+  padding: 104px 48px;
+  max-width:1200px; margin:0 auto;
+}
+.section-linen {
+  background: var(--linen);
+  border-top: 1px solid rgba(120,90,40,0.12);
+  border-bottom: 1px solid rgba(120,90,40,0.12);
+}
+.section-ink {
+  background: var(--ink);
+}
+.section-parchment {
+  background: var(--parchment);
+  border-top: 1px solid rgba(120,90,40,0.12);
+  border-bottom: 1px solid rgba(120,90,40,0.12);
+}
+.section-inner {
+  padding: 104px 48px;
+  max-width:1200px; margin:0 auto;
+}
+
+.rule { width:40px; height:2px; background:var(--amber); margin-bottom:22px; }
+.rule.center { margin:0 auto 20px; }
+
+.eyebrow {
+  font-size:10px; font-weight:400;
+  letter-spacing:0.4em; text-transform:uppercase;
+  color: var(--amber);             /* full amber for readability */
+  display:block; margin-bottom:16px;
+}
+.eyebrow-dark { color: #9A7F4E; }  /* on dark bg */
+
+.ttl-zh {
+  font-family:var(--zh);
+  font-size: clamp(26px,3.8vw,46px);
+  font-weight:300; letter-spacing:0.12em;
+  color: var(--ink); line-height:1.3;
+  margin-bottom:6px;
+}
+.ttl-zh-light { color: var(--gold-light); }
+
+.ttl-en {
+  font-size: clamp(11px,1.3vw,13px); font-weight:400;
+  letter-spacing:0.35em; text-transform:uppercase;
+  color: var(--stone-light); margin-bottom:44px;
+}
+.ttl-en-dark { color: rgba(255,255,255,0.5); }
+
+.body-p {
+  font-size: clamp(15px,1.7vw,17px);
+  font-weight:300; line-height:1.95;
+  color: var(--stone);             /* solid, no opacity hack */
+  max-width:660px;
+}
+.body-p + .body-p { margin-top:1.4em; }
+.body-p-dark { color: rgba(255,255,255,0.68); }
+
+/* ============================================================
+   BRAND STORY
+   ============================================================ */
+.story-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  margin-top:64px; gap:0;
+}
+.story-col {
+  padding:44px 36px;
+  border-left:1px solid rgba(120,90,40,0.28);
+}
+.story-col:first-child { border-left:none; padding-left:0; }
+.story-col:last-child { padding-right:0; }
+.story-char {
+  font-family:var(--zh); font-size:60px; font-weight:300;
+  color:var(--amber); line-height:1; margin-bottom:20px;
+}
+.story-lbl {
+  font-size:10px; letter-spacing:0.38em; text-transform:uppercase;
+  color:var(--gold-deep); display:block; margin-bottom:14px;
+}
+.story-txt {
+  font-size:14px; font-weight:300; line-height:1.85;
+  color:var(--stone); letter-spacing:0.01em;
+}
+.story-quote-block {
+  margin-top:72px;
+  padding:52px 0;
+  border-top:1px solid rgba(120,90,40,0.3);
+  border-bottom:1px solid rgba(120,90,40,0.3);
+  text-align:center;
+}
+.story-quote-block blockquote {
+  font-family:var(--zh);
+  font-size: clamp(18px,2.5vw,26px);
+  font-weight:400; letter-spacing:0.16em;
+  color:var(--amber-dark); line-height:1.85;
+}
+.story-quote-block cite {
+  display:block; margin-top:18px;
+  font-size:10px; font-weight:300; font-style:normal;
+  letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--stone-light);
+}
+
+/* ============================================================
+   LOGO SYSTEM
+   ============================================================ */
+.logo-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:rgba(120,90,40,0.28);
+  margin-top:56px; border:1px solid rgba(120,90,40,0.28);
+}
+.logo-cell {
+  background:var(--warm-white);
+  padding:52px 28px;
+  display:flex; flex-direction:column; align-items:center; gap:18px;
+}
+.logo-cell.bg-dark { background:var(--ink); }
+.logo-cell.bg-parch { background:var(--parchment); }
+
+.logo-cell img {
+  width:auto; max-width:110px; height:90px; object-fit:contain;
+}
+/* Variants */
+.logo-original {
+  filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg);
+}
+.logo-on-parch {
+  filter: sepia(1) saturate(1.1) brightness(0.7) hue-rotate(-5deg);
+}
+.logo-reversed { filter: brightness(0) invert(1); opacity:0.85; }
+.logo-mono { filter: grayscale(1) brightness(0.3); }
+.logo-amber { filter: sepia(1) saturate(0.6) brightness(0.55); }
+.logo-white-sm { filter: brightness(0) invert(1); opacity:0.75; }
+
+.logo-lbl {
+  font-size:10px; letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--stone-light); text-align:center;
+}
+.logo-lbl-dark { color:rgba(255,255,255,0.3); }
+
+/* Clear space */
+.clearspace-box {
+  margin-top:56px; padding:52px;
+  background:var(--cream);
+  display:flex; align-items:center; justify-content:center; gap:72px;
+  flex-wrap:wrap;
+}
+.cs-logo-wrap {
+  position:relative; width:110px; height:110px; flex-shrink:0;
+}
+.cs-logo-wrap::before {
+  content:'';
+  position:absolute; inset:-18px;
+  border:1px dashed rgba(120,90,40,0.55);
+}
+.cs-logo-wrap img {
+  width:100%; height:100%; object-fit:contain;
+  filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg);
+}
+.cs-desc { max-width:300px; }
+.cs-desc h4 {
+  font-size:13px; font-weight:500;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--amber); margin-bottom:10px;
+}
+.cs-desc p {
+  font-size:13px; font-weight:300; line-height:1.8;
+  color:var(--stone);
+}
+
+/* Don't do */
+.dont-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:rgba(120,90,40,0.25);
+  margin-top:40px; border:1px solid rgba(120,90,40,0.25);
+}
+.dont-cell {
+  background:var(--warm-white);
+  padding:36px 20px 28px;
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+}
+.dont-img-wrap { position:relative; display:inline-block; }
+.dont-img-wrap::after {
+  content:'';
+  position:absolute; inset:-8px;
+  border:1px solid rgba(180,60,60,0.35); border-radius:2px;
+}
+.dont-img-wrap img {
+  width:72px; height:72px; object-fit:contain; opacity:0.45;
+  filter: sepia(1) saturate(0.6) brightness(0.65);
+}
+.dont-tag { font-size:10px; letter-spacing:0.25em; color:rgba(160,50,50,0.75); text-transform:uppercase; }
+.dont-note { font-size:11px; font-weight:300; color:var(--stone-light); text-align:center; line-height:1.65; }
+
+/* ============================================================
+   COLOR SYSTEM — on dark background
+   ============================================================ */
+.color-primary-row {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:1px; background:rgba(255,255,255,0.06);
+  margin-top:52px; border:1px solid rgba(255,255,255,0.06);
+}
+.color-secondary-row {
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:1px; background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.04);
+  border-top:none; margin-top:1px;
+}
+.cswatch { position:relative; }
+.cswatch-block { height:190px; width:100%; }
+.cswatch-secondary .cswatch-block { height:72px; }
+.cswatch-info {
+  padding:18px 18px 22px;
+  background:rgba(255,255,255,0.04);
+  border-top:1px solid rgba(255,255,255,0.09);
+}
+.sw-name {
+  font-size:10px; font-weight:500; letter-spacing:0.22em;
+  text-transform:uppercase; color:rgba(255,255,255,0.88);
+  display:block; margin-bottom:4px;
+}
+.sw-hex { font-family:var(--mono); font-size:11px; color:rgba(255,255,255,0.5); }
+.sw-role { font-size:11px; color:rgba(255,255,255,0.38); margin-top:3px; font-style:italic; }
+
+.color-rules-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:20px; margin-top:48px;
+}
+.color-rule-card {
+  padding:32px 36px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.color-rule-card h4 {
+  font-size:11px; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:14px;
+}
+.color-rule-card p {
+  font-size:13px; font-weight:300; line-height:1.8;
+  color:rgba(255,255,255,0.58);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.type-table { margin-top:60px; display:flex; flex-direction:column; gap:0; }
+.type-row {
+  padding:36px 0; border-bottom:1px solid rgba(120,90,40,0.22);
+  display:grid; grid-template-columns:200px 1fr; gap:44px; align-items:start;
+}
+.type-row:first-child { border-top:1px solid rgba(120,90,40,0.22); }
+.type-role { font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold-deep); display:block; margin-bottom:5px; }
+.type-spec { font-family:var(--mono); font-size:11px; color:var(--stone); line-height:1.7; }
+.ts-h1 { font-family:var(--en); font-size:clamp(34px,5.5vw,60px); font-weight:300; letter-spacing:0.03em; color:var(--ink); line-height:1.12; }
+.ts-h2-zh { font-family:var(--zh); font-size:clamp(22px,3.2vw,38px); font-weight:300; letter-spacing:0.12em; color:var(--amber); line-height:1.35; }
+.ts-h3 { font-family:var(--en); font-size:clamp(17px,2.3vw,24px); font-weight:300; font-style:italic; color:var(--charcoal); line-height:1.45; }
+.ts-body { font-family:var(--en); font-size:17px; font-weight:300; line-height:1.9; color:var(--stone); }
+.ts-cap { font-family:var(--en); font-size:11px; font-weight:400; letter-spacing:0.25em; text-transform:uppercase; color:var(--stone-light); }
+.ts-quote { font-family:var(--zh); font-size:clamp(14px,2vw,20px); font-weight:300; letter-spacing:0.14em; color:var(--amber); line-height:1.95; border-left:2px solid var(--gold); padding-left:22px; }
+.ts-btn {
+  display:inline-block; font-family:var(--en); font-size:11px; font-weight:400;
+  letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--amber); border:1px solid rgba(110,82,30,0.65);
+  padding:13px 30px; text-decoration:none;
+  transition:all 0.3s var(--ease);
+}
+.ts-btn:hover { background:var(--amber); border-color:var(--amber); color:var(--warm-white); }
+
+/* ============================================================
+   GRAPHIC LANGUAGE
+   ============================================================ */
+.graphic-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:52px;
+}
+.graphic-card {
+  background:var(--warm-white); border:1px solid rgba(120,90,40,0.22);
+  padding:44px 20px;
+  display:flex; flex-direction:column; align-items:center; gap:18px;
+}
+.graphic-card svg { width:72px; height:72px; }
+.graphic-lbl { font-size:10px; letter-spacing:0.32em; text-transform:uppercase; color:var(--stone-light); text-align:center; }
+
+.texture-strip {
+  margin-top:24px; height:100px;
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(110,82,30,0.08) 5px, rgba(110,82,30,0.08) 6px),
+    repeating-linear-gradient(0deg, transparent, transparent 9px, rgba(110,82,30,0.05) 9px, rgba(110,82,30,0.05) 10px);
+  border:1px solid rgba(120,90,40,0.22);
+}
+.texture-label {
+  font-size:10px; letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--stone-light); text-align:center; margin-top:10px;
+}
+
+/* ============================================================
+   PHOTOGRAPHY DIRECTION
+   ============================================================ */
+.photo-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2px; background:rgba(120,90,40,0.25); margin-top:60px;
+}
+.photo-card { background:var(--warm-white); overflow:hidden; }
+.photo-ph {
+  height:250px; display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:8px;
+}
+.ph-1 { background:linear-gradient(135deg,#DDD5C2,#CCC1A8); }
+.ph-2 { background:linear-gradient(135deg,rgba(180,160,130,0.38),rgba(154,127,78,0.28)); }
+.ph-3 { background:linear-gradient(135deg,#E0D9C8,rgba(180,160,130,0.5)); }
+.ph-4 { background:linear-gradient(160deg,rgba(97,74,37,0.22),rgba(154,127,78,0.32)); }
+.ph-icon { font-size:32px; opacity:0.25; }
+.ph-tag { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--stone-light); }
+.photo-desc { padding:24px 28px 28px; }
+.photo-desc h4 { font-size:12px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--amber); margin-bottom:7px; }
+.photo-desc p { font-size:13px; font-weight:300; line-height:1.75; color:var(--stone); letter-spacing:0.01em; }
+
+/* ============================================================
+   PACKAGING
+   ============================================================ */
+.pack-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:60px;
+}
+.pack-item { display:flex; flex-direction:column; gap:14px; }
+.pack-preview {
+  background:var(--warm-white); border:1px solid rgba(120,90,40,0.28);
+  padding:28px; display:flex; align-items:center; justify-content:center;
+  min-height:210px;
+}
+.pack-lbl { font-size:10px; letter-spacing:0.32em; text-transform:uppercase; color:var(--stone-light); }
+.pack-note { font-size:12px; font-weight:300; color:var(--stone); line-height:1.7; margin-top:2px; letter-spacing:0.01em; }
+
+/* Gift box */
+.giftbox {
+  width:100px; height:130px;
+  background:var(--amber); position:relative;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:3px 3px 0 rgba(74,51,24,0.4);
+}
+.giftbox::before { content:''; position:absolute; top:0; bottom:0; left:50%; width:1px; background:rgba(255,255,255,0.2); }
+.giftbox::after { content:''; position:absolute; left:0; right:0; top:50%; height:1px; background:rgba(255,255,255,0.2); }
+.giftbox img { width:42px; height:42px; filter:brightness(0) invert(1); opacity:0.6; position:relative; z-index:1; }
+
+/* Label */
+.label-card {
+  width:150px; padding:18px 14px;
+  background:var(--warm-white); border:1px solid rgba(120,90,40,0.45);
+  text-align:center; display:flex; flex-direction:column; align-items:center; gap:7px;
+}
+.label-card img { width:36px; height:36px; filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg); }
+.label-zh { font-family:var(--zh); font-size:12px; letter-spacing:0.2em; color:var(--amber); }
+.label-sub { font-size:8px; letter-spacing:0.3em; text-transform:uppercase; color:var(--stone-light); }
+
+/* Business card */
+.bcard-stack { display:flex; flex-direction:column; gap:8px; align-items:center; }
+
+/* Incense box */
+.inc-box {
+  width:80px; height:150px;
+  background:var(--linen); border:1px solid rgba(110,82,30,0.36);
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:space-between; padding:16px 10px;
+}
+.inc-box img { width:36px; height:36px; filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg); }
+.inc-box-txt { text-align:center; }
+.inc-char { font-family:var(--zh); font-size:14px; letter-spacing:4px; color:var(--amber); }
+.inc-sub { font-size:7px; letter-spacing:2px; text-transform:uppercase; color:var(--stone-light); margin-top:3px; }
+
+/* Wax seal */
+.wax-seal {
+  width:56px; height:56px; border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#8C7650,#614A25);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.3),0 2px 8px rgba(97,74,37,0.4);
+}
+.wax-seal img { width:32px; height:32px; filter:brightness(0) invert(1); opacity:0.6; }
+
+/* Letterhead */
+.lh-mock {
+  width:170px; background:var(--warm-white);
+  border:1px solid rgba(120,90,40,0.28); padding:18px;
+}
+.lh-top { display:flex; align-items:center; gap:8px; padding-bottom:10px; border-bottom:1px solid rgba(110,82,30,0.32); margin-bottom:10px; }
+.lh-top img { width:24px; height:24px; filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg); }
+.lh-brand { font-family:var(--zh); font-size:10px; letter-spacing:0.2em; color:var(--amber); }
+.lh-lines { display:flex; flex-direction:column; gap:5px; }
+.lh-ln { height:4px; background:rgba(110,82,30,0.18); border-radius:1px; }
+
+/* ============================================================
+   DIGITAL
+   ============================================================ */
+.digital-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:60px; }
+.dcard { border:1px solid rgba(120,90,40,0.28); overflow:hidden; }
+.dcard-bar {
+  background:var(--amber); padding:9px 14px;
+  display:flex; align-items:center; gap:6px;
+}
+.dbar-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.28); }
+.dbar-url { font-size:9px; letter-spacing:0.18em; color:rgba(255,255,255,0.75); margin-left:4px; }
+.dcard-body {
+  background:var(--warm-white); padding:24px; min-height:195px;
+  display:flex; flex-direction:column; gap:10px;
+}
+.dcard-label { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--stone-light); margin-top:auto; padding-top:14px; border-top:1px solid rgba(120,90,40,0.22); }
+
+.social-sq {
+  background:var(--linen); aspect-ratio:1;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:9px; padding:16px;
+}
+.social-sq img { width:38px; height:38px; filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg); }
+.social-sq .sq-zh { font-family:var(--zh); font-size:13px; letter-spacing:0.2em; color:var(--amber); }
+.social-sq .sq-rule { width:22px; height:1px; background:var(--gold); }
+.social-sq .sq-cap { font-size:8px; letter-spacing:0.28em; text-transform:uppercase; color:var(--stone-light); text-align:center; }
+
+.email-sig { display:flex; gap:14px; align-items:flex-start; border-left:2px solid var(--gold); padding-left:16px; }
+.email-sig img { width:32px; height:32px; filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg); flex-shrink:0; }
+.sig-n { font-family:var(--zh); font-size:11px; letter-spacing:0.15em; color:var(--amber); }
+.sig-t { font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone-light); }
+.sig-c { font-size:10px; color:var(--stone-light); margin-top:4px; }
+
+/* ============================================================
+   ICON SYSTEM
+   ============================================================ */
+.icon-grid {
+  display:grid; grid-template-columns:repeat(6,1fr);
+  gap:1px; background:rgba(110,82,30,0.18);
+  margin-top:52px; border:1px solid rgba(120,90,40,0.22);
+}
+.icon-cell {
+  background:var(--warm-white); padding:28px 14px;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+.icon-cell svg { width:28px; height:28px; }
+.icon-nm { font-size:9px; letter-spacing:0.28em; text-transform:uppercase; color:var(--stone-light); text-align:center; }
+
+/* ============================================================
+   BRAND VOICE
+   ============================================================ */
+.voice-principles {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:56px;
+}
+.vp-card {
+  padding:32px 28px;
+  background:rgba(255,255,255,0.045);
+  border:1px solid rgba(255,255,255,0.1);
+}
+.vp-num { font-family:var(--en); font-size:28px; font-weight:300; color:rgba(110,82,30,0.36); line-height:1; margin-bottom:8px; }
+.vp-title { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold-warm); display:block; margin-bottom:10px; }
+.vp-desc { font-size:13px; font-weight:300; line-height:1.75; color:rgba(255,255,255,0.55); }
+
+.voice-examples { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:40px; }
+.ve-card { padding:36px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); }
+.ve-card h4 { font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+.ve-do, .ve-dont { padding:18px 20px; border-left:2px solid; margin-bottom:12px; }
+.ve-do { border-color:var(--gold); background:rgba(110,82,30,0.13); }
+.ve-dont { border-color:rgba(180,60,60,0.4); background:rgba(180,60,60,0.04); }
+.ve-do:last-child, .ve-dont:last-child { margin-bottom:0; }
+.ve-tag { font-size:9px; letter-spacing:0.28em; text-transform:uppercase; display:block; margin-bottom:7px; }
+.ve-do .ve-tag { color:var(--gold); }
+.ve-dont .ve-tag { color:rgba(180,60,60,0.7); }
+.ve-txt { font-size:13px; font-weight:300; line-height:1.75; color:rgba(255,255,255,0.65); font-style:italic; }
+
+/* ============================================================
+   ASSETS
+   ============================================================ */
+.assets-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:52px;
+}
+.asset-link {
+  background:var(--warm-white); border:1px solid rgba(120,90,40,0.25);
+  padding:24px; display:flex; align-items:center; gap:18px;
+  text-decoration:none; transition:border-color 0.3s var(--ease);
+}
+.asset-link:hover { border-color:rgba(110,82,30,0.65); }
+.asset-link img { width:36px; height:36px; object-fit:contain; flex-shrink:0; filter: sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg); }
+.asset-fn { font-family:var(--mono); font-size:11px; color:var(--amber); display:block; margin-bottom:3px; }
+.asset-tp { font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--stone); }
+.asset-arr { color:var(--gold); font-size:16px; opacity:0.55; margin-left:auto; transition:all 0.3s; }
+.asset-link:hover .asset-arr { opacity:1; transform:translateX(3px); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background:var(--ink); padding:72px 48px; }
+.footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px; align-items:start; }
+.footer-brand { display:flex; flex-direction:column; gap:14px; }
+.footer-brand img { width:48px; height:48px; filter:brightness(0) invert(1); opacity:0.6; }
+.footer-zh { font-family:var(--zh); font-size:16px; font-weight:300; letter-spacing:0.2em; color:rgba(229,226,222,0.75); }
+.footer-tag { font-size:12px; font-weight:300; line-height:1.75; color:rgba(255,255,255,0.38); letter-spacing:0.06em; }
+.footer-nav h5 { font-size:9px; letter-spacing:0.38em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; }
+.footer-nav ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.footer-nav a { font-size:13px; font-weight:300; color:rgba(255,255,255,0.48); text-decoration:none; transition:color 0.3s; }
+.footer-nav a:hover { color:var(--gold-warm); }
+.footer-copy {
+  padding-top:40px; margin-top:40px; border-top:1px solid rgba(255,255,255,0.1);
+  text-align:center; font-size:10px; color:rgba(255,255,255,0.32);
+  letter-spacing:0.15em; grid-column:1/-1;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.rv { opacity:0; transform:translateY(20px); transition:opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+.rv.on { opacity:1; transform:translateY(0); }
+.rv-1 { transition-delay:0.1s; }
+.rv-2 { transition-delay:0.2s; }
+.rv-3 { transition-delay:0.3s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px) {
+  .story-grid { grid-template-columns:1fr; }
+  .story-col { border-left:none; border-top:1px solid rgba(110,82,30,0.27); padding:32px 0; }
+  .story-col:first-child { border-top:none; }
+  .logo-grid { grid-template-columns:repeat(2,1fr); }
+  .color-primary-row { grid-template-columns:repeat(3,1fr); }
+  .color-secondary-row { grid-template-columns:repeat(5,1fr); }
+  .graphic-grid { grid-template-columns:repeat(2,1fr); }
+  .pack-grid { grid-template-columns:repeat(2,1fr); }
+  .digital-grid { grid-template-columns:1fr 1fr; }
+  .voice-principles { grid-template-columns:repeat(2,1fr); }
+  .voice-examples { grid-template-columns:1fr; }
+  .footer-inner { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:768px) {
+  .nav { padding:16px 20px; }
+  .nav-links { display:none; }
+  .nav-hamburger { display:flex; }
+  .section { padding:72px 20px; }
+  .section-inner { padding:72px 20px; }
+  .footer { padding:56px 20px; }
+  .color-primary-row { grid-template-columns:repeat(2,1fr); }
+  .color-secondary-row { grid-template-columns:repeat(2,1fr); }
+  .color-rules-grid { grid-template-columns:1fr; }
+  .logo-grid { grid-template-columns:1fr; }
+  .dont-grid { grid-template-columns:1fr; }
+  .type-row { grid-template-columns:1fr; gap:10px; }
+  .photo-grid { grid-template-columns:1fr; }
+  .pack-grid { grid-template-columns:1fr; }
+  .digital-grid { grid-template-columns:1fr; }
+  .voice-principles { grid-template-columns:1fr 1fr; }
+  .assets-grid { grid-template-columns:1fr; }
+  .footer-inner { grid-template-columns:1fr; }
+  .icon-grid { grid-template-columns:repeat(3,1fr); }
+  .clearspace-box { flex-direction:column; gap:36px; }
+}
+@media (max-width:480px) {
+  .graphic-grid { grid-template-columns:1fr 1fr; }
+  .voice-principles { grid-template-columns:1fr; }
+  .icon-grid { grid-template-columns:repeat(2,1fr); }
+}
+html,body { max-width:100vw; overflow-x:hidden; }
+</style>
+</head>
+<body class="zh">
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="mainNav">
+  <a href="#home" class="nav-logo">
+    <img class="nav-logo-mark" src="assets/logo.svg" alt="华夏和">
+    <span class="nav-logo-text">华夏和</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#story"><span data-zh>品牌故事</span><span data-en>Story</span></a></li>
+    <li><a href="#logo"><span data-zh>标志</span><span data-en>Logo</span></a></li>
+    <li><a href="#color"><span data-zh>色彩</span><span data-en>Color</span></a></li>
+    <li><a href="#typography"><span data-zh>字体</span><span data-en>Type</span></a></li>
+    <li><a href="#packaging"><span data-zh>包装</span><span data-en>Packaging</span></a></li>
+    <li><a href="#assets"><span data-zh>素材</span><span data-en>Assets</span></a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btnZh" onclick="setLang('zh')">中文</button>
+      <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home">
+  <p class="hero-eyebrow">
+    <span data-zh>品牌视觉识别手册 · 2025</span>
+    <span data-en>Visual Identity Manual · 2025</span>
+  </p>
+  <div class="hero-logo-wrap">
+    <img src="assets/logo.svg" alt="华夏和 Logo">
+  </div>
+  <h1 class="hero-brand-zh">华&ensp;夏&ensp;和</h1>
+  <p class="hero-brand-en">H U A X I A H E</p>
+  <p class="hero-tagline" data-en>A premium Oriental lifestyle brand rooted in the quiet depth of Chinese civilization.</p>
+  <p class="hero-tagline-zh" data-zh>根植中华文明深处的东方高端生活方式品牌。</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- ============================================================
+     BRAND STORY
+     ============================================================ -->
+<div class="section-linen">
+<div class="section-inner rv" id="story">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>品牌故事</span><span data-en>Brand Story</span></span>
+  <h2 class="ttl-zh"><span data-zh>华夏文明，和而不同</span><span data-en>Heritage · Identity · Vision</span></h2>
+  <p class="ttl-en"><span data-zh>品牌源起 · 文化内核 · 未来愿景</span><span data-en>Origin · Cultural Core · Future Vision</span></p>
+  <p class="body-p" data-zh>华夏和生于这样一种信念：中华文明所承载的静默之美，是世界尚未完全发现的奢华。不是节庆的红漆，不是出口陶瓷的镀金繁华——而是文人的砚台、僧侣的茶碗、笔触之间的留白。我们存在的意义，是将这份深度转化为器物、仪式与体验，令其在北京与巴黎同样从容，在东京与伦敦同样自然。</p>
+  <p class="body-p" data-en>Huaxiahe is born from the conviction that Chinese civilization carries a quiet luxury the modern world has yet to fully discover. Not the red lacquer of festivals, nor the gilded excess of export ceramics — but the scholar's stone, the monk's tea bowl, the breath between brushstrokes. We exist to translate that depth into objects, rituals, and experiences that belong equally in Beijing and Paris, Tokyo and London.</p>
+
+  <div class="story-grid rv rv-2">
+    <div class="story-col">
+      <div class="story-char">华</div>
+      <span class="story-lbl"><span data-zh>繁盛之意</span><span data-en>Huá — Splendor</span></span>
+      <p class="story-txt" data-zh>「华」言繁盛，道出一个文明的花开——艺术、哲学、器物工艺，经五千年淬炼。品牌从中汲取传承，并以之为标尺自律。</p>
+      <p class="story-txt" data-en>The character 华 speaks of florescence — civilization in full bloom. It carries the weight of millennia: the arts, the sciences, the philosophy refined across five thousand years. It is the inheritance we draw from, and the standard we hold ourselves to.</p>
+    </div>
+    <div class="story-col">
+      <div class="story-char">夏</div>
+      <span class="story-lbl"><span data-zh>华夏故土</span><span data-en>Xià — The Great Land</span></span>
+      <p class="story-txt" data-zh>「夏」指向上古，是中华第一王朝，文明的起源神话。它将华夏和锚定于地方与时间的连续性中——最恒久的事物，皆生长于被一代代耕耘的土地。</p>
+      <p class="story-txt" data-en>夏 names the ancient heartland — China's first dynasty, the origin myth of a civilization. It grounds us in place and continuity, reminding us that the most enduring things grow slowly, from soil that has been worked for generations.</p>
+    </div>
+    <div class="story-col">
+      <div class="story-char">和</div>
+      <span class="story-lbl"><span data-zh>和谐之道</span><span data-en>Hé — Harmony</span></span>
+      <p class="story-txt" data-zh>「和」是品牌中最核心的字，也是中国哲学中最重要的字。不只是平静——而是对立间的动态平衡：冷与热、虚与实、古与新。我们所造的每一件物，都在追求这种和。</p>
+      <p class="story-txt" data-en>和 is the most essential character in the brand, and in Chinese philosophy itself. It is the dynamic balance between opposites — hot and cold, full and empty, old and new. Every product we make aspires to this harmony.</p>
+    </div>
+  </div>
+
+  <div class="story-quote-block rv rv-3">
+    <blockquote>道生一，一生二，二生三，三生万物</blockquote>
+    <cite>老子 · 道德经 · 第四十二章 &nbsp;·&nbsp; Laozi · Tao Te Ching · Chapter 42</cite>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================
+     LOGO SYSTEM
+     ============================================================ -->
+<div class="section rv" id="logo">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>标志系统</span><span data-en>Logo System</span></span>
+  <h2 class="ttl-zh"><span data-zh>标志与变体</span><span data-en>Primary Mark · Variations</span></h2>
+  <p class="ttl-en"><span data-zh>主标志 · 变体 · 使用规范</span><span data-en>Primary · Variants · Usage Rules</span></p>
+  <p class="body-p" data-zh>华夏和标志是字母组合曼陀罗：华夏和三字首字母（H·X·H）交织于传统花瓣框架之中，中心置一香炉。图形同时是印章、徽章与窗棂——指向中华物质文化的三大支柱。渐变从暖白过渡至深铜，象征原料到精工的旅程。</p>
+  <p class="body-p" data-en>The Huaxiahe logo is a monogram-mandala: the initials H·X·H interlaced within a classical petal frame, with an incense burner at its center. The form is simultaneously a seal, a crest, and a window lattice. The gradient transitions from warm ivory to deep bronze, reflecting the journey from raw material to refined craft.</p>
+
+  <div class="logo-grid rv rv-2">
+    <div class="logo-cell">
+      <img class="logo-original" src="assets/logo.svg" alt="主标志">
+      <span class="logo-lbl"><span data-zh>主标志 · 浅色底</span><span data-en>Primary — Light Ground</span></span>
+    </div>
+    <div class="logo-cell bg-parch">
+      <img class="logo-on-parch" src="assets/logo.svg" alt="皮纸底">
+      <span class="logo-lbl"><span data-zh>主标志 · 皮纸底</span><span data-en>Primary — Parchment Ground</span></span>
+    </div>
+    <div class="logo-cell bg-dark">
+      <img class="logo-reversed" src="assets/logo.svg" alt="反白">
+      <span class="logo-lbl logo-lbl-dark"><span data-zh>反白版 · 深色底</span><span data-en>Reversed — Dark Ground</span></span>
+    </div>
+    <div class="logo-cell">
+      <img class="logo-mono" src="assets/logo.svg" alt="单色">
+      <span class="logo-lbl"><span data-zh>单色版 · 黑</span><span data-en>Monochrome — Black</span></span>
+    </div>
+    <div class="logo-cell bg-parch">
+      <img class="logo-amber" src="assets/logo.svg" alt="琥珀单色">
+      <span class="logo-lbl"><span data-zh>单色版 · 琥珀</span><span data-en>Single Tone — Amber</span></span>
+    </div>
+    <div class="logo-cell bg-dark">
+      <img class="logo-white-sm" src="assets/icon.svg" alt="独立图标" style="max-width:80px;height:80px;">
+      <span class="logo-lbl logo-lbl-dark"><span data-zh>独立图标版</span><span data-en>Icon Mark — Standalone</span></span>
+    </div>
+  </div>
+
+  <!-- Clear space -->
+  <div class="clearspace-box rv rv-2">
+    <div class="cs-logo-wrap">
+      <img src="assets/logo.svg" alt="Logo">
+    </div>
+    <div class="cs-desc">
+      <h4><span data-zh>最小保护区域</span><span data-en>Minimum Clear Space</span></h4>
+      <p data-zh>标志四周须保留等于标志总高度六分之一的空白区域，此区域内不得出现任何文字、图形或页边。最小复制尺寸：24px / 8mm。小于此尺寸请改用独立图标版。</p>
+      <p data-en>The logo must always be surrounded by clear space equal to one-sixth of its total height on all sides. Minimum reproduction: 24px / 8mm. Below this threshold, use the icon mark only.</p>
+    </div>
+  </div>
+
+  <!-- Don't do -->
+  <div class="rv rv-3" style="margin-top:40px;">
+    <span class="eyebrow" style="margin-bottom:10px;"><span data-zh>错误用法</span><span data-en>Incorrect Usage</span></span>
+    <div class="dont-grid">
+      <div class="dont-cell">
+        <div class="dont-img-wrap"><img src="assets/logo.svg" alt="" style="transform:rotate(45deg);"></div>
+        <span class="dont-tag"><span data-zh>✕ 禁止旋转</span><span data-en>✕ Do Not Rotate</span></span>
+        <span class="dont-note"><span data-zh>不得以任何角度旋转或倾斜标志。</span><span data-en>Never rotate or tilt the mark in any direction.</span></span>
+      </div>
+      <div class="dont-cell">
+        <div class="dont-img-wrap"><img src="assets/logo.svg" alt="" style="transform:scaleX(1.55);"></div>
+        <span class="dont-tag"><span data-zh>✕ 禁止变形</span><span data-en>✕ Do Not Distort</span></span>
+        <span class="dont-note"><span data-zh>不得拉伸或压缩标志比例。</span><span data-en>Never stretch or compress the proportions.</span></span>
+      </div>
+      <div class="dont-cell">
+        <div class="dont-img-wrap"><img src="assets/logo.svg" alt="" style="opacity:0.08;"></div>
+        <span class="dont-tag"><span data-zh>✕ 禁止低于最小尺寸</span><span data-en>✕ Below Minimum Size</span></span>
+        <span class="dont-note"><span data-zh>低于24px时须改用图标版。</span><span data-en>Below 24px use the icon mark instead.</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     COLOR SYSTEM
+     ============================================================ -->
+<div class="section-ink">
+<div class="section-inner rv" id="color">
+  <div class="rule"></div>
+  <span class="eyebrow eyebrow-dark"><span data-zh>色彩体系</span><span data-en>Color System</span></span>
+  <h2 class="ttl-zh ttl-zh-light"><span data-zh>主色调与辅助色</span><span data-en>Primary Palette · Secondary Tones</span></h2>
+  <p class="ttl-en ttl-en-dark"><span data-zh>主色 · 辅色 · 用色规范</span><span data-en>Primary · Secondary · Usage Rules</span></p>
+  <p class="body-p body-p-dark" data-zh>色板直接提取自标志渐变：从窑白象牙，经暖亚麻，到自然金，最终沉淀为老漆器般的深琥珀。色彩使用保持高度克制——视线应首先落于留白。</p>
+  <p class="body-p body-p-dark" data-en>The palette is drawn from the logo's own gradient: from kiln-white ivory through warm linen, natural gold, and settling into the deep amber of aged lacquerware. Colors are used with great restraint — the eye should always rest on negative space first.</p>
+
+  <div class="color-primary-row rv rv-2">
+    <div class="cswatch">
+      <div class="cswatch-block" style="background:#614A25;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>深琥珀</span><span data-en>Amber Deep</span></span><span class="sw-hex">#614A25</span><span class="sw-role"><span data-zh>主色调·文字·标志</span><span data-en>Primary brand tone</span></span></div>
+    </div>
+    <div class="cswatch">
+      <div class="cswatch-block" style="background:#AC956C;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>品牌金</span><span data-en>Brand Gold</span></span><span class="sw-hex">#AC956C</span><span class="sw-role"><span data-zh>点缀·规则线·CTA</span><span data-en>Accent · rules · CTAs</span></span></div>
+    </div>
+    <div class="cswatch">
+      <div class="cswatch-block" style="background:#C8BAA3;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>暖亚麻</span><span data-en>Warm Linen</span></span><span class="sw-hex">#C8BAA3</span><span class="sw-role"><span data-zh>中间色调</span><span data-en>Mid tone</span></span></div>
+    </div>
+    <div class="cswatch">
+      <div class="cswatch-block" style="background:#E5E2DE;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>象牙白</span><span data-en>Ivory</span></span><span class="sw-hex">#E5E2DE</span><span class="sw-role"><span data-zh>边框·分割线</span><span data-en>Borders · dividers</span></span></div>
+    </div>
+    <div class="cswatch">
+      <div class="cswatch-block" style="background:#FAF8F5;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>暖白</span><span data-en>Warm White</span></span><span class="sw-hex">#FAF8F5</span><span class="sw-role"><span data-zh>主背景</span><span data-en>Primary canvas</span></span></div>
+    </div>
+  </div>
+
+  <div class="color-secondary-row rv rv-2">
+    <div class="cswatch cswatch-secondary">
+      <div class="cswatch-block" style="background:#1A1612;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>墨黑</span><span data-en>Ink Black</span></span><span class="sw-hex">#1A1612</span></div>
+    </div>
+    <div class="cswatch cswatch-secondary">
+      <div class="cswatch-block" style="background:#2C2318;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>炭灰</span><span data-en>Charcoal</span></span><span class="sw-hex">#2C2318</span></div>
+    </div>
+    <div class="cswatch cswatch-secondary">
+      <div class="cswatch-block" style="background:#5C5247;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>石灰</span><span data-en>Stone</span></span><span class="sw-hex">#5C5247</span></div>
+    </div>
+    <div class="cswatch cswatch-secondary">
+      <div class="cswatch-block" style="background:#E8E2D5;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>皮纸</span><span data-en>Parchment</span></span><span class="sw-hex">#E8E2D5</span></div>
+    </div>
+    <div class="cswatch cswatch-secondary">
+      <div class="cswatch-block" style="background:#F5F2EC;"></div>
+      <div class="cswatch-info"><span class="sw-name"><span data-zh>麻白</span><span data-en>Linen</span></span><span class="sw-hex">#F5F2EC</span></div>
+    </div>
+  </div>
+
+  <div class="color-rules-grid rv rv-3">
+    <div class="color-rule-card">
+      <h4><span data-zh>浅色版式</span><span data-en>Light Compositions</span></h4>
+      <p data-zh>以暖白（#FAF8F5）或麻白为画布。正文使用石灰色。深琥珀用于标题。品牌金用于点缀与规则线。留白是第一设计法则。</p>
+      <p data-en>Use Warm White or Linen as canvas. Body in Stone. Amber Deep for headings. Brand Gold for accents. Generosity with negative space is the first rule.</p>
+    </div>
+    <div class="color-rule-card">
+      <h4><span data-zh>深色版式</span><span data-en>Dark Compositions</span></h4>
+      <p data-zh>以墨黑（#1A1612）为底。象牙白与暖亚麻建立文字层次。品牌金用于点缀元素。避免纯黑底——始终使用带暖意的墨色调。</p>
+      <p data-en>Use Ink Black as base. Ivory and Warm Linen for type hierarchy. Brand Gold for accents. Always use the warm ink tone — avoid pure black backgrounds.</p>
+    </div>
+    <div class="color-rule-card">
+      <h4><span data-zh>渐变用法</span><span data-en>Gradient Use</span></h4>
+      <p data-zh>主标志渐变（象牙→品牌金→琥珀）仅可用于大标题展示时刻、包装丝带与品牌印章。不得用于正文或功能性界面元素。</p>
+      <p data-en>The primary logo gradient may be applied to typographic display moments, packaging ribbons, and brand seals only. Never apply to body text or functional UI elements.</p>
+    </div>
+    <div class="color-rule-card">
+      <h4><span data-zh>用色克制</span><span data-en>Color Restraint</span></h4>
+      <p data-zh>任何单一版式不得同时使用超过三种色板色值。留白是一种色彩。一行琥珀标题在白页上传递的奢华感，胜过满版的金色。</p>
+      <p data-en>No single layout should use more than three palette values simultaneously. Silence is a color. One amber heading on a white page communicates more luxury than a page covered in gold.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================
+     TYPOGRAPHY
+     ============================================================ -->
+<div class="section rv" id="typography">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>字体系统</span><span data-en>Typography System</span></span>
+  <h2 class="ttl-zh"><span data-zh>字体规范与层级</span><span data-en>Type Scale · Roles · Pairing</span></h2>
+  <p class="ttl-en"><span data-zh>字阶 · 字重 · 中英文配对</span><span data-en>Scale · Weight · Bilingual Pairing</span></p>
+  <p class="body-p" data-zh>字体形象由两个衬线传统并置构成。<strong>Cormorant Garamond</strong> 带来欧洲经典书编的优雅——其纤细笔画与中国细线版画的精致相呼应。<strong>Noto Serif SC</strong> 将中文锚定于宋刻传统：结构端正、从容舒展、各尺寸均高度可读。两种书写传统是并置，而非翻译关系。</p>
+  <p class="body-p" data-en>The typographic identity pairs two serif traditions. <strong>Cormorant Garamond</strong> brings classical European editorial grace — its delicate hairlines mirror the refinement of Chinese fine-line engraving. <strong>Noto Serif SC</strong> grounds Chinese type in the Song tradition: structured, unhurried, deeply readable. Two traditions in dialogue — not translation.</p>
+
+  <div class="type-table rv rv-2">
+    <div class="type-row">
+      <div><span class="type-role"><span data-zh>展示标题 H1</span><span data-en>Display H1</span></span><span class="type-spec">Cormorant Garamond<br>300 · tracking +0.04em<br>line-height 1.12</span></div>
+      <p class="ts-h1">The Art of Stillness</p>
+    </div>
+    <div class="type-row">
+      <div><span class="type-role"><span data-zh>中文标题 H2</span><span data-en>Display H2 (ZH)</span></span><span class="type-spec">Noto Serif SC<br>300 · tracking +0.12em<br>line-height 1.35</span></div>
+      <p class="ts-h2-zh">东方生活美学</p>
+    </div>
+    <div class="type-row">
+      <div><span class="type-role"><span data-zh>副标题 H3</span><span data-en>Subheading H3</span></span><span class="type-spec">Cormorant Garamond<br>300 italic · lh 1.45</span></div>
+      <p class="ts-h3">Crafted with intention, made to last generations.</p>
+    </div>
+    <div class="type-row">
+      <div><span class="type-role"><span data-zh>正文</span><span data-en>Body Text</span></span><span class="type-spec">Cormorant Garamond<br>300 · 17px · lh 1.9</span></div>
+      <p class="ts-body">华夏和的产品，为那些消费前会停下来思考的人而造——那些明白一件器物的价值不在价格，而在制造它的专注品质的人。每件作品都承载着来历、工艺与哲学。</p>
+    </div>
+    <div class="type-row">
+      <div><span class="type-role"><span data-zh>标注 / 说明</span><span data-en>Caption / Label</span></span><span class="type-spec">Cormorant Garamond<br>400 · 11px · UC · +0.25em</span></div>
+      <p class="ts-cap">Natural Sichuan Cypress · Aged 40 Years · Hand-Carved · 四川柏木 · 窖藏四十年</p>
+    </div>
+    <div class="type-row">
+      <div><span class="type-role"><span data-zh>引用 (中文)</span><span data-en>Pull Quote (ZH)</span></span><span class="type-spec">Noto Serif SC<br>300 · +0.14em · left rule 2px</span></div>
+      <p class="ts-quote">天下莫柔弱於水，<br>而攻堅強者莫之能勝。</p>
+    </div>
+    <div class="type-row">
+      <div><span class="type-role">CTA Button</span><span class="type-spec">Cormorant Garamond<br>400 · 11px · UC · +0.30em</span></div>
+      <a href="#" class="ts-btn"><span data-zh>探索系列</span><span data-en>Discover the Collection</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     GRAPHIC LANGUAGE
+     ============================================================ -->
+<div class="section-linen">
+<div class="section-inner rv" id="graphic">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>视觉语言</span><span data-en>Graphic Language</span></span>
+  <h2 class="ttl-zh"><span data-zh>图形元素与纹理系统</span><span data-en>Motifs · Texture · Pattern · Form</span></h2>
+  <p class="ttl-en"><span data-zh>纹样 · 肌理 · 图案 · 形态</span><span data-en>Motif · Texture · Pattern · Form</span></p>
+  <p class="body-p" data-zh>品牌图形词汇建立于五个来源：宋代窗棂的节律几何、水墨的呼吸感、篆刻的精度、竹的有机轮廓，以及宣纸的安静表面。每一个装饰决定都可追溯至其中之一。</p>
+  <p class="body-p" data-en>The brand's graphic vocabulary is built from five sources: Song dynasty window lattice geometry, the breath of ink wash painting, the precision of seal carving, the organic silhouette of bamboo, and the quiet surface of rice paper. Every decorative decision traces back to one of these roots.</p>
+
+  <div class="graphic-grid rv rv-2">
+    <div class="graphic-card">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="52" height="52" stroke="#AC956C" stroke-width="1"/>
+        <rect x="16" y="16" width="40" height="40" stroke="#AC956C" stroke-width="0.5" stroke-dasharray="2 3"/>
+        <text x="36" y="43" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="17" fill="#614A25" letter-spacing="2">和</text>
+      </svg>
+      <span class="graphic-lbl"><span data-zh>篆刻印章</span><span data-en>Seal Carving</span></span>
+    </div>
+    <div class="graphic-card">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="9" y1="9" x2="63" y2="63" stroke="#C8BAA3" stroke-width="0.75"/>
+        <line x1="63" y1="9" x2="9" y2="63" stroke="#C8BAA3" stroke-width="0.75"/>
+        <line x1="36" y1="7" x2="36" y2="65" stroke="#AC956C" stroke-width="0.75"/>
+        <line x1="7" y1="36" x2="65" y2="36" stroke="#AC956C" stroke-width="0.75"/>
+        <circle cx="36" cy="36" r="14" stroke="#AC956C" stroke-width="0.75" fill="none"/>
+        <circle cx="36" cy="36" r="25" stroke="#C8BAA3" stroke-width="0.5" fill="none"/>
+      </svg>
+      <span class="graphic-lbl"><span data-zh>窗棂格</span><span data-en>Window Lattice</span></span>
+    </div>
+    <div class="graphic-card">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 55 Q23 18 36 36 Q49 55 59 18" stroke="#614A25" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M18 62 Q31 32 45 50 Q55 60 62 28" stroke="#AC956C" stroke-width="0.75" fill="none" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      <span class="graphic-lbl"><span data-zh>墨韵笔势</span><span data-en>Ink Rhythm</span></span>
+    </div>
+    <div class="graphic-card">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="28" y1="7" x2="28" y2="65" stroke="#AC956C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="44" y1="12" x2="44" y2="65" stroke="#AC956C" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="24" y1="26" x2="28" y2="26" stroke="#C8BAA3" stroke-width="1"/>
+        <line x1="24" y1="42" x2="28" y2="42" stroke="#C8BAA3" stroke-width="1"/>
+        <line x1="24" y1="58" x2="28" y2="58" stroke="#C8BAA3" stroke-width="1"/>
+        <line x1="44" y1="31" x2="48" y2="31" stroke="#C8BAA3" stroke-width="1"/>
+        <line x1="44" y1="47" x2="48" y2="47" stroke="#C8BAA3" stroke-width="1"/>
+        <path d="M28 17 Q18 11 12 17" stroke="#7A6E60" stroke-width="0.75" fill="none"/>
+        <path d="M44 24 Q54 18 60 24" stroke="#7A6E60" stroke-width="0.75" fill="none"/>
+      </svg>
+      <span class="graphic-lbl"><span data-zh>竹节轮廓</span><span data-en>Bamboo Silhouette</span></span>
+    </div>
+  </div>
+
+  <div class="texture-strip rv rv-3"></div>
+  <p class="texture-label"><span data-zh>宣纸纹理 — 细密底纹 · 适用于背景与包装</span><span data-en>Rice Paper Texture — Subtle Grid Overlay · For Backgrounds and Packaging</span></p>
+</div>
+</div>
+
+<!-- ============================================================
+     PHOTOGRAPHY DIRECTION
+     ============================================================ -->
+<div class="section rv" id="photography">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>摄影方向</span><span data-en>Photography Direction</span></span>
+  <h2 class="ttl-zh"><span data-zh>光线·构图·情绪·材质</span><span data-en>Light · Composition · Mood · Material</span></h2>
+  <p class="ttl-en"><span data-zh>用光规范 · 构图法则 · 场景类型</span><span data-en>Lighting · Composition · Scene Types</span></p>
+  <p class="body-p" data-zh>所有华夏和摄影遵循一个原则：画面应有如暂停。仅使用自然侧光或北向漫射窗光，不用闪光灯，不做高饱和修图。背景选用白石膏、原色亚麻、旧木或灰石。道具以质感取胜，而非颜色。</p>
+  <p class="body-p" data-en>All Huaxiahe photography obeys a single principle: the image should feel like a pause. Natural side-light or diffuse north-facing window light only. No flash. No high-saturation edits. Backgrounds: white plaster, raw linen, aged wood, gray stone. Props are chosen for their texture, not their color.</p>
+
+  <div class="photo-grid rv rv-2">
+    <div class="photo-card">
+      <div class="photo-ph ph-1"><span class="ph-icon">◻</span><span class="ph-tag"><span data-zh>产品主图</span><span data-en>Product Shot</span></span></div>
+      <div class="photo-desc"><h4><span data-zh>主体产品</span><span data-en>Hero Product</span></h4><p data-zh>单主体，大留白，45°柔和侧光。暖白或石灰底背景。阴影不硬切。略俯角拍摄以展示器物内腔。</p><p data-en>Single subject, generous negative space. 45° soft side-light. Warm white or stone gray background. No hard shadow cuts. Slightly elevated angle to reveal vessel interiors.</p></div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-ph ph-2"><span class="ph-icon">◻</span><span class="ph-tag"><span data-zh>生活方式</span><span data-en>Lifestyle</span></span></div>
+      <div class="photo-desc"><h4><span data-zh>生活场景</span><span data-en>Lifestyle</span></h4><p data-zh>手入镜。捕捉行为之前或之后，而非进行中。晨光透过障子门。茶水正在被倒，而非被握持。香烟上升，而非正被点燃。</p><p data-en>Hands in frame. The moment before or after, never during. Morning light through shoji. Tea being poured, not held. Incense smoke ascending, not lit.</p></div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-ph ph-3"><span class="ph-icon">◻</span><span class="ph-tag"><span data-zh>工艺细节</span><span data-en>Craft Detail</span></span></div>
+      <div class="photo-desc"><h4><span data-zh>微距工艺</span><span data-en>Craft Detail</span></h4><p data-zh>极近距拍摄纹理：木纹、釉面、纤维、刻痕。浅景深。展示器物背后的工时，此处是品牌溢价的视觉来源。</p><p data-en>Ultra-close texture shots of grain, glaze, fiber, carving. Shallow depth of field. Shows the hours behind the object — this is where the brand premium is made visible.</p></div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-ph ph-4"><span class="ph-icon">◻</span><span class="ph-tag"><span data-zh>氛围空间</span><span data-en>Ambient Scene</span></span></div>
+      <div class="photo-desc"><h4><span data-zh>空间与氛围</span><span data-en>Space &amp; Atmosphere</span></h4><p data-zh>宽画幅的仪式空间——茶台、书房、窗边。器物在使用中，而非陈列中。房间在呼吸。无刻意对称；以中国古典静物画的不对称构图为参照。</p><p data-en>Wide scenes of ritual spaces — tea table, study, window seat. Objects in use, not on display. The room breathes. Asymmetric placement following classical Chinese still-life composition.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PACKAGING SYSTEM
+     ============================================================ -->
+<div class="section-parchment">
+<div class="section-inner rv" id="packaging">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>包装体系</span><span data-en>Packaging System</span></span>
+  <h2 class="ttl-zh"><span data-zh>器物包装与品牌物料</span><span data-en>Gift Box · Label · Card · Letterhead</span></h2>
+  <p class="ttl-en"><span data-zh>礼盒 · 标签 · 名片 · 信笺 · 香道盒 · 封蜡</span><span data-en>Gift Box · Label · Business Card · Letterhead · Incense Box · Wax Seal</span></p>
+  <p class="body-p" data-zh>包装是品牌与用户最初的实体接触。每一个表面都以与内容物同等的克制来对待：非涂布天然纸，压凹或烫金印标志，极简文字。拆开的过程应当像开启一封来自信任之人的信函。</p>
+  <p class="body-p" data-en>Packaging is the first physical encounter with the brand. Every surface is treated with the same discipline as the product inside: uncoated natural stock, debossed or foil-stamped marks, minimal text. The unboxing should feel like opening a letter from a trusted friend.</p>
+
+  <div class="pack-grid rv rv-2">
+    <div class="pack-item">
+      <div class="pack-preview">
+        <div class="giftbox"><img src="assets/logo.svg" alt="Logo"></div>
+      </div>
+      <span class="pack-lbl"><span data-zh>精品礼盒</span><span data-en>Premium Gift Box</span></span>
+      <span class="pack-note" data-zh>琥珀色牛皮纸板，2mm厚。标志居中压凹。内衬暖亚麻缎面。磁吸开盖。外表面除标志外无任何文字。</span>
+      <span class="pack-note" data-en>Amber kraft board, 2mm thickness. Debossed logo centered. Satin interior in warm linen. Magnetic closure. No text on exterior beyond the mark.</span>
+    </div>
+    <div class="pack-item">
+      <div class="pack-preview">
+        <div class="label-card">
+          <img src="assets/logo.svg" alt="Logo">
+          <span class="label-zh">华夏和</span>
+          <div style="width:20px;height:1px;background:var(--gold);"></div>
+          <span class="label-sub">Huaxiahe</span>
+          <span style="font-size:8px;color:var(--stone-light);font-weight:300;">天然香 · Natural Incense</span>
+        </div>
+      </div>
+      <span class="pack-lbl"><span data-zh>产品标签</span><span data-en>Product Label</span></span>
+      <span class="pack-note" data-zh>140×60mm。非涂布奶白纸。活版印刷，琥珀色。中英双语产品名。二维码置于背面。</span>
+      <span class="pack-note" data-en>140×60mm. Uncoated cream stock. Letterpress in amber. Product name in both scripts. QR code on reverse.</span>
+    </div>
+    <div class="pack-item">
+      <div class="pack-preview">
+        <div class="bcard-stack">
+          <svg viewBox="0 0 240 136" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:220px;">
+            <rect width="240" height="136" fill="#FAF8F5" rx="2"/>
+            <rect x="0.5" y="0.5" width="239" height="135" stroke="#E5E2DE" stroke-width="0.5" rx="2"/>
+            <image href="assets/logo.svg" x="94" y="28" width="52" height="52"/>
+            <text x="120" y="97" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="11" fill="#614A25" letter-spacing="5">华夏和</text>
+            <text x="120" y="112" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="7" fill="#8A8078" letter-spacing="5">HUAXIAHE</text>
+          </svg>
+          <svg viewBox="0 0 240 136" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:220px;">
+            <rect width="240" height="136" fill="#614A25" rx="2"/>
+            <text x="18" y="32" font-family="'Noto Serif SC',serif" font-size="10" fill="rgba(229,226,222,0.65)" letter-spacing="2">姓名 / Name</text>
+            <text x="18" y="48" font-family="'Cormorant Garamond',serif" font-size="8" fill="rgba(229,226,222,0.38)" letter-spacing="2">Title · 职位</text>
+            <line x1="18" y1="60" x2="95" y2="60" stroke="rgba(110,82,30,0.65)" stroke-width="0.5"/>
+            <text x="18" y="77" font-family="'Cormorant Garamond',serif" font-size="7.5" fill="rgba(229,226,222,0.38)" letter-spacing="1">huaxiahe.com</text>
+            <text x="18" y="91" font-family="'Cormorant Garamond',serif" font-size="7.5" fill="rgba(229,226,222,0.38)" letter-spacing="1">hello@huaxiahe.com</text>
+            <image href="assets/logo.svg" x="184" y="46" width="40" height="40" opacity="0.2" style="filter:brightness(0) invert(1)"/>
+          </svg>
+        </div>
+      </div>
+      <span class="pack-lbl"><span data-zh>名片（正背面）</span><span data-en>Business Card (Front &amp; Back)</span></span>
+      <span class="pack-note" data-zh>90×54mm。正面：白，标志居中。背面：琥珀底，反白字体。450g棉质纸，雕版印刷。</span>
+      <span class="pack-note" data-en>90×54mm. Front: white, logo centered. Back: amber, reversed type. 450gsm cotton paper. Engraved print.</span>
+    </div>
+    <div class="pack-item">
+      <div class="pack-preview">
+        <div class="lh-mock">
+          <div class="lh-top"><img src="assets/logo.svg" alt="Logo"><span class="lh-brand">华夏和</span></div>
+          <div class="lh-lines">
+            <div class="lh-ln" style="width:95%"></div>
+            <div class="lh-ln" style="width:88%"></div>
+            <div class="lh-ln" style="width:72%"></div>
+            <div class="lh-ln" style="height:10px;"></div>
+            <div class="lh-ln" style="width:95%"></div>
+            <div class="lh-ln" style="width:90%"></div>
+            <div class="lh-ln" style="width:78%"></div>
+            <div class="lh-ln" style="width:55%"></div>
+          </div>
+        </div>
+      </div>
+      <span class="pack-lbl"><span data-zh>信笺与文具</span><span data-en>Letterhead &amp; Stationery</span></span>
+      <span class="pack-note" data-zh>A4/Letter。120g天然白纸。标志左上角16mm处。品牌金细线页脚。地址信息使用标注字号。</span>
+      <span class="pack-note" data-en>A4/Letter. 120gsm natural white. Logo top-left at 16mm. Brand Gold hairline footer. Minimal address type in caption style.</span>
+    </div>
+    <div class="pack-item">
+      <div class="pack-preview">
+        <div class="inc-box">
+          <img src="assets/logo.svg" alt="Logo">
+          <div class="inc-box-txt">
+            <div class="inc-char">香</div>
+            <div class="inc-sub">Incense</div>
+          </div>
+        </div>
+      </div>
+      <span class="pack-lbl"><span data-zh>香道盒</span><span data-en>Incense Box</span></span>
+      <span class="pack-note" data-zh>60×160mm抽拉盒。天然牛皮。烫金标志。单字产品描述以超大宋体呈现。内衬和纸包裹。</span>
+      <span class="pack-note" data-en>60×160mm sleeve box. Natural kraft. Foil-stamped logo. One-character product descriptor in oversized Song type. Washi tissue interior.</span>
+    </div>
+    <div class="pack-item">
+      <div class="pack-preview" style="flex-direction:column;gap:20px;">
+        <div class="wax-seal"><img src="assets/logo.svg" alt="Logo"></div>
+        <div style="width:140px;height:40px;background:var(--parchment);border:1px solid rgba(110,82,30,0.32);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--zh);font-size:8px;letter-spacing:0.3em;color:var(--amber);">华夏和 · Huaxiahe</span>
+        </div>
+      </div>
+      <span class="pack-lbl"><span data-zh>封蜡与包装纸</span><span data-en>Wax Seal &amp; Wrapping</span></span>
+      <span class="pack-note" data-zh>琥珀封蜡，用于信函与礼品包装。皮纸薄页以品牌金文字重复图案印制。克制而非繁复。</span>
+      <span class="pack-note" data-en>Amber wax seal for correspondence and gift wrapping. Parchment tissue with Brand Gold text repeat pattern. Reserved, not repetitive.</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================
+     DIGITAL BRAND
+     ============================================================ -->
+<div class="section rv" id="digital">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>数字形象</span><span data-en>Digital Presence</span></span>
+  <h2 class="ttl-zh"><span data-zh>网站·社媒·邮件</span><span data-en>Web · Social · Email</span></h2>
+  <p class="ttl-en"><span data-zh>网站 · 移动端 · 社交媒体 · 电子签名</span><span data-en>Website · Mobile · Social · Email Signature</span></p>
+  <p class="body-p" data-zh>数字触点遵循与印刷相同的克制：背景保持暖调而非纯白；过渡缓慢而有意——不反弹、不弹簧感；字体大；界面元素极简。每个屏幕的感受应像翻开一本书的页面，而非点击应用。</p>
+  <p class="body-p" data-en>Digital touchpoints follow the same restraint as print. Backgrounds stay warm. Transitions are slow and intentional — no bounce, no spring. Typography is large; interface elements are minimal. Every screen should feel like turning a page, not clicking through an app.</p>
+
+  <div class="digital-grid rv rv-2">
+    <div class="dcard">
+      <div class="dcard-bar"><div class="dbar-dot"></div><div class="dbar-dot"></div><div class="dbar-dot"></div><span class="dbar-url">huaxiahe.com</span></div>
+      <div class="dcard-body">
+        <div style="text-align:center;padding:14px 0;">
+          <img src="assets/logo.svg" alt="Logo" style="width:44px;height:44px;margin-bottom:9px;filter:sepia(1) saturate(1.3) brightness(0.65) hue-rotate(-8deg);">
+          <div style="font-family:var(--zh);font-size:16px;letter-spacing:0.2em;color:var(--amber);">华夏和</div>
+          <div style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--stone-light);margin-top:4px;">Huaxiahe</div>
+          <div style="width:22px;height:1px;background:var(--gold);margin:10px auto;"></div>
+          <div style="font-size:10px;color:var(--stone-light);font-style:italic;">Oriental Lifestyle</div>
+        </div>
+        <span class="dcard-label"><span data-zh>网站首屏 — 桌面端</span><span data-en>Website Hero — Desktop</span></span>
+      </div>
+    </div>
+    <div class="dcard">
+      <div class="dcard-bar"><div class="dbar-dot"></div><div class="dbar-dot"></div><div class="dbar-dot"></div><span class="dbar-url"><span data-zh>Instagram · 小红书</span><span data-en>Instagram · Xiaohongshu</span></span></div>
+      <div class="dcard-body">
+        <div class="social-sq">
+          <img src="assets/logo.svg" alt="Logo">
+          <span class="sq-zh">静以致远</span>
+          <div class="sq-rule"></div>
+          <span class="sq-cap"><span data-zh>静则生慧 · 华夏和</span><span data-en>Stillness brings clarity · Huaxiahe</span></span>
+        </div>
+        <span class="dcard-label"><span data-zh>社交方图 — 1080×1080</span><span data-en>Social Square — 1080×1080</span></span>
+      </div>
+    </div>
+    <div class="dcard">
+      <div class="dcard-bar"><div class="dbar-dot"></div><div class="dbar-dot"></div><div class="dbar-dot"></div><span class="dbar-url"><span data-zh>电子邮件签名</span><span data-en>Email Signature</span></span></div>
+      <div class="dcard-body" style="justify-content:center;">
+        <div class="email-sig">
+          <img src="assets/logo.svg" alt="Logo">
+          <div>
+            <span class="sig-n">华夏和品牌</span>
+            <span class="sig-t"><span data-zh>品牌总监 · Brand Director</span><span data-en>Brand Director · 品牌总监</span></span>
+            <div class="sig-c">hello@huaxiahe.com<br>huaxiahe.com</div>
+          </div>
+        </div>
+        <span class="dcard-label"><span data-zh>邮件签名 — 全平台</span><span data-en>Email Signature — All Platforms</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ICON SYSTEM
+     ============================================================ -->
+<div class="section rv" id="icons" style="padding-top:0;">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>图标语言</span><span data-en>Icon Language</span></span>
+  <h2 class="ttl-zh"><span data-zh>极简图标系统</span><span data-en>Minimal Icon System</span></h2>
+  <p class="ttl-en"><span data-zh>工艺 · 自然 · 仪式 · 平衡</span><span data-en>Craft · Nature · Ritual · Balance</span></p>
+  <p class="body-p" data-zh>图标系统以单一线宽（24px尺寸时为1px）绘制于24×24网格上。描边端头为方形，转角锐利，无填充。颜色：浅色背景使用品牌金，深色背景使用象牙白。图标词汇取材于香道文化、茶道、工艺与自然形态。</p>
+  <p class="body-p" data-en>Icons follow a single line weight (1px at 24px size), drawn on a 24×24 grid. Stroke caps are square. Corners sharp. No fills. Color: Brand Gold on light backgrounds; Ivory on dark. Vocabulary from incense culture, tea ceremony, craft, and natural form.</p>
+
+  <div class="icon-grid rv rv-2">
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <path d="M8 18h8M7 20h10M9 18v-5h6v5M9 13c0-2 3-5 3-5s3 3 3 5M12 7V5"/>
+      </svg>
+      <span class="icon-nm"><span data-zh>香炉</span><span data-en>Incense</span></span>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <path d="M5 9h14l-2 7H7L5 9z"/>
+        <path d="M18 11c1.5 0 3 .5 3 2s-1.5 2-3 2"/>
+        <line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/>
+      </svg>
+      <span class="icon-nm"><span data-zh>茶碗</span><span data-en>Tea Bowl</span></span>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <path d="M6 20c0-6 4-12 14-14C20 14 16 20 6 20z"/>
+        <line x1="6" y1="20" x2="12" y2="12"/>
+      </svg>
+      <span class="icon-nm"><span data-zh>茶叶</span><span data-en>Tea Leaf</span></span>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/>
+        <line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="15" x2="15" y2="15"/>
+        <path d="M6 9c-2-1-3-2-3-4"/><path d="M18 15c2 1 3 2 3 4"/>
+      </svg>
+      <span class="icon-nm"><span data-zh>竹节</span><span data-en>Bamboo</span></span>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <rect x="6" y="6" width="12" height="12"/><rect x="9" y="9" width="6" height="6"/>
+        <line x1="12" y1="3" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="21"/>
+      </svg>
+      <span class="icon-nm"><span data-zh>印章</span><span data-en>Seal</span></span>
+    </div>
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <polyline points="2,18 8,8 12,13 16,6 22,18"/>
+        <line x1="2" y1="18" x2="22" y2="18"/>
+      </svg>
+      <span class="icon-nm"><span data-zh>山水</span><span data-en>Mountain</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     BRAND VOICE
+     ============================================================ -->
+<div class="section-ink">
+<div class="section-inner rv" id="voice">
+  <div class="rule"></div>
+  <span class="eyebrow eyebrow-dark"><span data-zh>品牌语调</span><span data-en>Brand Voice</span></span>
+  <h2 class="ttl-zh ttl-zh-light"><span data-zh>说话的方式</span><span data-en>The Way We Speak</span></h2>
+  <p class="ttl-en ttl-en-dark"><span data-zh>语调 · 写作 · 原则 · 沟通</span><span data-en>Tone · Writing · Principles · Communication</span></p>
+  <p class="body-p body-p-dark" data-zh>华夏和的沟通方式，如同一位技艺精湛的主人倒茶：全神贯注，不急不躁，不加解释。选词只为承载其含义，而非展示自身。语调是亲密且有文化底气的——绝非学术腔，也绝非商业腔。</p>
+  <p class="body-p body-p-dark" data-en>Huaxiahe communicates the way a skilled host pours tea: with full attention, without hurry, without explanation. Words are chosen for what they carry, not what they show off. The register is intimate and literate — never academic, never commercial.</p>
+
+  <div class="voice-principles rv rv-2">
+    <div class="vp-card"><div class="vp-num">01</div><span class="vp-title"><span data-zh>从容不迫</span><span data-en>Unhurried</span></span><p class="vp-desc" data-zh>永不催促，永不宣告。让读者仿佛出于自身好奇而自然抵达品牌。</p><p class="vp-desc" data-en>Never push, never announce. Let the reader arrive at the product as if by their own curiosity.</p></div>
+    <div class="vp-card"><div class="vp-num">02</div><span class="vp-title"><span data-zh>具体精准</span><span data-en>Concrete</span></span><p class="vp-desc" data-zh>命名材料、产地和工艺。「四川柏木」而非「天然木材」。精确赢得信任。</p><p class="vp-desc" data-en>Name materials, origins, and processes. "Sichuan cypress" not "natural wood." Precision earns trust.</p></div>
+    <div class="vp-card"><div class="vp-num">03</div><span class="vp-title"><span data-zh>双语对等</span><span data-en>Bilingual Parity</span></span><p class="vp-desc" data-zh>中文与英文地位平等。两者均非对方的翻译——各自以母语读者的方式说话。</p><p class="vp-desc" data-en>Chinese and English are equals. Neither is a translation of the other. Each speaks to its reader natively.</p></div>
+    <div class="vp-card"><div class="vp-num">04</div><span class="vp-title"><span data-zh>以少胜多</span><span data-en>Silence Earns Space</span></span><p class="vp-desc" data-zh>少即是多。一句美好的句子胜过五句功能性句子。毫不留情地删改。</p><p class="vp-desc" data-en>Less copy is always more. One beautiful sentence outperforms five functional ones. Edit without mercy.</p></div>
+  </div>
+
+  <div class="voice-examples rv rv-3">
+    <div class="ve-card">
+      <h4><span data-zh>文案示例</span><span data-en>Writing Examples</span></h4>
+      <div class="ve-do"><span class="ve-tag">✓ <span data-zh>正确</span><span data-en>Do</span></span><p class="ve-txt" data-zh>「在一座山中寺庙窖藏四十年，才来到你手中。有些事，无法被催促。」</p><p class="ve-txt" data-en>"Aged forty years in a mountain temple before it reaches you. Some things cannot be rushed."</p></div>
+      <div class="ve-dont"><span class="ve-tag">✕ <span data-zh>错误</span><span data-en>Don't</span></span><p class="ve-txt" data-zh>「严选优质天然原料制作的高端沉香产品！品质保证，好评如潮！」</p><p class="ve-txt" data-en>"Premium quality incense product sourced from the best natural materials available in China!"</p></div>
+    </div>
+    <div class="ve-card">
+      <h4><span data-zh>礼品文案</span><span data-en>Gift Copy</span></h4>
+      <div class="ve-do"><span class="ve-tag">✓ <span data-zh>正确</span><span data-en>Do</span></span><p class="ve-txt" data-zh>「送给那个已经拥有一切的人——除了宁静。」</p><p class="ve-txt" data-en>"A gift for someone who already has everything — except stillness."</p></div>
+      <div class="ve-dont"><span class="ve-tag">✕ <span data-zh>错误</span><span data-en>Don't</span></span><p class="ve-txt" data-zh>「送给您最爱的人！满299元包邮，立即下单！」</p><p class="ve-txt" data-en>"The perfect gift for your loved ones! Order now and get free shipping over ¥299!"</p></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================
+     ASSETS
+     ============================================================ -->
+<div class="section-linen">
+<div class="section-inner rv" id="assets">
+  <div class="rule"></div>
+  <span class="eyebrow"><span data-zh>素材下载</span><span data-en>Asset Downloads</span></span>
+  <h2 class="ttl-zh"><span data-zh>矢量文件与品牌素材</span><span data-en>Vector Files · Brand Assets</span></h2>
+  <p class="ttl-en"><span data-zh>SVG格式 · Logo · Favicon · 社交预览图</span><span data-en>SVG Format · Logo · Favicon · Social Preview</span></p>
+  <p class="body-p" data-zh>所有品牌素材以SVG格式提供，支持无限缩放。请始终为各使用场景选用对应文件。未经品牌授权，不得更改色彩、比例或内嵌渐变。</p>
+  <p class="body-p" data-en>All brand assets provided in SVG format for infinite scalability. Always use the designated file for each application. Do not alter color, proportion, or embedded gradient without brand approval.</p>
+
+  <div class="assets-grid rv rv-2">
+    <a href="assets/logo.svg" class="asset-link" download>
+      <img src="assets/logo.svg" alt="Logo">
+      <div><span class="asset-fn">logo.svg</span><span class="asset-tp"><span data-zh>主标志 · 完整渐变</span><span data-en>Primary Logo · Full Gradient</span></span></div>
+      <span class="asset-arr">→</span>
+    </a>
+    <a href="assets/logo-black.svg" class="asset-link" download>
+      <img src="assets/logo.svg" alt="Logo Black" style="filter:brightness(0);">
+      <div><span class="asset-fn">logo-black.svg</span><span class="asset-tp"><span data-zh>单色版 · 墨黑</span><span data-en>Monochrome · Ink Black</span></span></div>
+      <span class="asset-arr">→</span>
+    </a>
+    <a href="assets/logo.svg" class="asset-link" download="logo-white.svg">
+      <img src="assets/logo.svg" alt="Logo White" style="filter:invert(1);background:var(--amber);padding:4px;border-radius:2px;">
+      <div><span class="asset-fn">logo-white.svg</span><span class="asset-tp"><span data-zh>反白版 · 深色底用</span><span data-en>Reversed · White on Dark</span></span></div>
+      <span class="asset-arr">→</span>
+    </a>
+    <a href="assets/icon.svg" class="asset-link" download>
+      <img src="assets/icon.svg" alt="Icon">
+      <div><span class="asset-fn">icon.svg</span><span class="asset-tp"><span data-zh>独立图标版</span><span data-en>Icon Mark · Standalone</span></span></div>
+      <span class="asset-arr">→</span>
+    </a>
+    <a href="assets/favicon.svg" class="asset-link" download>
+      <img src="assets/favicon.svg" alt="Favicon">
+      <div><span class="asset-fn">favicon.svg</span><span class="asset-tp"><span data-zh>网站图标</span><span data-en>Favicon · 32×32</span></span></div>
+      <span class="asset-arr">→</span>
+    </a>
+    <a href="assets/logo-original.svg" class="asset-link" download>
+      <img src="assets/logo.svg" alt="Original">
+      <div><span class="asset-fn">logo-original.svg</span><span class="asset-tp"><span data-zh>主文件 · AI直出</span><span data-en>Master File · AI Export</span></span></div>
+      <span class="asset-arr">→</span>
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo.svg" alt="华夏和">
+      <span class="footer-zh">华夏和</span>
+      <p class="footer-tag" data-zh>东方高端生活方式品牌。<br>根植中华，走向世界。</p>
+      <p class="footer-tag" data-en>Premium Oriental lifestyle.<br>Rooted in the Chinese world,<br>made for the global one.</p>
+    </div>
+    <nav class="footer-nav">
+      <h5><span data-zh>VI 手册</span><span data-en>VI Manual</span></h5>
+      <ul>
+        <li><a href="#story"><span data-zh>品牌故事</span><span data-en>Brand Story</span></a></li>
+        <li><a href="#logo"><span data-zh>标志系统</span><span data-en>Logo System</span></a></li>
+        <li><a href="#color"><span data-zh>色彩体系</span><span data-en>Color Palette</span></a></li>
+        <li><a href="#typography"><span data-zh>字体系统</span><span data-en>Typography</span></a></li>
+        <li><a href="#graphic"><span data-zh>视觉语言</span><span data-en>Graphic Language</span></a></li>
+        <li><a href="#packaging"><span data-zh>包装体系</span><span data-en>Packaging</span></a></li>
+        <li><a href="#voice"><span data-zh>品牌语调</span><span data-en>Brand Voice</span></a></li>
+        <li><a href="#assets"><span data-zh>素材下载</span><span data-en>Asset Downloads</span></a></li>
+      </ul>
+    </nav>
+    <nav class="footer-nav">
+      <h5><span data-zh>品牌</span><span data-en>Brand</span></h5>
+      <ul>
+        <li><a href="#">Huaxiahe.com</a></li>
+        <li><a href="#"><span data-zh>品牌合作</span><span data-en>Brand Inquiries</span></a></li>
+        <li><a href="#"><span data-zh>授权使用</span><span data-en>Licensing</span></a></li>
+        <li><a href="#"><span data-zh>联系我们</span><span data-en>Contact</span></a></li>
+      </ul>
+    </nav>
+    <div class="footer-copy">
+      © 2025 华夏和 Huaxiahe. All rights reserved. &nbsp;·&nbsp; Visual Identity System v1.1
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Language Switch ── */
+function setLang(lang) {
+  document.body.className = lang;
+  document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  localStorage.setItem('hxh-lang', lang);
+}
+// Restore preference
+const saved = localStorage.getItem('hxh-lang');
+if (saved) setLang(saved);
+
+/* ── Nav scroll ── */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* ── Scroll Reveal ── */
+const rvEls = document.querySelectorAll('.rv');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+rvEls.forEach(el => io.observe(el));
+
+/* ── Mobile Menu ── */
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  const links = document.getElementById('navLinks');
+  if (menuOpen) {
+    links.style.display = 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'fixed';
+    links.style.top = '58px';
+    links.style.left = '0'; links.style.right = '0';
+    links.style.background = 'rgba(250,248,245,0.98)';
+    links.style.padding = '24px';
+    links.style.gap = '18px';
+    links.style.borderBottom = '1px solid rgba(110,82,30,0.32)';
+    links.style.backdropFilter = 'blur(12px)';
+    links.style.zIndex = '99';
+  } else {
+    links.style.display = 'none';
+  }
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => { menuOpen = false; links.style.display = 'none'; });
+  });
+}
+</script>
+</body>
+</html>
