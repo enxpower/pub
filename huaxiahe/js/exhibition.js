@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  /* ── Language switch (shared preference across /, /exhibition/, /vi/) ── */
+  /* ── Language switch (shared preference with /vi/) ── */
   var LANG_KEY = 'hxh-lang';
   var btnZh = document.getElementById('btnZh');
   var btnEn = document.getElementById('btnEn');
@@ -78,45 +78,45 @@
     rvEls.forEach(function (el) { el.classList.add('on'); });
   }
 
-  /* ── Product poster campaign dialog ── */
-  var CAMPAIGN_META = [
-    { zh: '合香珠', en: 'The Product' },
-    { zh: '众香和，方成香', en: 'The Materials in Balance' },
-    { zh: '木有其性', en: 'Material Character' },
+  /* ── Poster archive dialog ── */
+  var POSTER_META = [
+    { zh: '和', en: 'Harmony Is Not Sameness' },
+    { zh: '众香和，方成香', en: 'The Philosophy of Blended Incense' },
+    { zh: '木有其性', en: 'The Nature of Material' },
     { zh: '静待成香', en: 'Time as Craft' },
-    { zh: '圆融自成', en: 'The Finished Bead' },
-    { zh: '香随身行', en: 'The Worn Object' }
+    { zh: '圆融自成', en: 'The Form of Completion' },
+    { zh: '香随身行', en: 'Incense as Companion' },
+    { zh: '和万香，养一心', en: 'Many Fragrances, One Heart' },
+    { zh: '和，不止于香', en: 'A Philosophy Beyond Incense' }
   ];
 
-  var campaignButtons = Array.prototype.slice.call(document.querySelectorAll('.campaign-thumb'));
-  var dialog = document.getElementById('campaignDialog');
-  var dialogCanvas = document.getElementById('campaignDialogCanvas');
-  var dialogIdx = document.getElementById('campaignDialogIdx');
-  var dialogZh = document.getElementById('campaignDialogZh');
-  var dialogEn = document.getElementById('campaignDialogEn');
-  var closeBtn = document.getElementById('campaignClose');
-  var prevBtn = document.getElementById('campaignPrev');
-  var nextBtn = document.getElementById('campaignNext');
+  var posterButtons = Array.prototype.slice.call(document.querySelectorAll('.poster-thumb'));
+  var dialog = document.getElementById('posterDialog');
+  var dialogCanvas = document.getElementById('posterDialogCanvas');
+  var dialogIdx = document.getElementById('posterDialogIdx');
+  var dialogZh = document.getElementById('posterDialogZh');
+  var dialogEn = document.getElementById('posterDialogEn');
+  var closeBtn = document.getElementById('posterClose');
+  var prevBtn = document.getElementById('posterPrev');
+  var nextBtn = document.getElementById('posterNext');
 
   var currentIndex = 0;
   var lastTrigger = null;
   var dialogOpen = false;
 
   function renderDialogMeta() {
-    var meta = CAMPAIGN_META[currentIndex];
+    var meta = POSTER_META[currentIndex];
     var n = String(currentIndex + 1).padStart(2, '0');
-    dialogIdx.textContent = n + ' / 06';
+    dialogIdx.textContent = n + ' / 08';
     dialogZh.textContent = meta.zh;
     dialogEn.textContent = meta.en;
   }
 
   function renderDialogCanvas() {
-    var srcImg = campaignButtons[currentIndex].querySelector('img');
+    var srcSvg = posterButtons[currentIndex].querySelector('.poster-canvas svg');
     dialogCanvas.innerHTML = '';
-    if (srcImg) {
-      var clone = srcImg.cloneNode(true);
-      clone.removeAttribute('loading');
-      clone.setAttribute('alt', '');
+    if (srcSvg) {
+      var clone = srcSvg.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       dialogCanvas.appendChild(clone);
     }
@@ -144,24 +144,24 @@
       if (lastTrigger) lastTrigger.focus();
     });
     dialog.addEventListener('click', function (e) {
-      var box = dialog.querySelector('.campaign-dialog-inner');
+      var box = dialog.querySelector('.poster-dialog-inner');
       if (box && !box.contains(e.target)) closePoster();
     });
   }
 
-  campaignButtons.forEach(function (btn, i) {
+  posterButtons.forEach(function (btn, i) {
     btn.addEventListener('click', function () { openPoster(i, btn); });
   });
 
   if (closeBtn) closeBtn.addEventListener('click', closePoster);
   if (prevBtn) prevBtn.addEventListener('click', function () {
-    currentIndex = (currentIndex - 1 + CAMPAIGN_META.length) % CAMPAIGN_META.length;
+    currentIndex = (currentIndex - 1 + POSTER_META.length) % POSTER_META.length;
     renderDialogCanvas();
     renderDialogMeta();
     closeBtn.focus();
   });
   if (nextBtn) nextBtn.addEventListener('click', function () {
-    currentIndex = (currentIndex + 1) % CAMPAIGN_META.length;
+    currentIndex = (currentIndex + 1) % POSTER_META.length;
     renderDialogCanvas();
     renderDialogMeta();
     closeBtn.focus();
