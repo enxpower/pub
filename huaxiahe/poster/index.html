@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>华夏和 · 合香珠 — 产品主海报</title>
-<meta name="description" content="华夏和合香珠产品主海报，3170×1040px，供网站横幅、展陈大屏与未来印刷适配使用。">
+<title>华夏和 · 合香珠 — 产品海报系列</title>
+<meta name="description" content="华夏和合香珠产品海报系列，六幅 3170×1040px 主海报，供网站横幅、展陈大屏与未来印刷适配使用。">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,7 @@
     --stone-light: #6B5F50;
     --warm-white: #F3EFE6;
     --cream: #E4DDD0;
+    --linen: #EAE4D6;
     --zh: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,13 +29,16 @@
     color: var(--stone);
     font-family: var(--zh);
     font-weight: 300;
-    padding: 48px 24px 64px;
+    padding: 56px 24px 72px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 12px;
   }
-  header { text-align: center; }
+  header { text-align: center; margin-bottom: 28px; }
+  .brand-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 22px; }
+  .brand-logo img { width: 40px; height: 40px; }
+  .brand-logo span { font-size: 19px; font-weight: 500; letter-spacing: 0.18em; color: var(--amber); }
   h1 {
     font-size: clamp(20px, 3vw, 26px);
     font-weight: 500;
@@ -48,32 +52,28 @@
     letter-spacing: 0.05em;
     color: var(--stone-light);
   }
+  main { width: 100%; max-width: 1585px; display: flex; flex-direction: column; gap: 64px; margin-top: 24px; }
+  section.poster-block { width: 100%; }
+  .poster-heading { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
+  .poster-num { font-size: 13px; color: var(--gold-deep); letter-spacing: 0.1em; }
+  .poster-title { font-size: 20px; font-weight: 500; letter-spacing: 0.08em; color: var(--amber); }
+  .poster-sub { font-size: 13px; color: var(--stone-light); letter-spacing: 0.04em; }
   .frame {
     width: 100%;
-    max-width: 1585px;
     background: var(--cream);
-    padding: 12px;
+    padding: 10px;
     border: 1px solid rgba(120,90,40,0.2);
   }
-  .frame img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  .frame img { display: block; width: 100%; height: auto; }
+  .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
   .actions a {
     font-family: var(--zh);
-    font-size: 13px;
-    letter-spacing: 0.15em;
+    font-size: 12px;
+    letter-spacing: 0.12em;
     color: var(--amber);
     text-decoration: none;
     border: 1px solid rgba(110,82,30,0.5);
-    padding: 12px 26px;
+    padding: 9px 20px;
     transition: all 0.25s ease;
   }
   .actions a:hover, .actions a:focus-visible {
@@ -81,11 +81,13 @@
     color: var(--warm-white);
     border-color: var(--amber);
   }
+  hr.divider { width: 100%; max-width: 1585px; border: none; border-top: 1px solid rgba(120,90,40,0.15); margin: 8px 0; }
   footer {
     font-size: 11px;
     color: var(--stone-light);
     letter-spacing: 0.08em;
     text-align: center;
+    margin-top: 24px;
   }
   footer a { color: var(--gold-deep); }
 </style>
@@ -93,20 +95,122 @@
 <body>
 
 <header>
-  <h1>华夏和 · 合香珠 — 产品主海报</h1>
-  <p class="meta">3170 × 1040 px &nbsp;·&nbsp; 数字大师版本，供网站横幅、展陈大屏与未来印刷适配使用</p>
+  <div class="brand-logo">
+    <img src="../assets/logo-primary-horizontal.svg" alt="华夏和">
+  </div>
+  <h1>合香珠 — 产品海报系列</h1>
+  <p class="meta">六幅主海报 · 3170 × 1040 px · 供网站横幅、展陈大屏与未来印刷适配使用</p>
 </header>
 
-<div class="frame">
-  <img src="../assets/posters/huaxiahe-product-master-3170x1040.png"
-       width="3170" height="1040"
-       alt="华夏和合香珠产品主海报：左侧为品牌名与产品说明，中央为产品主图区，右侧列出材料、工艺与佩用信息">
-</div>
+<main>
 
-<div class="actions">
-  <a href="../assets/posters/huaxiahe-product-master-3170x1040.png" download>下载 PNG</a>
-  <a href="../assets/posters/huaxiahe-product-master-3170x1040.svg" download>下载 SVG（可编辑）</a>
-</div>
+  <section class="poster-block" id="overview">
+    <div class="poster-heading">
+      <span class="poster-num">01</span>
+      <span class="poster-title">产品总览</span>
+      <span class="poster-sub">合香珠 · 众香和，方成香。</span>
+    </div>
+    <div class="frame">
+      <img src="../assets/posters/huaxiahe-product-overview-3170x1040.png" width="3170" height="1040"
+           alt="华夏和合香珠产品总览海报：左侧品牌名与产品说明，中央为产品主图区，右侧列出材料、工艺与佩用信息">
+    </div>
+    <div class="actions">
+      <a href="../assets/posters/huaxiahe-product-overview-3170x1040.png" download>下载 PNG</a>
+      <a href="../assets/posters/huaxiahe-product-overview-3170x1040.svg" download>下载 SVG（可编辑）</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="poster-block" id="materials">
+    <div class="poster-heading">
+      <span class="poster-num">02</span>
+      <span class="poster-title">材料</span>
+      <span class="poster-sub">木 · 花 · 脂 · 草</span>
+    </div>
+    <div class="frame">
+      <img src="../assets/posters/huaxiahe-materials-3170x1040.png" width="3170" height="1040"
+           alt="华夏和材料海报：左侧列出木、花、脂、草、时间五种材料特质，右侧为一幅主材料图与四幅小图">
+    </div>
+    <div class="actions">
+      <a href="../assets/posters/huaxiahe-materials-3170x1040.png" download>下载 PNG</a>
+      <a href="../assets/posters/huaxiahe-materials-3170x1040.svg" download>下载 SVG（可编辑）</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="poster-block" id="craft">
+    <div class="poster-heading">
+      <span class="poster-num">03</span>
+      <span class="poster-title">工艺</span>
+      <span class="poster-sub">九步成珠</span>
+    </div>
+    <div class="frame">
+      <img src="../assets/posters/huaxiahe-craft-3170x1040.png" width="3170" height="1040"
+           alt="华夏和工艺海报：九步制香流程以电影感的横向图像序列呈现，从选材到养藏">
+    </div>
+    <div class="actions">
+      <a href="../assets/posters/huaxiahe-craft-3170x1040.png" download>下载 PNG</a>
+      <a href="../assets/posters/huaxiahe-craft-3170x1040.svg" download>下载 SVG（可编辑）</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="poster-block" id="finished">
+    <div class="poster-heading">
+      <span class="poster-num">04</span>
+      <span class="poster-title">成品</span>
+      <span class="poster-sub">一枚珠，一段时间。</span>
+    </div>
+    <div class="frame">
+      <img src="../assets/posters/huaxiahe-finished-product-3170x1040.png" width="3170" height="1040"
+           alt="华夏和成品海报：以产品图为绝对主体，文字极简，呈现圆融自成的成珠意象">
+    </div>
+    <div class="actions">
+      <a href="../assets/posters/huaxiahe-finished-product-3170x1040.png" download>下载 PNG</a>
+      <a href="../assets/posters/huaxiahe-finished-product-3170x1040.svg" download>下载 SVG（可编辑）</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="poster-block" id="wearing">
+    <div class="poster-heading">
+      <span class="poster-num">05</span>
+      <span class="poster-title">佩用</span>
+      <span class="poster-sub">香随身行</span>
+    </div>
+    <div class="frame">
+      <img src="../assets/posters/huaxiahe-wearing-3170x1040.png" width="3170" height="1040"
+           alt="华夏和佩用海报：以贴身佩戴的生活场景图为主，文字在右侧安静呈现">
+    </div>
+    <div class="actions">
+      <a href="../assets/posters/huaxiahe-wearing-3170x1040.png" download>下载 PNG</a>
+      <a href="../assets/posters/huaxiahe-wearing-3170x1040.svg" download>下载 SVG（可编辑）</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="poster-block" id="philosophy">
+    <div class="poster-heading">
+      <span class="poster-num">06</span>
+      <span class="poster-title">品牌</span>
+      <span class="poster-sub">和，不止于香。</span>
+    </div>
+    <div class="frame">
+      <img src="../assets/posters/huaxiahe-brand-philosophy-3170x1040.png" width="3170" height="1040"
+           alt="华夏和品牌哲学海报：以完整品牌标志与和之哲学陈述作为整个系列的收束">
+    </div>
+    <div class="actions">
+      <a href="../assets/posters/huaxiahe-brand-philosophy-3170x1040.png" download>下载 PNG</a>
+      <a href="../assets/posters/huaxiahe-brand-philosophy-3170x1040.svg" download>下载 SVG（可编辑）</a>
+    </div>
+  </section>
+
+</main>
 
 <footer>
   素材替换说明见仓库内 <a href="../POSTER_IMAGE_REPLACEMENT_GUIDE.md">POSTER_IMAGE_REPLACEMENT_GUIDE.md</a>
