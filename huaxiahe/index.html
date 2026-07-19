@@ -1,0 +1,2610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华夏和 Huaxiahe — Visual Identity Manual</title>
+<meta name="description" content="华夏和品牌视觉识别系统 — A premium Oriental lifestyle brand rooted in Chinese cultural heritage.">
+<meta property="og:title" content="华夏和 Huaxiahe — Brand Identity">
+<meta property="og:description" content="Premium Oriental lifestyle brand. Visual Identity Manual.">
+<meta property="og:image" content="https://enxpower.com/huaxiahe/assets/og-image.png">
+<meta property="og:url" content="https://enxpower.com/huaxiahe/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="华夏和 Huaxiahe — Brand Identity">
+<meta name="twitter:image" content="https://enxpower.com/huaxiahe/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   HUAXIAHE VI — CSS VARIABLES & BASE
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --hxh-gold-light:     #E5E2DE;
+  --hxh-gold-warm:      #C8BAA3;
+  --hxh-gold-mid:       #B5A07A;
+  --hxh-gold:           #AC956C;
+  --hxh-gold-deep:      #8C7650;
+  --hxh-amber:          #614A25;
+  --hxh-ink:            #1A1612;
+  --hxh-ink-soft:       #2C2318;
+  --hxh-charcoal:       #3D3228;
+  --hxh-stone:          #7A6E60;
+  --hxh-stone-light:    #A8A099;
+  --hxh-linen:          #F5F2EC;
+  --hxh-white-warm:     #FAF8F5;
+  --hxh-cream:          #F0EDE5;
+  --hxh-parchment:      #EAE5D8;
+
+  /* Typography */
+  --font-serif-en:      'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-serif-zh:      'Noto Serif SC', 'STSong', serif;
+  --font-mono:          'Courier New', monospace;
+
+  /* Spacing */
+  --section-pad:        120px;
+  --section-pad-md:     72px;
+  --section-pad-sm:     48px;
+
+  /* Transitions */
+  --ease:               cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--hxh-white-warm);
+  color: var(--hxh-ink);
+  font-family: var(--font-serif-en);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s var(--ease);
+}
+
+.nav.scrolled {
+  background: rgba(250, 248, 245, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 16px 48px;
+  border-bottom: 1px solid rgba(172, 149, 108, 0.15);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.nav-logo-mark {
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.nav.scrolled .nav-logo-mark {
+  opacity: 1;
+}
+
+.nav-logo-text {
+  font-family: var(--font-serif-zh);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--hxh-amber);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.nav.scrolled .nav-logo-text {
+  opacity: 1;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-serif-en);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hxh-stone);
+  text-decoration: none;
+  transition: color 0.3s var(--ease);
+}
+
+.nav-links a:hover {
+  color: var(--hxh-amber);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--hxh-amber);
+  transition: all 0.3s var(--ease);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  position: relative;
+  background: var(--hxh-white-warm);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(200, 186, 163, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(172, 149, 108, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  margin-bottom: 52px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 1s var(--ease) 0.3s forwards;
+}
+
+.hero-logo-wrap {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 52px;
+  opacity: 0;
+  transform: scale(0.92);
+  animation: scaleIn 1.4s var(--ease) 0.5s forwards;
+}
+
+.hero-logo-wrap img,
+.hero-logo-wrap svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-brand-zh {
+  font-family: var(--font-serif-zh);
+  font-size: clamp(42px, 8vw, 80px);
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  color: var(--hxh-amber);
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 1s var(--ease) 0.9s forwards;
+}
+
+.hero-brand-en {
+  font-family: var(--font-serif-en);
+  font-size: clamp(13px, 2vw, 17px);
+  font-weight: 300;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 1s var(--ease) 1.1s forwards;
+}
+
+.hero-tagline {
+  font-family: var(--font-serif-en);
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--hxh-stone);
+  max-width: 520px;
+  line-height: 1.75;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 1s var(--ease) 1.3s forwards;
+}
+
+.hero-divider {
+  width: 1px;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, var(--hxh-gold-warm), transparent);
+  margin: 56px auto 0;
+  opacity: 0;
+  animation: fadeIn 1s var(--ease) 1.8s forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ============================================================
+   SECTION BASE
+   ============================================================ */
+.section {
+  padding: var(--section-pad) 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: var(--section-pad) 0;
+}
+
+.section-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--hxh-gold);
+  margin: 0 auto 28px;
+}
+
+.section-rule.left {
+  margin: 0 0 28px;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.section-title-zh {
+  font-family: var(--font-serif-zh);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--hxh-ink);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.section-title-en {
+  font-family: var(--font-serif-en);
+  font-size: clamp(12px, 1.5vw, 14px);
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--hxh-stone);
+  margin-bottom: 48px;
+}
+
+.body-text {
+  font-family: var(--font-serif-en);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--hxh-stone);
+  max-width: 680px;
+}
+
+.body-text + .body-text {
+  margin-top: 1.5em;
+}
+
+/* ============================================================
+   BRAND STORY
+   ============================================================ */
+.story-section {
+  background: var(--hxh-linen);
+}
+
+.story-inner {
+  padding: var(--section-pad) 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-top: 72px;
+}
+
+.story-column {
+  padding: 48px 40px;
+  border-left: 1px solid rgba(172, 149, 108, 0.2);
+}
+
+.story-column:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
+.story-column:last-child {
+  padding-right: 0;
+}
+
+.story-char {
+  font-family: var(--font-serif-zh);
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--hxh-amber);
+  line-height: 1;
+  margin-bottom: 24px;
+  letter-spacing: 0;
+  opacity: 0.85;
+}
+
+.story-label {
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.story-text {
+  font-family: var(--font-serif-en);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--hxh-stone);
+}
+
+.story-quote {
+  margin-top: 80px;
+  padding: 56px 0;
+  border-top: 1px solid rgba(172, 149, 108, 0.2);
+  border-bottom: 1px solid rgba(172, 149, 108, 0.2);
+  text-align: center;
+}
+
+.story-quote blockquote {
+  font-family: var(--font-serif-zh);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: var(--hxh-amber);
+  line-height: 1.8;
+}
+
+.story-quote cite {
+  display: block;
+  margin-top: 20px;
+  font-family: var(--font-serif-en);
+  font-size: 11px;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+}
+
+/* ============================================================
+   LOGO SYSTEM
+   ============================================================ */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(172, 149, 108, 0.15);
+  margin-top: 64px;
+  border: 1px solid rgba(172, 149, 108, 0.15);
+}
+
+.logo-cell {
+  background: var(--hxh-white-warm);
+  padding: 56px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-cell.dark-bg {
+  background: var(--hxh-ink);
+}
+
+.logo-cell.parchment-bg {
+  background: var(--hxh-parchment);
+}
+
+.logo-cell-img {
+  width: auto;
+  max-width: 120px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.logo-cell-label {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+  text-align: center;
+}
+
+.logo-cell.dark-bg .logo-cell-label {
+  color: rgba(255,255,255,0.35);
+}
+
+/* Monochrome logo using CSS filter */
+.logo-mono { filter: grayscale(1) brightness(0.25); }
+.logo-white { filter: brightness(0) invert(1); }
+.logo-gold-solid { filter: sepia(1) saturate(0.8) brightness(0.85); }
+
+/* Clear space diagram */
+.clearspace-diagram {
+  margin-top: 64px;
+  padding: 56px;
+  background: var(--hxh-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 80px;
+}
+
+.clearspace-logo-wrap {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.clearspace-logo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border: 1px dashed rgba(172, 149, 108, 0.4);
+}
+
+.clearspace-desc {
+  max-width: 320px;
+}
+
+.clearspace-desc h4 {
+  font-family: var(--font-serif-en);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--hxh-amber);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.clearspace-desc p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--hxh-stone);
+  line-height: 1.8;
+}
+
+.dont-do-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(172, 149, 108, 0.15);
+  margin-top: 48px;
+  border: 1px solid rgba(172, 149, 108, 0.15);
+}
+
+.dont-cell {
+  background: var(--hxh-white-warm);
+  padding: 40px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.dont-cell-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  opacity: 0.5;
+}
+
+.dont-cell-x {
+  position: relative;
+}
+
+.dont-cell-x::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(180, 60, 60, 0.35);
+  border-radius: 2px;
+}
+
+.dont-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(180, 60, 60, 0.7);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.dont-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--hxh-stone-light);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   COLOR SYSTEM
+   ============================================================ */
+.color-section {
+  background: var(--hxh-ink);
+  padding: var(--section-pad) 48px;
+}
+
+.color-section .section-eyebrow,
+.color-section .section-rule { opacity: 0.6; }
+
+.color-section .section-title-zh {
+  color: var(--hxh-gold-light);
+}
+
+.color-section .section-title-en {
+  color: rgba(255,255,255,0.3);
+}
+
+.color-swatches-primary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 56px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.color-swatch {
+  position: relative;
+}
+
+.color-swatch-block {
+  height: 200px;
+  width: 100%;
+}
+
+.color-swatch-info {
+  padding: 20px 20px 24px;
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.swatch-name {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.swatch-hex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+}
+
+.swatch-role {
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  margin-top: 4px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.color-swatches-secondary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-top: 1px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: none;
+}
+
+.color-swatches-secondary .color-swatch-block {
+  height: 80px;
+}
+
+.color-usage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.color-usage-card {
+  padding: 36px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.color-usage-card h4 {
+  font-family: var(--font-serif-en);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  margin-bottom: 16px;
+}
+
+.color-usage-card p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ============================================================
+   TYPOGRAPHY SYSTEM
+   ============================================================ */
+.type-demo-grid {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.type-row {
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(172, 149, 108, 0.12);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.type-row:first-child {
+  border-top: 1px solid rgba(172, 149, 108, 0.12);
+}
+
+.type-meta {
+  padding-top: 6px;
+}
+
+.type-role {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.type-spec {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--hxh-stone-light);
+  line-height: 1.7;
+}
+
+.type-sample-h1 {
+  font-family: var(--font-serif-en);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--hxh-ink);
+  line-height: 1.15;
+}
+
+.type-sample-h2 {
+  font-family: var(--font-serif-zh);
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--hxh-amber);
+  line-height: 1.35;
+}
+
+.type-sample-h3 {
+  font-family: var(--font-serif-en);
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--hxh-charcoal);
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+}
+
+.type-sample-body {
+  font-family: var(--font-serif-en);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--hxh-stone);
+}
+
+.type-sample-caption {
+  font-family: var(--font-serif-en);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+}
+
+.type-sample-quote {
+  font-family: var(--font-serif-zh);
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--hxh-amber);
+  line-height: 1.9;
+  border-left: 2px solid var(--hxh-gold);
+  padding-left: 24px;
+}
+
+.type-sample-btn {
+  display: inline-block;
+  font-family: var(--font-serif-en);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--hxh-amber);
+  border: 1px solid rgba(172, 149, 108, 0.5);
+  padding: 14px 32px;
+  text-decoration: none;
+  transition: all 0.3s var(--ease);
+}
+
+.type-sample-btn:hover {
+  background: var(--hxh-amber);
+  border-color: var(--hxh-amber);
+  color: var(--hxh-white-warm);
+}
+
+/* ============================================================
+   GRAPHIC LANGUAGE
+   ============================================================ */
+.graphic-section {
+  background: var(--hxh-linen);
+  padding: var(--section-pad) 48px;
+}
+
+.graphic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.graphic-card {
+  background: var(--hxh-white-warm);
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgba(172, 149, 108, 0.1);
+}
+
+.graphic-icon-wrap {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graphic-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+.graphic-card-label {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+  text-align: center;
+}
+
+.texture-demo {
+  margin-top: 24px;
+  height: 120px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 4px,
+      rgba(172, 149, 108, 0.04) 4px,
+      rgba(172, 149, 108, 0.04) 5px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 8px,
+      rgba(172, 149, 108, 0.03) 8px,
+      rgba(172, 149, 108, 0.03) 9px
+    );
+  border: 1px solid rgba(172, 149, 108, 0.12);
+}
+
+/* ============================================================
+   PHOTOGRAPHY DIRECTION
+   ============================================================ */
+.photo-direction-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 64px;
+  background: rgba(172, 149, 108, 0.12);
+}
+
+.photo-card {
+  background: var(--hxh-white-warm);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-placeholder {
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-placeholder-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.photo-placeholder-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  opacity: 0.35;
+  display: block;
+}
+
+.photo-desc {
+  padding: 28px 32px 32px;
+}
+
+.photo-desc h4 {
+  font-family: var(--font-serif-en);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hxh-amber);
+  margin-bottom: 8px;
+}
+
+.photo-desc p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--hxh-stone);
+}
+
+/* Photo placeholder visual styles */
+.ph-product {
+  background: linear-gradient(135deg, var(--hxh-cream) 0%, var(--hxh-parchment) 100%);
+}
+
+.ph-lifestyle {
+  background: linear-gradient(135deg, rgba(200,186,163,0.2) 0%, rgba(172,149,108,0.12) 100%);
+}
+
+.ph-macro {
+  background: linear-gradient(135deg, var(--hxh-linen) 0%, rgba(200,186,163,0.3) 100%);
+}
+
+.ph-ambient {
+  background: linear-gradient(160deg, rgba(97,74,37,0.08) 0%, rgba(172,149,108,0.15) 100%);
+}
+
+/* ============================================================
+   PACKAGING SYSTEM
+   ============================================================ */
+.packaging-section {
+  background: var(--hxh-parchment);
+  padding: var(--section-pad) 48px;
+}
+
+.packaging-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 64px;
+}
+
+.packaging-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.packaging-preview {
+  background: var(--hxh-white-warm);
+  border: 1px solid rgba(172, 149, 108, 0.15);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.packaging-label {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+}
+
+.pack-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--hxh-stone);
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+/* Business card SVG mock */
+.biz-card-mock {
+  width: 100%;
+  max-width: 260px;
+}
+
+/* Gift box mock */
+.giftbox-mock {
+  width: 120px;
+  height: 140px;
+  background: var(--hxh-amber);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0 rgba(97,74,37,0.35);
+}
+
+.giftbox-ribbon {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(255,255,255,0.25);
+  transform: translateX(-50%);
+}
+
+.giftbox-ribbon-h {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(255,255,255,0.25);
+}
+
+.giftbox-logo {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+/* Label mock */
+.label-mock {
+  width: 160px;
+  padding: 20px 16px;
+  background: var(--hxh-white-warm);
+  border: 1px solid rgba(172, 149, 108, 0.3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.label-logo-sm {
+  width: 40px;
+  height: 40px;
+}
+
+.label-brand-zh {
+  font-family: var(--font-serif-zh);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--hxh-amber);
+}
+
+.label-sub {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+}
+
+/* Letterhead mock */
+.letterhead-mock {
+  width: 100%;
+  max-width: 200px;
+  background: var(--hxh-white-warm);
+  border: 1px solid rgba(172, 149, 108, 0.15);
+  padding: 20px;
+}
+
+.letterhead-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(172, 149, 108, 0.2);
+  margin-bottom: 12px;
+}
+
+.lh-logo {
+  width: 28px;
+  height: 28px;
+}
+
+.lh-brand {
+  font-family: var(--font-serif-zh);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--hxh-amber);
+}
+
+.lh-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.lh-line {
+  height: 4px;
+  background: rgba(172, 149, 108, 0.12);
+  border-radius: 1px;
+}
+
+.lh-line.short { width: 60%; }
+.lh-line.med { width: 80%; }
+.lh-line.long { width: 95%; }
+
+/* ============================================================
+   DIGITAL BRAND
+   ============================================================ */
+.digital-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.digital-card {
+  border: 1px solid rgba(172, 149, 108, 0.15);
+  overflow: hidden;
+}
+
+.digital-card-header {
+  background: var(--hxh-amber);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dch-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+
+.dch-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.6);
+  margin-left: 4px;
+}
+
+.digital-card-body {
+  background: var(--hxh-white-warm);
+  padding: 24px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.digital-card-label {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(172,149,108,0.1);
+}
+
+/* Social post mock */
+.social-post {
+  background: var(--hxh-linen);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.social-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.social-zh {
+  font-family: var(--font-serif-zh);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--hxh-amber);
+}
+
+.social-rule {
+  width: 24px;
+  height: 1px;
+  background: var(--hxh-gold);
+}
+
+.social-caption {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+  text-align: center;
+}
+
+/* Email signature mock */
+.email-sig {
+  background: var(--hxh-white-warm);
+  padding: 20px;
+  border-left: 2px solid var(--hxh-gold);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.sig-logo {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.sig-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sig-name {
+  font-family: var(--font-serif-zh);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--hxh-amber);
+}
+
+.sig-title {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--hxh-stone-light);
+  text-transform: uppercase;
+}
+
+.sig-contact {
+  font-size: 10px;
+  color: var(--hxh-stone-light);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   ICON SYSTEM
+   ============================================================ */
+.icon-system-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: rgba(172, 149, 108, 0.12);
+  margin-top: 56px;
+  border: 1px solid rgba(172, 149, 108, 0.12);
+}
+
+.icon-cell {
+  background: var(--hxh-white-warm);
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-cell svg {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-cell-name {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+  text-align: center;
+}
+
+/* ============================================================
+   BRAND VOICE
+   ============================================================ */
+.voice-section {
+  background: var(--hxh-ink);
+  padding: var(--section-pad) 48px;
+}
+
+.voice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 64px;
+}
+
+.voice-card {
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.voice-card h4 {
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  margin-bottom: 24px;
+}
+
+.voice-example {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.voice-do,
+.voice-dont {
+  padding: 20px;
+  border-left: 2px solid;
+}
+
+.voice-do {
+  border-color: var(--hxh-gold);
+  background: rgba(172, 149, 108, 0.06);
+}
+
+.voice-dont {
+  border-color: rgba(180, 60, 60, 0.4);
+  background: rgba(180, 60, 60, 0.04);
+}
+
+.voice-tag {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.voice-do .voice-tag { color: var(--hxh-gold); }
+.voice-dont .voice-tag { color: rgba(180, 60, 60, 0.7); }
+
+.voice-text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+}
+
+.voice-principle {
+  padding: 28px 32px;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+}
+
+.voice-p-num {
+  font-family: var(--font-serif-en);
+  font-size: 32px;
+  font-weight: 300;
+  color: rgba(172, 149, 108, 0.2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.voice-p-title {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hxh-gold-warm);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.voice-p-desc {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ============================================================
+   ASSETS DOWNLOAD
+   ============================================================ */
+.assets-section {
+  background: var(--hxh-linen);
+  padding: var(--section-pad) 48px;
+}
+
+.assets-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.asset-item {
+  background: var(--hxh-white-warm);
+  border: 1px solid rgba(172, 149, 108, 0.12);
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: border-color 0.3s var(--ease);
+  text-decoration: none;
+}
+
+.asset-item:hover {
+  border-color: rgba(172, 149, 108, 0.45);
+}
+
+.asset-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.asset-info {
+  flex: 1;
+}
+
+.asset-filename {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--hxh-amber);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.asset-type {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hxh-stone-light);
+}
+
+.asset-arrow {
+  color: var(--hxh-gold);
+  font-size: 18px;
+  opacity: 0.5;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.asset-item:hover .asset-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--hxh-ink);
+  padding: 80px 48px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-logo {
+  width: 56px;
+  height: 56px;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+}
+
+.footer-brand-zh {
+  font-family: var(--font-serif-zh);
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: rgba(229, 226, 222, 0.6);
+}
+
+.footer-tagline {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.2);
+  line-height: 1.7;
+}
+
+.footer-nav h5 {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--hxh-gold);
+  margin-bottom: 20px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav a {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+  color: var(--hxh-gold-warm);
+}
+
+.footer-copy {
+  padding-top: 48px;
+  margin-top: 48px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.18);
+  letter-spacing: 0.15em;
+  grid-column: 1 / -1;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .story-grid { grid-template-columns: 1fr; }
+  .story-column { border-left: none; border-top: 1px solid rgba(172,149,108,0.2); padding: 32px 0; }
+  .story-column:first-child { border-top: none; }
+  .color-swatches-primary { grid-template-columns: repeat(3, 1fr); }
+  .color-swatches-secondary { grid-template-columns: repeat(5, 1fr); }
+  .logo-grid { grid-template-columns: repeat(2, 1fr); }
+  .graphic-grid { grid-template-columns: repeat(2, 1fr); }
+  .digital-grid { grid-template-columns: 1fr 1fr; }
+  .packaging-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  :root { --section-pad: var(--section-pad-md); }
+  .nav { padding: 20px 24px; }
+  .nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .section { padding: var(--section-pad) 24px; }
+  .graphic-section,
+  .packaging-section,
+  .color-section,
+  .assets-section,
+  .voice-section { padding: var(--section-pad) 24px; }
+  .story-inner { padding: var(--section-pad) 24px; }
+  .footer { padding: 60px 24px; }
+  .color-swatches-primary { grid-template-columns: 1fr 1fr; }
+  .color-swatches-secondary { grid-template-columns: 1fr 1fr; }
+  .logo-grid { grid-template-columns: 1fr; }
+  .type-row { grid-template-columns: 1fr; gap: 12px; }
+  .dont-do-grid { grid-template-columns: 1fr; }
+  .photo-direction-grid { grid-template-columns: 1fr; }
+  .digital-grid { grid-template-columns: 1fr; }
+  .packaging-grid { grid-template-columns: 1fr; }
+  .voice-grid { grid-template-columns: 1fr; }
+  .assets-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .icon-system-grid { grid-template-columns: repeat(3, 1fr); }
+  .clearspace-diagram { flex-direction: column; gap: 40px; }
+  .color-usage-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  :root { --section-pad: var(--section-pad-sm); }
+  .hero-logo-wrap { width: 140px; height: 140px; }
+  .graphic-grid { grid-template-columns: 1fr 1fr; }
+  .icon-system-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Lock horizontal scroll */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+  <a href="#" class="nav-logo">
+    <img class="nav-logo-mark" src="assets/logo.svg" alt="华夏和" onerror="this.style.display='none'">
+    <span class="nav-logo-text">华夏和</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#story">品牌故事</a></li>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#color">Color</a></li>
+    <li><a href="#typography">Type</a></li>
+    <li><a href="#packaging">Packaging</a></li>
+    <li><a href="#assets">Assets</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <span class="hero-eyebrow">Visual Identity Manual — 2025</span>
+  <div class="hero-logo-wrap">
+    <img src="assets/logo.svg" alt="华夏和 Logo" onerror="this.style.display='none'">
+  </div>
+  <h1 class="hero-brand-zh">华夏和</h1>
+  <p class="hero-brand-en">Huaxiahe</p>
+  <p class="hero-tagline">A premium Oriental lifestyle brand rooted in the quiet depth of Chinese civilization.</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- BRAND STORY -->
+<section class="story-section" id="story">
+  <div class="story-inner">
+    <div class="reveal">
+      <div class="section-rule left"></div>
+      <span class="section-eyebrow">Brand Story</span>
+      <h2 class="section-title-zh">品牌故事</h2>
+      <p class="section-title-en">Heritage · Identity · Vision</p>
+      <p class="body-text">
+        华夏和 is born from the conviction that Chinese civilization carries a quiet luxury the modern world has yet to fully discover. Not the red lacquer of festivals, nor the gilded excess of export ceramics — but the scholar's stone, the monk's tea bowl, the breath between brushstrokes.
+      </p>
+      <p class="body-text" style="margin-top:1.5em;">
+        We exist to translate that depth into objects, rituals, and experiences that belong equally in Beijing and Paris, Tokyo and London.
+      </p>
+    </div>
+
+    <div class="story-grid reveal reveal-delay-2">
+      <div class="story-column">
+        <span class="story-char">华</span>
+        <span class="story-label">Huá — Splendor</span>
+        <p class="story-text">The character 华 speaks of florescence — of civilization in full bloom. It carries the weight of millennia: the arts, the sciences, the philosophy that the Chinese world refined across five thousand years. In our brand, 华 is the inheritance we draw from, and the standard we hold ourselves to.</p>
+      </div>
+      <div class="story-column">
+        <span class="story-char">夏</span>
+        <span class="story-label">Xià — The Great Land</span>
+        <p class="story-text">夏 names the ancient heartland — China's first dynasty, the origin myth of a civilization. It grounds 华夏和 in place and continuity, reminding us that the most enduring things grow slowly, from soil that has been worked for generations. Our craft is measured in seasons, not quarters.</p>
+      </div>
+      <div class="story-column">
+        <span class="story-char">和</span>
+        <span class="story-label">Hé — Harmony</span>
+        <p class="story-text">和 is the most essential character in the brand, and in Chinese philosophy itself. It is not mere peace — it is the dynamic balance between opposites. Hot and cold. Full and empty. Old and new. Every product we make, every space we inhabit, every line we draw aspires to this harmony.</p>
+      </div>
+    </div>
+
+    <div class="story-quote reveal reveal-delay-3">
+      <blockquote>道生一，一生二，二生三，三生万物</blockquote>
+      <cite>Laozi · Tao Te Ching · Chapter 42</cite>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO SYSTEM -->
+<section class="section" id="logo">
+  <div class="reveal">
+    <div class="section-rule left"></div>
+    <span class="section-eyebrow">Logo System</span>
+    <h2 class="section-title-zh">标志系统</h2>
+    <p class="section-title-en">Primary Mark · Variations · Usage Rules</p>
+    <p class="body-text">
+      The Huaxiahe logo is a monogram-mandala: the initials of 华夏和 (H, X, H) interlaced within a classical petal frame, with an incense burner (香炉) at its center. The form is simultaneously a seal, a crest, and a window lattice — referencing three pillars of Chinese material culture. The gradient transitions from warm ivory to deep bronze, reflecting the journey from raw material to refined craft.
+    </p>
+  </div>
+
+  <div class="logo-grid reveal reveal-delay-2">
+    <!-- Primary on white -->
+    <div class="logo-cell">
+      <img class="logo-cell-img" src="assets/logo.svg" alt="Primary Logo">
+      <span class="logo-cell-label">Primary — Light Ground</span>
+    </div>
+    <!-- Primary on parchment -->
+    <div class="logo-cell parchment-bg">
+      <img class="logo-cell-img" src="assets/logo.svg" alt="Logo on Parchment">
+      <span class="logo-cell-label">Primary — Parchment Ground</span>
+    </div>
+    <!-- Primary on dark -->
+    <div class="logo-cell dark-bg">
+      <img class="logo-cell-img logo-white" src="assets/logo.svg" alt="Logo Reversed">
+      <span class="logo-cell-label">Reversed — Dark Ground</span>
+    </div>
+    <!-- Monochrome -->
+    <div class="logo-cell">
+      <img class="logo-cell-img logo-mono" src="assets/logo.svg" alt="Monochrome Logo">
+      <span class="logo-cell-label">Monochrome — Single Color</span>
+    </div>
+    <!-- Gold solid -->
+    <div class="logo-cell parchment-bg">
+      <img class="logo-cell-img logo-gold-solid" src="assets/logo.svg" alt="Logo Gold Solid">
+      <span class="logo-cell-label">Single Tone — Amber</span>
+    </div>
+    <!-- Icon only -->
+    <div class="logo-cell dark-bg">
+      <img class="logo-cell-img logo-white" src="assets/icon.svg" alt="Icon Mark" style="max-width:80px;height:80px;">
+      <span class="logo-cell-label">Icon Mark — Standalone</span>
+    </div>
+  </div>
+
+  <!-- Clear Space -->
+  <div class="clearspace-diagram reveal reveal-delay-2">
+    <div class="clearspace-logo-wrap">
+      <img src="assets/logo.svg" alt="Logo" style="width:120px;height:120px;object-fit:contain;">
+    </div>
+    <div class="clearspace-desc">
+      <h4>Minimum Clear Space</h4>
+      <p>The logo must always be surrounded by clear space equal to <em>one-sixth of the logo's total height</em> on all sides. This zone must remain free of all text, graphics, and page edges. Minimum reproduction size: 24px / 8mm. Below this threshold, use the icon mark only.</p>
+    </div>
+  </div>
+
+  <!-- Don't Do -->
+  <div class="reveal reveal-delay-3" style="margin-top:48px;">
+    <span class="section-eyebrow" style="margin-bottom:12px;">Incorrect Usage</span>
+    <div class="dont-do-grid">
+      <div class="dont-cell">
+        <div class="dont-cell-x">
+          <img class="dont-cell-logo" src="assets/logo.svg" alt="" style="transform:rotate(45deg);">
+        </div>
+        <span class="dont-label">✕ Do Not Rotate</span>
+        <span class="dont-desc">Never rotate or tilt the mark in any direction.</span>
+      </div>
+      <div class="dont-cell">
+        <div class="dont-cell-x">
+          <img class="dont-cell-logo" src="assets/logo.svg" alt="" style="transform:scaleX(1.5);">
+        </div>
+        <span class="dont-label">✕ Do Not Distort</span>
+        <span class="dont-desc">Never stretch or compress the proportions.</span>
+      </div>
+      <div class="dont-cell">
+        <div class="dont-cell-x">
+          <img class="dont-cell-logo" src="assets/logo.svg" alt="" style="opacity:0.12;">
+        </div>
+        <span class="dont-label">✕ Do Not Use Below Minimum Size</span>
+        <span class="dont-desc">Never reproduce below 24px. Use icon mark instead.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR SYSTEM -->
+<section class="color-section" id="color">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-rule"></div>
+      <span class="section-eyebrow">Color System</span>
+      <h2 class="section-title-zh">色彩体系</h2>
+      <p class="section-title-en">Primary Palette · Secondary Tones · Usage Rules</p>
+      <p class="body-text" style="color:rgba(255,255,255,0.35);">
+        The palette is drawn from the logo's own gradient: a procession from kiln-white ivory through warm linen, natural gold, and settling into the deep amber of aged lacquerware. Colors are used with great restraint — the eye should always rest on negative space first.
+      </p>
+    </div>
+
+    <div class="color-swatches-primary reveal reveal-delay-2">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#614A25;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Amber Deep</span>
+          <span class="swatch-hex">#614A25</span>
+          <span class="swatch-role">Primary brand tone. Text, mark fill.</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#AC956C;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Brand Gold</span>
+          <span class="swatch-hex">#AC956C</span>
+          <span class="swatch-role">Accent. Rules, highlights, CTAs.</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#C8BAA3;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Warm Linen</span>
+          <span class="swatch-hex">#C8BAA3</span>
+          <span class="swatch-role">Mid tone. Supporting elements.</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#E5E2DE;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Ivory</span>
+          <span class="swatch-hex">#E5E2DE</span>
+          <span class="swatch-role">Light tone. Borders, dividers.</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#FAF8F5;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Warm White</span>
+          <span class="swatch-hex">#FAF8F5</span>
+          <span class="swatch-role">Primary background. Canvas.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-swatches-secondary reveal reveal-delay-3">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#1A1612;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Ink Black</span>
+          <span class="swatch-hex">#1A1612</span>
+          <span class="swatch-role">Deep background</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#3D3228;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Charcoal</span>
+          <span class="swatch-hex">#3D3228</span>
+          <span class="swatch-role">Headings on dark</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#7A6E60;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Stone</span>
+          <span class="swatch-hex">#7A6E60</span>
+          <span class="swatch-role">Body text</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#EAE5D8;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Parchment</span>
+          <span class="swatch-hex">#EAE5D8</span>
+          <span class="swatch-role">Packaging, print</span>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#F5F2EC;"></div>
+        <div class="color-swatch-info">
+          <span class="swatch-name">Linen</span>
+          <span class="swatch-hex">#F5F2EC</span>
+          <span class="swatch-role">Section background</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-usage-grid reveal reveal-delay-2">
+      <div class="color-usage-card">
+        <h4>Light Compositions</h4>
+        <p>Use Warm White (#FAF8F5) or Linen (#F5F2EC) as canvas. Body text in Stone. Amber Deep for headings. Brand Gold for accents and rules. Generosity with negative space is the first rule of every layout.</p>
+      </div>
+      <div class="color-usage-card">
+        <h4>Dark Compositions</h4>
+        <p>Use Ink Black (#1A1612) as base. Ivory and Warm Linen for text hierarchy. Brand Gold for accent elements. Reserve full white for maximum contrast moments only. Avoid pure black backgrounds — always use the warm ink tone.</p>
+      </div>
+      <div class="color-usage-card">
+        <h4>Gradient Use</h4>
+        <p>The primary logo gradient (Ivory → Brand Gold → Amber) may be applied to typographic display moments, packaging ribbons, and brand seals. Never apply the gradient to body text or functional UI elements.</p>
+      </div>
+      <div class="color-usage-card">
+        <h4>Color Restraint</h4>
+        <p>No single layout should use more than three palette values simultaneously. Color should be earned — a single amber heading on a white page communicates more luxury than a page covered in gold. Silence is a color.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="section" id="typography">
+  <div class="reveal">
+    <div class="section-rule left"></div>
+    <span class="section-eyebrow">Typography System</span>
+    <h2 class="section-title-zh">字体系统</h2>
+    <p class="section-title-en">Type Scale · Roles · Pairing</p>
+    <p class="body-text">
+      The typographic identity pairs two serif traditions across two scripts. <strong>Cormorant Garamond</strong> brings classical European editorial grace — its narrow proportions and delicate hairlines mirror the refinement of Chinese fine-line engraving. <strong>Noto Serif SC</strong> grounds the Chinese type in the Song tradition: structured, unhurried, deeply readable at all scales.
+    </p>
+  </div>
+
+  <div class="type-demo-grid reveal reveal-delay-2">
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-role">Display H1</span>
+        <span class="type-spec">Cormorant Garamond<br>300 weight<br>Tracking +0.04em<br>Line height 1.15</span>
+      </div>
+      <div>
+        <p class="type-sample-h1">The Art of Stillness</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-role">Display H2 (ZH)</span>
+        <span class="type-spec">Noto Serif SC<br>300 weight<br>Tracking +0.12em<br>Line height 1.35</span>
+      </div>
+      <div>
+        <p class="type-sample-h2">东方生活美学</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-role">Subheading H3</span>
+        <span class="type-spec">Cormorant Garamond<br>300 italic<br>Tracking +0.02em<br>Line height 1.45</span>
+      </div>
+      <div>
+        <p class="type-sample-h3">Crafted with intention, made to last generations.</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-role">Body Text</span>
+        <span class="type-spec">Cormorant Garamond<br>300 weight<br>17px / 1.9 lh<br>Stone color</span>
+      </div>
+      <div>
+        <p class="type-sample-body">Huaxiahe products are made for those who pause before consuming — who understand that the value of an object is not in its price, but in the quality of attention that made it. Every piece carries a provenance, a process, a philosophy.</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-role">Caption / Label</span>
+        <span class="type-spec">Cormorant Garamond<br>400 weight<br>12px, uppercase<br>Tracking +0.22em</span>
+      </div>
+      <div>
+        <p class="type-sample-caption">Natural Sichuan Cypress · Aged 40 Years · Hand-Carved</p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-role">Pull Quote (ZH)</span>
+        <span class="type-spec">Noto Serif SC<br>300 weight<br>Tracking +0.15em<br>Left rule: 2px gold</span>
+      </div>
+      <div>
+        <p class="type-sample-quote">天下莫柔弱於水，而攻堅強者莫之能勝。<br><span style="font-size:0.65em;color:var(--hxh-stone-light);letter-spacing:0.1em;">Nothing in the world is as soft as water, yet nothing is better at overcoming the hard and strong.</span></p>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">
+        <span class="type-role">CTA Button</span>
+        <span class="type-spec">Cormorant Garamond<br>400 weight<br>11px, uppercase<br>Tracking +0.30em</span>
+      </div>
+      <div>
+        <a href="#" class="type-sample-btn">Discover the Collection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRAPHIC LANGUAGE -->
+<section class="graphic-section" id="graphic">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-rule left"></div>
+      <span class="section-eyebrow">Graphic Language</span>
+      <h2 class="section-title-zh">视觉语言</h2>
+      <p class="section-title-en">Motifs · Texture · Pattern · Form</p>
+      <p class="body-text">
+        The brand's graphic vocabulary is built from five sources: the rhythmic geometry of Song dynasty window lattice, the breath of ink wash painting, the precision of seal carving, the organic silhouette of bamboo, and the quiet surface of rice paper. Every decorative decision traces back to one of these roots.
+      </p>
+    </div>
+
+    <div class="graphic-grid reveal reveal-delay-2">
+      <!-- Seal motif -->
+      <div class="graphic-card">
+        <div class="graphic-icon-wrap">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="12" width="56" height="56" fill="none" stroke="#AC956C" stroke-width="1"/>
+            <rect x="18" y="18" width="44" height="44" fill="none" stroke="#AC956C" stroke-width="0.5" stroke-dasharray="2 2"/>
+            <text x="40" y="46" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="18" fill="#614A25" letter-spacing="2">和</text>
+          </svg>
+        </div>
+        <span class="graphic-card-label">Seal Carving</span>
+      </div>
+      <!-- Lattice motif -->
+      <div class="graphic-card">
+        <div class="graphic-icon-wrap">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="10" x2="70" y2="70" stroke="#C8BAA3" stroke-width="0.75"/>
+            <line x1="70" y1="10" x2="10" y2="70" stroke="#C8BAA3" stroke-width="0.75"/>
+            <line x1="40" y1="8" x2="40" y2="72" stroke="#AC956C" stroke-width="0.75"/>
+            <line x1="8" y1="40" x2="72" y2="40" stroke="#AC956C" stroke-width="0.75"/>
+            <circle cx="40" cy="40" r="16" fill="none" stroke="#AC956C" stroke-width="0.75"/>
+            <circle cx="40" cy="40" r="28" fill="none" stroke="#C8BAA3" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <span class="graphic-card-label">Window Lattice</span>
+      </div>
+      <!-- Ink rhythm -->
+      <div class="graphic-card">
+        <div class="graphic-icon-wrap">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 60 Q25 20 40 40 Q55 60 65 20" stroke="#614A25" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M20 68 Q35 35 50 55 Q60 65 68 30" stroke="#AC956C" stroke-width="0.75" fill="none" stroke-linecap="round" opacity="0.6"/>
+          </svg>
+        </div>
+        <span class="graphic-card-label">Ink Rhythm</span>
+      </div>
+      <!-- Bamboo -->
+      <div class="graphic-card">
+        <div class="graphic-icon-wrap">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="32" y1="8" x2="32" y2="72" stroke="#AC956C" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="48" y1="14" x2="48" y2="72" stroke="#AC956C" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="28" y1="28" x2="32" y2="28" stroke="#C8BAA3" stroke-width="1"/>
+            <line x1="28" y1="44" x2="32" y2="44" stroke="#C8BAA3" stroke-width="1"/>
+            <line x1="28" y1="60" x2="32" y2="60" stroke="#C8BAA3" stroke-width="1"/>
+            <line x1="48" y1="34" x2="52" y2="34" stroke="#C8BAA3" stroke-width="1"/>
+            <line x1="48" y1="50" x2="52" y2="50" stroke="#C8BAA3" stroke-width="1"/>
+            <path d="M32 18 Q20 12 14 18" stroke="#7A6E60" stroke-width="0.75" fill="none"/>
+            <path d="M48 26 Q60 20 66 26" stroke="#7A6E60" stroke-width="0.75" fill="none"/>
+          </svg>
+        </div>
+        <span class="graphic-card-label">Bamboo Silhouette</span>
+      </div>
+    </div>
+
+    <!-- Texture sample -->
+    <div class="reveal reveal-delay-3" style="margin-top:32px;">
+      <div class="texture-demo"></div>
+      <p style="font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--hxh-stone-light);margin-top:12px;text-align:center;">Rice Paper Texture — Subtle Grid Overlay · For Backgrounds and Packaging</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOGRAPHY DIRECTION -->
+<section class="section" id="photography">
+  <div class="reveal">
+    <div class="section-rule left"></div>
+    <span class="section-eyebrow">Photography Direction</span>
+    <h2 class="section-title-zh">摄影方向</h2>
+    <p class="section-title-en">Light · Composition · Mood · Material</p>
+    <p class="body-text">
+      All Huaxiahe photography obeys a single principle: the image should feel like a pause. Natural side-light or diffuse north-facing window light only. No flash. No high-saturation edits. Backgrounds: white plaster, raw linen, aged wood, gray stone. Props are chosen for their texture, not their color.
+    </p>
+  </div>
+
+  <div class="photo-direction-grid reveal reveal-delay-2">
+    <div class="photo-card">
+      <div class="photo-placeholder ph-product">
+        <div class="photo-placeholder-content">
+          <span class="photo-placeholder-icon">◻</span>
+          <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--hxh-stone-light);">Product Shot</p>
+        </div>
+      </div>
+      <div class="photo-desc">
+        <h4>Hero Product</h4>
+        <p>Single subject, generous negative space. 45° soft side-light. Warm white or stone gray background. No shadows cut hard. Shot from slightly above eye level to reveal vessel interiors.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-placeholder ph-lifestyle">
+        <div class="photo-placeholder-content">
+          <span class="photo-placeholder-icon">◻</span>
+          <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--hxh-stone-light);">Lifestyle</p>
+        </div>
+      </div>
+      <div class="photo-desc">
+        <h4>Lifestyle</h4>
+        <p>Hands in frame. The moment before or after, never during. Morning light through shoji screens. Tea being poured, not held. Incense smoke ascending, not lit.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-placeholder ph-macro">
+        <div class="photo-placeholder-content">
+          <span class="photo-placeholder-icon">◻</span>
+          <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--hxh-stone-light);">Macro Detail</p>
+        </div>
+      </div>
+      <div class="photo-desc">
+        <h4>Craft Detail</h4>
+        <p>Ultra-close texture shots of grain, glaze, fiber, carving. Shallow depth of field. Shows the hours behind the object. This is where the brand premium is made visible.</p>
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="photo-placeholder ph-ambient">
+        <div class="photo-placeholder-content">
+          <span class="photo-placeholder-icon">◻</span>
+          <p style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--hxh-stone-light);">Ambient Scene</p>
+        </div>
+      </div>
+      <div class="photo-desc">
+        <h4>Space &amp; Atmosphere</h4>
+        <p>Wide scenes of ritual spaces — the tea table, the study, the window seat. Objects in use, not on display. The room breathes. No staged symmetry; asymmetric placement following classical Chinese still-life composition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGING SYSTEM -->
+<section class="packaging-section" id="packaging">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-rule left"></div>
+      <span class="section-eyebrow">Packaging System</span>
+      <h2 class="section-title-zh">包装体系</h2>
+      <p class="section-title-en">Gift Box · Label · Business Card · Letterhead</p>
+      <p class="body-text">
+        Packaging is the first physical encounter with the brand. Every surface is treated with the same discipline as the product inside: uncoated natural stock, debossed or foil-stamped marks, minimal text. The unboxing should feel like opening a letter from a trusted friend.
+      </p>
+    </div>
+
+    <div class="packaging-grid reveal reveal-delay-2">
+      <!-- Gift Box -->
+      <div class="packaging-item">
+        <div class="packaging-preview">
+          <div class="giftbox-mock">
+            <div class="giftbox-ribbon"></div>
+            <div class="giftbox-ribbon-h"></div>
+            <img class="giftbox-logo" src="assets/logo.svg" alt="Logo">
+          </div>
+        </div>
+        <span class="packaging-label">Premium Gift Box</span>
+        <span class="pack-desc">Amber kraft board, 2mm thickness. Debossed logo centered. Satin interior in warm linen. Magnetic closure. No text on exterior beyond the mark.</span>
+      </div>
+
+      <!-- Label -->
+      <div class="packaging-item">
+        <div class="packaging-preview">
+          <div class="label-mock">
+            <img class="label-logo-sm" src="assets/logo.svg" alt="Logo">
+            <span class="label-brand-zh">华夏和</span>
+            <div style="width:24px;height:1px;background:var(--hxh-gold);"></div>
+            <span class="label-sub">Huaxiahe</span>
+            <span style="font-size:9px;color:var(--hxh-stone-light);font-weight:300;">Natural Incense · 天然香</span>
+          </div>
+        </div>
+        <span class="packaging-label">Product Label</span>
+        <span class="pack-desc">140×60mm. Uncoated cream stock. Letterpress print in amber. Product name in both scripts. QR code discreetly placed on reverse.</span>
+      </div>
+
+      <!-- Business Card -->
+      <div class="packaging-item">
+        <div class="packaging-preview">
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
+            <!-- Front -->
+            <svg class="biz-card-mock" viewBox="0 0 260 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="260" height="148" fill="#FAF8F5" rx="2"/>
+              <rect x="0.5" y="0.5" width="259" height="147" stroke="#E5E2DE" stroke-width="0.5" rx="2"/>
+              <image href="assets/logo.svg" x="102" y="34" width="56" height="56"/>
+              <text x="130" y="108" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="11" fill="#614A25" letter-spacing="4">华夏和</text>
+              <text x="130" y="122" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="7" fill="#A8A099" letter-spacing="4">HUAXIAHE</text>
+            </svg>
+            <!-- Back -->
+            <svg class="biz-card-mock" viewBox="0 0 260 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="260" height="148" fill="#614A25" rx="2"/>
+              <text x="18" y="36" font-family="'Noto Serif SC', serif" font-size="10" fill="rgba(229,226,222,0.7)" letter-spacing="2">姓名 / Name</text>
+              <text x="18" y="54" font-family="'Cormorant Garamond', serif" font-size="8" fill="rgba(229,226,222,0.45)" letter-spacing="2">Title · Role</text>
+              <line x1="18" y1="65" x2="100" y2="65" stroke="rgba(172,149,108,0.4)" stroke-width="0.5"/>
+              <text x="18" y="82" font-family="'Cormorant Garamond', serif" font-size="7.5" fill="rgba(229,226,222,0.4)" letter-spacing="1">huaxiahe.com</text>
+              <text x="18" y="96" font-family="'Cormorant Garamond', serif" font-size="7.5" fill="rgba(229,226,222,0.4)" letter-spacing="1">hello@huaxiahe.com</text>
+              <image href="assets/logo.svg" x="198" y="50" width="44" height="44" style="filter:brightness(0) invert(1)" opacity="0.25"/>
+            </svg>
+          </div>
+        </div>
+        <span class="packaging-label">Business Card</span>
+        <span class="pack-desc">90×54mm. Front: white, logo centered. Back: amber ground, reversed type. 450gsm cotton paper. Engraved print.</span>
+      </div>
+
+      <!-- Letterhead -->
+      <div class="packaging-item">
+        <div class="packaging-preview">
+          <div class="letterhead-mock">
+            <div class="letterhead-header">
+              <img class="lh-logo" src="assets/logo.svg" alt="Logo">
+              <span class="lh-brand">华夏和</span>
+            </div>
+            <div class="lh-lines">
+              <div class="lh-line long"></div>
+              <div class="lh-line long"></div>
+              <div class="lh-line med"></div>
+              <div class="lh-line" style="height:12px;"></div>
+              <div class="lh-line long"></div>
+              <div class="lh-line long"></div>
+              <div class="lh-line med"></div>
+              <div class="lh-line short"></div>
+            </div>
+          </div>
+        </div>
+        <span class="packaging-label">Letterhead &amp; Stationery</span>
+        <span class="pack-desc">A4 / Letter. 120gsm natural white. Logo top-left at 16mm. Brand gold hairline footer. Minimal address type in caption style.</span>
+      </div>
+
+      <!-- Incense Box -->
+      <div class="packaging-item">
+        <div class="packaging-preview">
+          <div style="width:90px;height:160px;background:var(--hxh-linen);border:1px solid rgba(172,149,108,0.2);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:16px 12px;position:relative;">
+            <div style="width:1px;height:100%;position:absolute;left:50%;background:rgba(172,149,108,0.12);"></div>
+            <img src="assets/logo.svg" alt="Logo" style="width:40px;height:40px;">
+            <div style="text-align:center;">
+              <div style="font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:3px;color:var(--hxh-amber);">香</div>
+              <div style="font-size:8px;letter-spacing:2px;color:var(--hxh-stone-light);text-transform:uppercase;margin-top:4px;">Incense</div>
+            </div>
+          </div>
+        </div>
+        <span class="packaging-label">Incense Box</span>
+        <span class="pack-desc">60×160mm sleeve box. Natural kraft. Foil-stamped logo. One-character product descriptor in oversized Song type. Interior: washi tissue wrap.</span>
+      </div>
+
+      <!-- Seal / Wax -->
+      <div class="packaging-item">
+        <div class="packaging-preview">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+            <!-- Wax seal simulation -->
+            <div style="width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #8C7650, #614A25);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 2px 4px rgba(0,0,0,0.3),0 2px 8px rgba(97,74,37,0.4);">
+              <img src="assets/logo.svg" alt="Logo" style="width:36px;height:36px;filter:brightness(0) invert(1);opacity:0.6;">
+            </div>
+            <!-- Wrapping paper strip -->
+            <div style="width:140px;height:48px;background:var(--hxh-parchment);display:flex;align-items:center;justify-content:center;border:1px solid rgba(172,149,108,0.15);">
+              <span style="font-family:'Noto Serif SC',serif;font-size:8px;letter-spacing:0.3em;color:var(--hxh-amber);text-transform:uppercase;">华夏和 · Huaxiahe</span>
+            </div>
+          </div>
+        </div>
+        <span class="packaging-label">Wax Seal &amp; Wrapping</span>
+        <span class="pack-desc">Amber wax seal for correspondence and gift wrapping. Parchment tissue paper with Brand Gold text repeat pattern. Reserved, not repetitive.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL BRAND -->
+<section class="section" id="digital">
+  <div class="reveal">
+    <div class="section-rule left"></div>
+    <span class="section-eyebrow">Digital Presence</span>
+    <h2 class="section-title-zh">数字形象</h2>
+    <p class="section-title-en">Web · Mobile · Social · Email</p>
+    <p class="body-text">
+      Digital touchpoints follow the same restraint as print. Backgrounds stay warm, not stark white. Transitions are slow and intentional — no bounce, no spring. Typography is large; interface elements are minimal. Every screen should feel like turning the page of a book, not clicking through an app.
+    </p>
+  </div>
+
+  <div class="digital-grid reveal reveal-delay-2">
+    <!-- Website mock -->
+    <div class="digital-card">
+      <div class="digital-card-header">
+        <div class="dch-dot"></div><div class="dch-dot"></div><div class="dch-dot"></div>
+        <span class="dch-label">huaxiahe.com</span>
+      </div>
+      <div class="digital-card-body">
+        <div style="text-align:center;padding:16px 0;">
+          <img src="assets/logo.svg" alt="Logo" style="width:48px;height:48px;margin-bottom:10px;">
+          <div style="font-family:'Noto Serif SC',serif;font-size:16px;letter-spacing:0.2em;color:var(--hxh-amber);">华夏和</div>
+          <div style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--hxh-stone-light);margin-top:4px;">Huaxiahe</div>
+          <div style="width:24px;height:1px;background:var(--hxh-gold);margin:12px auto;"></div>
+          <div style="font-size:10px;color:var(--hxh-stone-light);font-style:italic;">Oriental Lifestyle</div>
+        </div>
+        <span class="digital-card-label">Website Hero — Desktop</span>
+      </div>
+    </div>
+
+    <!-- Instagram / Xiaohongshu -->
+    <div class="digital-card">
+      <div class="digital-card-header">
+        <div class="dch-dot"></div><div class="dch-dot"></div><div class="dch-dot"></div>
+        <span class="dch-label">Instagram · 小红书</span>
+      </div>
+      <div class="digital-card-body">
+        <div class="social-post">
+          <img class="social-logo" src="assets/logo.svg" alt="Logo">
+          <span class="social-zh">静以致远</span>
+          <div class="social-rule"></div>
+          <span class="social-caption">Stillness brings clarity<br>· Huaxiahe ·</span>
+        </div>
+        <span class="digital-card-label">Social Square — 1080×1080</span>
+      </div>
+    </div>
+
+    <!-- Email signature -->
+    <div class="digital-card">
+      <div class="digital-card-header">
+        <div class="dch-dot"></div><div class="dch-dot"></div><div class="dch-dot"></div>
+        <span class="dch-label">Email Signature</span>
+      </div>
+      <div class="digital-card-body" style="justify-content:center;">
+        <div class="email-sig">
+          <img class="sig-logo" src="assets/logo.svg" alt="Logo">
+          <div class="sig-info">
+            <span class="sig-name">华夏和品牌</span>
+            <span class="sig-title">Brand Director · 品牌总监</span>
+            <div class="sig-contact">hello@huaxiahe.com<br>huaxiahe.com</div>
+          </div>
+        </div>
+        <span class="digital-card-label">Email Signature — All Platforms</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ICON SYSTEM -->
+<section class="section" id="icons" style="padding-top:0;">
+  <div class="reveal">
+    <div class="section-rule left"></div>
+    <span class="section-eyebrow">Icon Language</span>
+    <h2 class="section-title-zh">图标系统</h2>
+    <p class="section-title-en">Craft · Nature · Ritual · Balance</p>
+    <p class="body-text">
+      Icons follow a single line weight (1px at 24px size), drawn on a 24×24 grid. Stroke caps are square. Corners are sharp. No fills. Color: Brand Gold on light backgrounds; Ivory on dark. The vocabulary draws from incense culture, tea ceremony, craft, and natural form.
+    </p>
+  </div>
+
+  <div class="icon-system-grid reveal reveal-delay-2">
+    <!-- Incense burner -->
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <path d="M8 18h8M7 20h10M9 18v-6h6v6M9 12c0-2 3-6 3-6s3 4 3 6M12 5V3"/>
+      </svg>
+      <span class="icon-cell-name">Incense</span>
+    </div>
+    <!-- Tea bowl -->
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <path d="M5 9h14l-2 7H7L5 9z"/>
+        <path d="M18 11c1.5 0 3 .5 3 2s-1.5 2-3 2"/>
+        <line x1="9" y1="20" x2="15" y2="20"/>
+        <line x1="12" y1="16" x2="12" y2="20"/>
+      </svg>
+      <span class="icon-cell-name">Tea Bowl</span>
+    </div>
+    <!-- Leaf -->
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <path d="M6 20c0-6 4-12 14-14C20 14 16 20 6 20z"/>
+        <line x1="6" y1="20" x2="12" y2="12"/>
+      </svg>
+      <span class="icon-cell-name">Tea Leaf</span>
+    </div>
+    <!-- Bamboo node -->
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <line x1="9" y1="3" x2="9" y2="21"/>
+        <line x1="15" y1="3" x2="15" y2="21"/>
+        <line x1="9" y1="9" x2="15" y2="9"/>
+        <line x1="9" y1="15" x2="15" y2="15"/>
+        <path d="M6 9c-2-1-3-2-3-4"/>
+        <path d="M18 15c2 1 3 2 3 4"/>
+      </svg>
+      <span class="icon-cell-name">Bamboo</span>
+    </div>
+    <!-- Seal -->
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <rect x="6" y="6" width="12" height="12"/>
+        <rect x="9" y="9" width="6" height="6"/>
+        <line x1="12" y1="3" x2="12" y2="6"/>
+        <line x1="12" y1="18" x2="12" y2="21"/>
+      </svg>
+      <span class="icon-cell-name">Seal</span>
+    </div>
+    <!-- Mountain / landscape -->
+    <div class="icon-cell">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#AC956C" stroke-width="1" stroke-linecap="square">
+        <polyline points="2,18 8,8 12,13 16,6 22,18"/>
+        <line x1="2" y1="18" x2="22" y2="18"/>
+      </svg>
+      <span class="icon-cell-name">Mountain</span>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND VOICE -->
+<section class="voice-section" id="voice">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-rule"></div>
+      <span class="section-eyebrow">Brand Voice</span>
+      <h2 class="section-title-zh" style="color:var(--hxh-gold-light);">品牌语调</h2>
+      <p class="section-title-en">Tone · Writing · Principles · Communication</p>
+      <p class="body-text" style="color:rgba(255,255,255,0.35);">
+        Huaxiahe communicates the way a skilled host pours tea: with full attention, without hurry, without explanation. Words are chosen for what they carry, not what they show off. The register is intimate and literate — never academic, never commercial.
+      </p>
+    </div>
+
+    <div class="voice-grid reveal reveal-delay-2">
+      <div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div class="voice-principle">
+            <div class="voice-p-num">01</div>
+            <span class="voice-p-title">Unhurried</span>
+            <p class="voice-p-desc">Never push, never announce. Let the reader arrive at the product as if by their own curiosity.</p>
+          </div>
+          <div class="voice-principle">
+            <div class="voice-p-num">02</div>
+            <span class="voice-p-title">Concrete</span>
+            <p class="voice-p-desc">Name materials, origins, and processes. "Sichuan cypress" not "natural wood." Precision earns trust.</p>
+          </div>
+          <div class="voice-principle">
+            <div class="voice-p-num">03</div>
+            <span class="voice-p-title">Bilingual Parity</span>
+            <p class="voice-p-desc">Chinese and English are equals. Neither is a translation of the other. Each speaks to its reader natively.</p>
+          </div>
+          <div class="voice-principle">
+            <div class="voice-p-num">04</div>
+            <span class="voice-p-title">Silence Earns Space</span>
+            <p class="voice-p-desc">Less copy is always more. One beautiful sentence outperforms five functional ones. Edit without mercy.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <h4>Writing Examples</h4>
+        <div class="voice-example">
+          <div class="voice-do">
+            <span class="voice-tag">✓ Do</span>
+            <p class="voice-text">"Aged forty years in a mountain temple before it reaches you. Some things cannot be rushed."</p>
+          </div>
+          <div class="voice-dont">
+            <span class="voice-tag">✕ Don't</span>
+            <p class="voice-text">"Premium quality incense product sourced from the best natural materials available in China!"</p>
+          </div>
+          <div class="voice-do">
+            <span class="voice-tag">✓ Do</span>
+            <p class="voice-text">"A gift for someone who already has everything — except stillness."</p>
+          </div>
+          <div class="voice-dont">
+            <span class="voice-tag">✕ Don't</span>
+            <p class="voice-text">"The perfect gift for your loved ones! Order now and get free shipping on orders over ¥299."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSET DOWNLOADS -->
+<section class="assets-section" id="assets">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-rule left"></div>
+      <span class="section-eyebrow">Asset Downloads</span>
+      <h2 class="section-title-zh">素材下载</h2>
+      <p class="section-title-en">Vector Files · Logo · Favicon · Social Preview</p>
+      <p class="body-text">All brand assets are provided in SVG format for infinite scalability. Always use the designated file for each application. Do not alter color, proportion, or embedded gradient without brand approval.</p>
+    </div>
+
+    <div class="assets-grid reveal reveal-delay-2">
+      <a href="assets/logo.svg" class="asset-item" download>
+        <img class="asset-icon" src="assets/logo.svg" alt="Logo">
+        <div class="asset-info">
+          <span class="asset-filename">logo.svg</span>
+          <span class="asset-type">Primary Logo · Full Gradient</span>
+        </div>
+        <span class="asset-arrow">→</span>
+      </a>
+      <a href="assets/logo-black.svg" class="asset-item" download>
+        <img class="asset-icon" src="assets/logo.svg" alt="Logo Black" style="filter:brightness(0);">
+        <div class="asset-info">
+          <span class="asset-filename">logo-black.svg</span>
+          <span class="asset-type">Monochrome · Ink Black</span>
+        </div>
+        <span class="asset-arrow">→</span>
+      </a>
+      <a href="assets/logo.svg" class="asset-item" download="logo-white.svg">
+        <img class="asset-icon" src="assets/logo.svg" alt="Logo White" style="filter:invert(1);background:var(--hxh-amber);padding:4px;border-radius:2px;">
+        <div class="asset-info">
+          <span class="asset-filename">logo-white.svg</span>
+          <span class="asset-type">Reversed · White on Dark</span>
+        </div>
+        <span class="asset-arrow">→</span>
+      </a>
+      <a href="assets/icon.svg" class="asset-item" download>
+        <img class="asset-icon" src="assets/icon.svg" alt="Icon">
+        <div class="asset-info">
+          <span class="asset-filename">icon.svg</span>
+          <span class="asset-type">Icon Mark · Standalone</span>
+        </div>
+        <span class="asset-arrow">→</span>
+      </a>
+      <a href="assets/favicon.svg" class="asset-item" download>
+        <img class="asset-icon" src="assets/favicon.svg" alt="Favicon">
+        <div class="asset-info">
+          <span class="asset-filename">favicon.svg</span>
+          <span class="asset-type">Favicon · 32×32</span>
+        </div>
+        <span class="asset-arrow">→</span>
+      </a>
+      <a href="assets/logo-original.svg" class="asset-item" download>
+        <img class="asset-icon" src="assets/logo.svg" alt="Original">
+        <div class="asset-info">
+          <span class="asset-filename">logo-original.svg</span>
+          <span class="asset-type">Master File · AI Export</span>
+        </div>
+        <span class="asset-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="assets/logo.svg" alt="华夏和">
+      <span class="footer-brand-zh">华夏和</span>
+      <p class="footer-tagline">Premium Oriental lifestyle.<br>Rooted in the Chinese world,<br>made for the global one.</p>
+    </div>
+    <nav class="footer-nav">
+      <h5>VI Manual</h5>
+      <ul>
+        <li><a href="#story">Brand Story</a></li>
+        <li><a href="#logo">Logo System</a></li>
+        <li><a href="#color">Color Palette</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#graphic">Graphic Language</a></li>
+        <li><a href="#packaging">Packaging</a></li>
+        <li><a href="#voice">Brand Voice</a></li>
+        <li><a href="#assets">Asset Downloads</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-nav">
+      <h5>Brand</h5>
+      <ul>
+        <li><a href="#">Huaxiahe.com</a></li>
+        <li><a href="#">Brand Inquiries</a></li>
+        <li><a href="#">Licensing</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="footer-copy">
+      © 2025 华夏和 Huaxiahe. All rights reserved. Visual Identity System v1.0.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll behavior
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// Mobile menu toggle
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  const isOpen = links.style.display === 'flex';
+  links.style.display = isOpen ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'fixed';
+  links.style.top = '64px';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = 'rgba(250,248,245,0.98)';
+  links.style.padding = '24px 24px';
+  links.style.gap = '20px';
+  links.style.borderBottom = '1px solid rgba(172,149,108,0.15)';
+  links.style.backdropFilter = 'blur(12px)';
+  if (!isOpen) {
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.style.display = 'none';
+      }, { once: true });
+    });
+  }
+}
+</script>
+</body>
+</html>

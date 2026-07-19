@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF8F5"/>
+      <stop offset="1" stop-color="#F0EDE5"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E5E2DE"/>
+      <stop offset="0.5" stop-color="#AC956C"/>
+      <stop offset="1" stop-color="#614A25"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Decorative gold line -->
+  <line x1="80" y1="315" x2="440" y2="315" stroke="url(#gold)" stroke-width="0.5"/>
+  <line x1="760" y1="315" x2="1120" y2="315" stroke="url(#gold)" stroke-width="0.5"/>
+  <!-- Brand name ZH -->
+  <text x="600" y="340" text-anchor="middle" font-family="serif" font-size="72" fill="#614A25" letter-spacing="28" font-weight="300">华夏和</text>
+  <!-- Brand name EN -->
+  <text x="600" y="390" text-anchor="middle" font-family="serif" font-size="16" fill="#AC956C" letter-spacing="12" font-weight="300">HUAXIAHE</text>
+  <!-- Tagline -->
+  <text x="600" y="430" text-anchor="middle" font-family="serif" font-size="14" fill="#7A6E60" letter-spacing="4" font-style="italic">Premium Oriental Lifestyle · Visual Identity Manual</text>
+  <!-- Eyebrow -->
+  <text x="600" y="260" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#A8A099" letter-spacing="6">BRAND IDENTITY SYSTEM</text>
+</svg>
