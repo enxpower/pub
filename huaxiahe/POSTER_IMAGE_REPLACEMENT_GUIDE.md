@@ -19,29 +19,50 @@ external links — it is not a separate design.
 Preview page: `huaxiahe/poster/index.html` — shows all six in order with
 PNG/SVG download links.
 
-## Primary logo
+## Primary logo — authoritative source
 
-All six posters use the same **official primary logo lockup**: the
-approved icon mark (`huaxiahe/assets/icon.svg`, unaltered gradient path
-data) combined with the "华夏和" wordmark, built at the exact ratio the
-live VI uses in its own navigation bar (`huaxiahe/vi/index.html`,
-`.nav-logo` / `.nav-logo-mark` / `.nav-logo-text`: icon square, gap =
-icon-width × 12/32, wordmark font-size = icon-width × 15/32, Noto Serif
-SC 500, letter-spacing 0.18em, amber `#614A25`). It was verified by
-side-by-side comparison against the live nav mark at
-https://enxpower.com/huaxiahe/vi/.
+There is exactly one authoritative source for the Huaxiahe primary
+(full) logo — the icon-and-wordmark lockup, converted directly from the
+original Adobe Illustrator artwork with no redrawing, retracing, or
+retypesetting:
 
-A standalone reusable copy of this lockup is saved at:
+- **Authoritative source file:** `huaxiahe/assets/brand/huaxiahe-logo-primary.ai`
+- **Authoritative web/vector asset:** `huaxiahe/assets/brand/huaxiahe-logo-primary.svg`
 
-```
-huaxiahe/assets/logo-primary-horizontal.svg
-```
+The SVG is true vector artwork (10 paths, no raster content, no live
+`<text>`, no font dependency) with the Chinese wordmark "华夏和" already
+converted to outlines, and the emblem's gold gradient reconstructed
+faithfully from the source PDF-compatible AI data. Its artwork is
+composed **vertically** (icon above wordmark) — do not assume a wide
+horizontal rectangle from habit; check the actual aspect ratio
+(`viewBox="83.211 61.485 173.736 217.187"`) before placing it.
 
-Each poster's SVG embeds its own inline copy (for crisp resolution-
-independent scaling at each poster's specific logo size) rather than
-referencing this file directly — but the construction is identical in
-every case. Do not hand-typeset "华夏和" beside the icon anywhere; always
-use this lockup.
+Rules:
+
+- Never reconstruct the primary logo — never combine `icon.svg` with
+  live Chinese text, CSS-generated typography, or an SVG `<text>`
+  wordmark, and never substitute a font for the outlined wordmark.
+- Never alter `huaxiahe-logo-primary.svg`'s path data, gradient
+  definitions, or colors. Always preserve its aspect ratio — you may
+  only change displayed width/height/position and surrounding
+  whitespace.
+- Use `icon.svg` only for explicitly approved icon-only applications
+  (e.g. a small standalone emblem paired with a full sentence, not a
+  wordmark). Use `huaxiahe-logo-primary.svg` for every full-logo
+  application.
+- Never modify `huaxiahe-logo-primary.ai` — it is the source of truth
+  for any future re-export.
+
+The previous reconstructed asset, `huaxiahe/assets/logo-primary-horizontal.svg`
+(an icon + hand-typeset SVG `<text>` "华夏和" lockup, approximated
+colors), has been **deleted** and must not be recreated or referenced.
+
+Each poster's SVG embeds its own inline, per-poster-scaled copy of the
+authoritative artwork's paths and gradients (for crisp
+resolution-independent rendering at each poster's specific logo size),
+namespaced with unique gradient IDs (`hxhP1Grad0`…`hxhP6Grad4`) — the
+path data and gradient stops are copied byte-for-byte from
+`huaxiahe-logo-primary.svg`, only position/scale differ per poster.
 
 ## Typography — line-height correction
 
