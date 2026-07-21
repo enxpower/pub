@@ -61,3 +61,5 @@ jobs:
           git add youth-heritage-100/index.html .github/workflows/fix-youth-heritage-wechat-preview.yml
           git commit -m "fix WeChat share image metadata"
           git push origin main
+
+# Triggered after workflow registration so the push event is recognized.
