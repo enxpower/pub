@@ -1,17 +1,15 @@
 name: Fix youth heritage interactions
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    paths:
-      - 'youth-heritage-100/**'
-      - '.github/workflows/fix-youth-heritage-interactions.yml'
+  issue_comment:
+    types: [created]
 
 permissions:
   contents: write
 
 jobs:
   fix-and-validate:
+    if: github.event.issue.pull_request && github.event.comment.body == '/run-youth-heritage-fix'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,25 +24,17 @@ jobs:
 
           path = Path('youth-heritage-100/index.html')
           text = path.read_text(encoding='utf-8')
-          original = text
 
-          old = '.hero:after{content:"100";'
-          new = '.hero:after{pointer-events:none;content:"100";'
-          if old not in text and new not in text:
-              raise SystemExit('hero pseudo-element rule not found')
-          text = text.replace(old, new, 1)
-
-          old = '.actions{display:flex;'
-          new = '.actions{position:relative;z-index:2;display:flex;'
-          if old not in text and new not in text:
-              raise SystemExit('actions rule not found')
-          text = text.replace(old, new, 1)
-
-          old = '.btn{padding:'
-          new = '.btn{position:relative;z-index:1;padding:'
-          if old not in text and new not in text:
-              raise SystemExit('button rule not found')
-          text = text.replace(old, new, 1)
+          replacements = [
+              ('.hero:after{content:"100";', '.hero:after{pointer-events:none;content:"100";'),
+              ('.actions{display:flex;', '.actions{position:relative;z-index:2;display:flex;'),
+              ('.btn{padding:', '.btn{position:relative;z-index:1;padding:'),
+          ]
+          for old, new in replacements:
+              if old in text:
+                  text = text.replace(old, new, 1)
+              elif new not in text:
+                  raise SystemExit(f'Expected CSS rule not found: {old}')
 
           image = 'https://enxpower.com/youth-heritage-100/og-image.png'
           marker = f'<meta property="og:image" content="{image}">'
@@ -61,33 +51,28 @@ jobs:
                   raise SystemExit('og:image marker not found')
               text = text.replace(marker, metadata, 1)
 
-          path.write_text(text, encoding='utf-8')
-
           class Checker(HTMLParser):
               def __init__(self):
                   super().__init__(); self.ids=set(); self.hrefs=[]
               def handle_starttag(self, tag, attrs):
                   d=dict(attrs)
                   if d.get('id'): self.ids.add(d['id'])
-                  if d.get('href','').startswith('#') and len(d['href'])>1:
-                      self.hrefs.append(d['href'][1:])
+                  href=d.get('href','')
+                  if href.startswith('#') and len(href)>1: self.hrefs.append(href[1:])
           c=Checker(); c.feed(text)
           missing=sorted(set(c.hrefs)-c.ids)
-          if missing:
-              raise SystemExit(f'Missing anchor targets: {missing}')
+          if missing: raise SystemExit(f'Missing anchor targets: {missing}')
 
-          png = Path('youth-heritage-100/og-image.png').read_bytes()
-          if png[:8] != b'\x89PNG\r\n\x1a\n':
-              raise SystemExit('og-image.png is not a valid PNG')
-          width, height = struct.unpack('>II', png[16:24])
-          if (width, height) != (300, 300):
-              raise SystemExit(f'Unexpected OG image dimensions: {width}x{height}')
+          png=Path('youth-heritage-100/og-image.png').read_bytes()
+          if png[:8] != b'\x89PNG\r\n\x1a\n': raise SystemExit('Invalid PNG signature')
+          width,height=struct.unpack('>II',png[16:24])
+          if (width,height)!=(300,300): raise SystemExit(f'Unexpected image dimensions: {width}x{height}')
 
-          print('Validated internal anchors:', sorted(set(c.hrefs)))
-          print('Validated OG PNG:', width, height, len(png), 'bytes')
-          print('HTML changed:', text != original)
+          path.write_text(text,encoding='utf-8')
+          print('anchors=',sorted(set(c.hrefs)))
+          print('share_image=',width,height,len(png))
           PY
-      - name: Commit verified fix
+      - name: Commit verified fix and remove workflow
         run: |
           rm .github/workflows/fix-youth-heritage-interactions.yml
           git config user.name "github-actions[bot]"
