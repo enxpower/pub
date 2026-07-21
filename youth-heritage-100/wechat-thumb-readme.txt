@@ -1,1 +1,0 @@
-The image asset is managed as a binary blob.
