@@ -1,0 +1,100 @@
+name: Fix youth heritage interactions
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-youth-heritage-interactions.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Patch click layering and sharing metadata
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import struct
+
+          path = Path('youth-heritage-100/index.html')
+          text = path.read_text(encoding='utf-8')
+          original = text
+
+          # Decorative hero artwork must never intercept pointer/touch events.
+          old = '.hero:after{content:"100";'
+          new = '.hero:after{pointer-events:none;content:"100";'
+          if old not in text and new not in text:
+              raise SystemExit('hero pseudo-element rule not found')
+          text = text.replace(old, new, 1)
+
+          # Keep all primary actions above decorative layers.
+          old = '.actions{display:flex;'
+          new = '.actions{position:relative;z-index:2;display:flex;'
+          if old not in text and new not in text:
+              raise SystemExit('actions rule not found')
+          text = text.replace(old, new, 1)
+
+          old = '.btn{padding:'
+          new = '.btn{position:relative;z-index:1;padding:'
+          if old not in text and new not in text:
+              raise SystemExit('button rule not found')
+          text = text.replace(old, new, 1)
+
+          # Complete static sharing metadata for the square PNG.
+          image = 'https://enxpower.com/youth-heritage-100/og-image.png'
+          marker = f'<meta property="og:image" content="{image}">'
+          metadata = f'''<meta property="og:image" content="{image}">
+<meta property="og:image:secure_url" content="{image}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="300">
+<meta property="og:image:height" content="300">
+<meta property="og:image:alt" content="青年非遗100全国非遗创新赋能项目">
+<meta itemprop="image" content="{image}">
+<link rel="image_src" href="{image}">'''
+          if 'og:image:width' not in text:
+              if marker not in text:
+                  raise SystemExit('og:image marker not found')
+              text = text.replace(marker, metadata, 1)
+
+          path.write_text(text, encoding='utf-8')
+
+          # Validate every internal anchor target.
+          class Checker(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.ids=set(); self.hrefs=[]
+              def handle_starttag(self, tag, attrs):
+                  d=dict(attrs)
+                  if d.get('id'): self.ids.add(d['id'])
+                  if d.get('href','').startswith('#') and len(d['href'])>1:
+                      self.hrefs.append(d['href'][1:])
+          c=Checker(); c.feed(text)
+          missing=sorted(set(c.hrefs)-c.ids)
+          if missing:
+              raise SystemExit(f'Missing anchor targets: {missing}')
+
+          # Validate the actual PNG signature and dimensions without dependencies.
+          png = Path('youth-heritage-100/og-image.png').read_bytes()
+          if png[:8] != b'\x89PNG\r\n\x1a\n':
+              raise SystemExit('og-image.png is not a valid PNG')
+          width, height = struct.unpack('>II', png[16:24])
+          if (width, height) != (300, 300):
+              raise SystemExit(f'Unexpected OG image dimensions: {width}x{height}')
+
+          print('Validated internal anchors:', sorted(set(c.hrefs)))
+          print('Validated OG PNG:', width, height, len(png), 'bytes')
+          print('HTML changed:', text != original)
+          PY
+      - name: Commit verified fix
+        run: |
+          rm .github/workflows/fix-youth-heritage-interactions.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add youth-heritage-100/index.html .github/workflows/fix-youth-heritage-interactions.yml
+          git commit -m "fix hero button click layer and validate share metadata"
+          git push origin main
