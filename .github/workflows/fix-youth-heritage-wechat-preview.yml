@@ -1,0 +1,63 @@
+name: Fix youth heritage WeChat preview
+
+on:
+  push:
+    paths:
+      - '.github/workflows/fix-youth-heritage-wechat-preview.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Update sharing metadata only
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('youth-heritage-100/index.html')
+          text = path.read_text(encoding='utf-8')
+          image = 'https://enxpower.com/youth-heritage-100/og-image.png?v=20260721-1354'
+
+          old = '''<meta property="og:image" content="https://enxpower.com/youth-heritage-100/og-image.png">
+<meta property="og:url" content="https://enxpower.com/youth-heritage-100/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://enxpower.com/youth-heritage-100/og-image.png">'''
+
+          new = f'''<meta property="og:image" content="{image}">
+<meta property="og:image:secure_url" content="{image}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="青年非遗100全国非遗创新赋能项目">
+<meta property="og:url" content="https://enxpower.com/youth-heritage-100/">
+<meta itemprop="image" content="{image}">
+<link rel="image_src" href="{image}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{image}">'''
+
+          if old not in text:
+              raise SystemExit('Expected sharing metadata block was not found; no file changed.')
+          text = text.replace(old, new, 1)
+
+          body = '<body>'
+          fallback = f'<body><img src="{image}" alt="" width="300" height="158" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">'
+          if body not in text:
+              raise SystemExit('Body tag not found; no file changed.')
+          text = text.replace(body, fallback, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit preview-only fix
+        run: |
+          rm .github/workflows/fix-youth-heritage-wechat-preview.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add youth-heritage-100/index.html .github/workflows/fix-youth-heritage-wechat-preview.yml
+          git commit -m "fix WeChat share image metadata"
+          git push origin main
